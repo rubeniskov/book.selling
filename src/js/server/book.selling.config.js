@@ -22,10 +22,7 @@
             password        : '',
             
             database        : 'db_bookselling'
-        },
-
-        package     : require( path.join( root, 'package.json' ) );
+        }
     }
 
-    console.log( $.config.package );
 })( BookSelling );
