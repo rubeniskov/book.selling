@@ -1,4 +1,4 @@
 node_modules/*
 dst
-resources
+/resources
 npm-debug.log
