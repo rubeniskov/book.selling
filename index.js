@@ -3,3 +3,5 @@
 var bs 	= require( "book-selling" );
 
 bs.server.start();
+
+console.log("Soy el puto amo")
