@@ -6,6 +6,13 @@
 	"version" : "0.0.1",
 
 	"description" : "",
+	
+	"repository" : 
+	{
+		"type": "git",
+
+		"url": "https://github.com/foxnet-es/book.selling.git"
+	},
 
 	"main" : "book.selling.server.js",
 
