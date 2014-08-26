@@ -1,0 +1,88 @@
+{
+	"name" : "BookSelling",
+
+	"alias" : "book.selling",
+
+	"version" : "0.0.1",
+
+	"description" : "",
+
+	"main" : "book.selling.server.js",
+
+	"destination" : "dst",
+
+	"scripts" : 
+	{
+		"test" : "echo \"Error no test specified\" && exit 1"
+	},
+
+	"sources" :
+	{
+		"client" :
+		[
+			"src/js/client/socket.io.js",
+			"src/js/client/jquery.js",
+			"src/js/client/bootstrap.js",
+			"src/js/client/bootstrap-validator.js",
+			"src/js/client/book.selling.core.js"
+		],
+
+		"server" :
+		[
+			"src/js/server/book.selling.core.js",
+			"src/js/server/book.selling.config.js",
+			"src/js/server/book.selling.mysql.js",
+			"src/js/server/book.selling.socket.js",
+			"src/js/server/book.selling.http.js",
+			"src/js/server/book.selling.module.js",
+			"src/js/server/book.selling.view.js",
+			"src/js/server/book.selling.login.js"
+		]
+
+	},
+
+	"views" :
+	{
+		"site":
+		{
+			"modules":
+			[
+				"header", "footer", "home"
+			]
+		},
+
+		"admin" :
+		{
+			"modules":
+			[
+				"header", "footer", "home"
+			]
+		}
+	},
+
+	"less" : "src/less/book.selling.less",
+
+	"author" : "Jorge Alonso López",
+
+	"license" : "ISC",
+
+	"devDependencies" : 
+	{
+		"express" 			: "~4.8.5",
+		"mime" 				: "~1.2.11",
+		"swig" 				: "~1.4.2",
+		"mysql" 			: "~2.4.2",
+		"mongodb" 			: "~1.4.8",
+		"socket.io" 		: "~1.0.6",
+		"cheerio" 			: "~0.17.0",
+		"deasync" 			: "~0.0.7",
+
+		"grunt" 				: "~0.4.5",
+		"grunt-contrib-uglify" 	: "~0.5.0",
+		"grunt-contrib-watch" 	: "~0.6.1",
+		"grunt-contrib-clean" 	: "~0.5.0",
+		"grunt-contrib-concat" 	: "~0.4.0",
+		"grunt-contrib-cssmin" 	: "~0.10.0",
+		"grunt-contrib-less" 	: "~0.11.3"
+	}
+}

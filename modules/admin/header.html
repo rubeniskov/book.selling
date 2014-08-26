@@ -1,0 +1,361 @@
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,700,100italic,300italic,400italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<style>
+
+		*
+		{
+			font-family: 'Roboto';
+			font-weight: lighter;
+		}
+
+
+		#carousel-example-generic img
+		{
+			margin-left: 30%;
+		}
+
+		.navbar-brand
+		{
+			padding: 0;
+			margin-right: 5em;
+		}
+
+		.navbar-brand img
+		{
+			height: 50px;
+			margin-right: 5px;
+			padding: 5px;
+		}
+		.container
+		{
+			max-width: 1280px;
+		}
+
+		.thumbnail img
+		{
+			width: 100%;
+			display: block;
+		}
+
+		.glyphicon
+		{
+			line-height: 1.5;
+		}
+
+		/* footer */
+		/* line 1061, ../sass/theme.scss */
+		.footer {
+		  background: #181818;
+		  color: #999999;
+		  padding: 50px 0 30px;
+		}
+		/* line 1065, ../sass/theme.scss */
+		.footer h2 {
+		  color: white;
+		  font-family: 'Roboto', serif;
+		  font-size: 1em;
+		  text-transform: uppercase;
+		}
+		/* line 1070, ../sass/theme.scss */
+		.footer li {
+		  padding: 0 0 3px;
+		}
+		/* line 1073, ../sass/theme.scss */
+		.footer i {
+		  color: #666666;
+		  padding-right: 5px;
+		}
+
+		/* line 1079, ../sass/theme.scss */
+		.upper-foot {
+		  font-size: .928em;
+		  padding-bottom: 10px;
+		}
+		/* line 1082, ../sass/theme.scss */
+		.upper-foot a {
+		  color: #999999;
+		}
+		/* line 1084, ../sass/theme.scss */
+		.upper-foot a:hover, .upper-foot a:focus {
+		  color: #1abc9c;
+		}
+
+		/* line 1090, ../sass/theme.scss */
+		.below-foot {
+		  border-top: 1px solid #383838;
+		  padding-top: 25px;
+		}
+		/* line 1093, ../sass/theme.scss */
+		.below-foot a {
+		  color: #1abc9c;
+		}
+		/* line 1095, ../sass/theme.scss */
+		.below-foot a:hover, .below-foot a:focus {
+		  color: #999999;
+		}
+
+		/* line 1101, ../sass/theme.scss */
+		.copyrights {
+		  font-size: .785em;
+		}
+
+		/* line 1106, ../sass/theme.scss */
+		.social-list li + li {
+		  margin-left: 15px;
+		}
+		/* line 1109, ../sass/theme.scss */
+		.social-list a {
+		  font-size: 1.571em;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-default" role="navigation">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="#"><img src="img/logo.gif" />BookSelling</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="active"><a href="#">Inicio</a></li>
+		        <li><a href="#">Categorias</a></li>
+		        <li><a href="#">Contacto</a></li>
+		        
+		      </ul>
+
+
+		      <ul class="nav navbar-nav navbar-right">
+		      	<li>
+		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+		      			<span class="glyphicon glyphicon-shopping-cart"></span>
+					</a>
+		      	</li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Acceso <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="#">Action</a></li>
+		            <li><a href="#">Another action</a></li>
+		            <li><a href="#">Something else here</a></li>
+		            <li class="divider"></li>
+		            <li><a href="#">Separated link</a></li>
+		          </ul>
+		        </li>
+		      </ul>
+		      <form class="navbar-form navbar-right" role="search">
+		        <div class="form-group">
+		          <input type="text" class="form-control" placeholder="Search">
+		        </div>
+		        <button type="submit" class="btn btn-default">Submit</button>
+		      </form>
+
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+	</header>
+
+	<main>
+		<div class="container">
+
+			<!-- Book Grid -->
+			
+
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+			  <ol class="carousel-indicators">
+			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			  </ol>
+
+			  <div class="carousel-inner">
+			    <div class="item active">
+			      <img src="img/books/harry-potter-la-piedra-filosofal.jpeg" alt="harry-potter-la-piedra-filosofal">
+			      <div class="carousel-caption">
+			        harry-potter-la-piedra-filosofal
+			      </div>
+			    </div>
+			    <div class="item">
+			      <img src="img/books/harry-potter-la-piedra-filosofal.jpeg" alt="harry-potter-la-piedra-filosofal">
+			      <div class="carousel-caption">
+			        ...
+			      </div>
+			    </div>
+			    ...
+			  </div>
+
+			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left"></span>
+			  </a>
+			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right"></span>
+			  </a>
+			</div>
+
+			<!-- Book Grid -->
+			<h2>Book Grid</h2>
+
+			<div class="book-categories">
+
+				<div class="row">
+
+				<?php
+
+					for( $i = 0; $i < ( 8 + rand( 0 , 10 ) ); $i ++)
+					{
+
+						print
+						('
+							<div class="col-sm-4 col-md-3">
+
+								<div class="thumbnail">
+									<img src="http://placehold.it/320x200" alt="..." >
+
+									<div class="caption">
+
+										<h3>Thumbnail label</h3>
+
+										<p>
+											Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+										</p>
+										
+										<div class="clearfix">
+
+											<span class="price pull-left">29.99 &euro;</span>
+
+											<div class="btn-group pull-right">
+											  <button type="button" class="btn btn-sm btn-primary">A&ntilde;adir a carrito</button>
+											  <button type="button" class="btn btn-sm btn-primary">
+											    <span class="glyphicon glyphicon-shopping-cart"></span>
+											  </button>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+						');
+					}
+					
+
+				?>
+				
+			</div>
+
+			<ul class="pagination pull-right">
+				<li>
+					<a href="#">&laquo;</a>
+				</li>
+				<li>
+					<a href="#">1</a>
+				</li>
+				<li>
+					<a href="#">2</a>
+				</li>
+				<li>
+					<a href="#">3</a>
+				</li>
+				<li>
+					<a href="#">4</a>
+				</li>
+				<li>
+					<a href="#">5</a>
+				</li>
+				<li>
+					<a href="#">&raquo;</a>
+				</li>
+			</ul>
+
+			<div>
+
+		</div>
+	</main>
+	<footer class="footer">
+			<div class="container">
+				<div class="upper-foot">
+					<div class="row">
+						<div class="col-xs-6 col-sm-3">
+							<h2>Contact detail</h2>
+							<address>
+								<i class="fa fa-map-marker"></i> No.123 Pellentesque nec erat.<br>
+								Aenean semper, neque non faucibus.<br>
+								<i class="fa fa-phone"></i> Phone. (123) 456-7890<br>
+								<i class="fa fa-fax"></i> Fax. (123) 456-7890<br>
+								<i class="fa fa-envelope"></i> E-mail. <a href="mailto:#">first.last@example.com</a>
+							</address>
+						</div>
+						<div class="col-xs-6 col-sm-3">
+							<h2>Useful links</h2>
+							<ul class="list-unstyled">
+								<li><a href="#">Track Orders</a></li>
+								<li><a href="#">FAQs</a></li>
+								<li><a href="#">Services</a></li>
+								<li><a href="#">Free Credit Report</a></li>
+								<li><a href="#">Terms and Conditions</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Community Guidelines</a></li>
+							</ul>
+						</div>
+						<div class="col-xs-6 col-sm-3">
+							<h2>Tags</h2>
+							<ul class="list-inline tagclouds">
+								<li><a href="#">Image</a></li>
+								<li><a href="#">Features</a></li>
+								<li><a href="#">Gallery</a></li>
+								<li><a href="#">Post Formats</a></li>
+								<li><a href="#">Typography</a></li>
+								<li><a href="#">WooCommerce</a></li>
+								<li><a href="#">Shortcodes</a></li>
+								<li><a href="#">Best Sellers</a></li>
+								<li><a href="#">Slideshow</a></li>
+							</ul>
+						</div>
+						<div class="col-xs-6 col-sm-3">
+							<h2>Don’t miss out</h2>
+							<p>In venenatis neque a eros laoreet eu placerat erat suscipit. Fusce cursus, erat ut scelerisque.</p>
+							<form class="form-inline form-newsletter" role="form">
+								<div class="form-group">
+									<label class="sr-only" for="exampleInputEmail2">Email address</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter your email here">
+								</div>
+								<button type="submit" class="btn"><i class="fa fa-caret-right"></i></button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="below-foot">
+					<div class="row">
+						<div class="col-xs-6 copyrights">
+							<p>Copyright © 2013 Flatize. Designed by <a href="http://pixelgeeklab.com/">PixelGeekLab</a><br>
+							All rights reserved.</p>
+						</div>
+						<div class="col-xs-6 text-right">
+							<ul class="list-inline social-list">
+								<li><a data-toggle="tooltip" data-placement="top" title="" href="#" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+								<li><a data-toggle="tooltip" data-placement="top" title="" href="#" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+								<li><a data-toggle="tooltip" data-placement="top" title="" href="#" data-original-title="Google+"><i class="fa fa-google-plus"></i></a></li>
+								<li><a data-toggle="tooltip" data-placement="top" title="" href="#" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+								<li><a data-toggle="tooltip" data-placement="top" title="" href="#" data-original-title="RSS"><i class="fa fa-rss"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	
+</body>
+</html>
