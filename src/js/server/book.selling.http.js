@@ -12,7 +12,7 @@
 
         mime    = require("mime"),
 
-        modules = new RegExp( $.config.modules.join('|') ),
+        modules = new RegExp( [ "home", "books" ].join('|') ),
 
         port    = process.argv[2] || 8888;
 
