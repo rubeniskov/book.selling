@@ -6,7 +6,7 @@
 
         path        = require("path"),
 
-        sections    = path.join( $.config.dir.modules, 'site' ),
+        sections    = path.join( $.config.dir.modules, 'admin' ),
 
         main        = path.join( sections, 'index.html' );
 
