@@ -2,7 +2,7 @@
     
     var swig        = require('swig'),
 
-        cheerio      = require("cheerio"),
+        cheerio     = require("cheerio"),
 
         path        = require("path"),
 
@@ -20,7 +20,14 @@
 
                 html    = $.module.load( ele.attr( 'name' ) == 'main' ? name : ele.attr( 'name' ), $main );
 
-            ele.replaceWith( html );
+            ele.replaceWith
+            (
+                '<!-- MODULE ' + ele.attr( 'name' ).toUpperCase() +  ' START -->' +
+
+                '<div class="module module-' + ele.attr( 'name' ).toLowerCase() + '">' + html + '</div>' +
+
+                '<!-- MODULE ' + ele.attr( 'name' ).toUpperCase() +  ' END -->'
+            );
         });
 
         return $main.html();     
@@ -45,15 +52,25 @@
             $html       = cheerio.load( html );
 
             if( context && script.__ready )
-                context( 'head' ).append( '<script ref="' + name + '" type="text/javascript">$( document.body ).ready(' + script.__ready +  ')</script>' );
+                context( 'head' ).append
+                ( 
+                    '<script ref="' + name + '" type="text/javascript">$.use( "module-' + name.toLowerCase() + '" ,' + script.__ready +  ')</script>' 
+                );
 
             $html('module[name]').each( function( i, element )
             {
-                var ele = $html( element );
+                var ele     = $html( element ),
 
-                console.log( ele );
+                    name    = ele.attr( 'name' );
 
-                ele.replaceWith( $.module.load( ele.attr( 'name' ), context ) );
+                ele.replaceWith
+                (
+                    '<!-- MODULE ' + name.toUpperCase() +  ' START -->' +
+
+                    '<div class="module module-' + name.toLowerCase() + '">' + $.module.load( ele.attr( 'name' ), context ) + '<div>' +
+
+                    '<!-- MODULE ' + name.toUpperCase() +  ' END -->'
+                );
             });
 
             console.log( 'Load Module ' + name );

@@ -2,14 +2,35 @@
 {
 	$.socket 					= io.connect();
 
-	$.use 						= function( context,fn )
+	$.use 						= function( name, fn )
 	{
+		var core 	= function( selector )
+		{
+			return $( selector, '.' + name );
+		}
+
+		core.socket 		= function()
+		{
+
+		}
+
+		core.socket.on 		= function( )
+		{
+			arguments[ 0 ] 	= name + '.' + arguments[ 0 ];
+
+			$.socket.on.apply( $.socket, arguments );
+		}
+
+		core.socket.emit 	= function()
+		{
+			arguments[ 0 ] 	= name + '.' + arguments[ 0 ];
+
+			$.socket.emit.apply( $.socket, arguments );
+		}
+
 		$( document.body ).ready( function()
 		{
-			fn.call( window, function( selector, context )
-			{
-				return $( selector, context )
-			})
+			fn.call( window, core );
 		});
 	}
 
