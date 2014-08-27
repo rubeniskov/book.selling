@@ -1,6 +1,6 @@
 (function( $ ){
     
-    var swig        = require('swig'),
+    /*var swig        = require('swig'),
 
         cheerio     = require("cheerio"),
 
@@ -59,6 +59,6 @@
             console.log( 'Load Module ' + name );
 
         return swig.renderFile( $html.html(), script.__render ? script.__render() : {} );
-    }
+    }*/
 
 })( BookSelling );
