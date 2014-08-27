@@ -14,7 +14,24 @@ module.exports = function( $ )
 		},
 		__ready   : function( $ )
 		{
-			$( 'div' ).css('background-color', 'red' );
+			var recent = $("#owl-recent");
+	 
+		recent.owlCarousel
+		({
+			autoPlay: 3000, //Set AutoPlay to 3 seconds
+			items : 4,
+			mouseDrag : false,
+			pagination : false
+		});
+	
+	$(".next").click(function(){
+			recent.trigger('owl.next');
+	  })
+	  
+	  $(".prev").click(function(){
+			recent.trigger('owl.prev');
+	  })
+			/*$( 'div' ).css('background-color', 'red' );*/
 		}
 
 		/*function( socket, name, data )
