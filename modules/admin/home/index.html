@@ -59,6 +59,60 @@
         <div class="clearfix"></div>
 
 	    </div>
+
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Location</th>
+                      <th>Date</th>
+                      <th>Type</th>
+                      <th>Status</th>
+                      <th>Control</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for key, book in books %}
+                    <tr>
+                        <td>{{ book.book_id }}</td>
+                        <td>Ravi Kumar</td>
+                        <td>India</td>
+                        <td>23/12/2012</td>
+                        <td>Paid</td>
+                        <td>
+
+                            <span class="label label-success">Active</span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="btn btn-xs btn-success"><i class="fa fa-check"></i> </button>
+                            <button class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> </button>
+                            <button class="btn btn-xs btn-danger"><i class="fa fa-times"></i> </button>
+
+                        </td>
+                    </tr>
+                {% endfor %}                
+                </tbody>    
+            </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	    
 	    <!-- Page heading ends -->
     </div>
 

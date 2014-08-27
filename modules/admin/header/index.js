@@ -2,25 +2,9 @@ module.exports = function( $ )
 {
 	return ({
 
-		__render 	: function( callback )
+		__render : function()
 		{
 			
-		},
-		events 		: 
-		({
-			'sign-up' : function()
-			{
-
-			},
-			'sign-in' : function()
-			{
-
-			},
-			'sign-out' : function()
-			{
-
-			}
-
-		})
+		}
 	})
 };

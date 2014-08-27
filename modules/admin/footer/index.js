@@ -2,7 +2,7 @@ module.exports = function( $ )
 {
 	return ({
 
-		__render : function(  )
+		__render : function()
 		{
 			
 		}
