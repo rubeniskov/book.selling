@@ -52,7 +52,7 @@
                     .send( file );
                 });
             }
-            else if( modules.test( section ) )
+            else if( true || modules.test( section ) )
             {
                 data        = $.module( section );
                 statusCode  = 200;
