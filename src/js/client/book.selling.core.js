@@ -6,7 +6,7 @@
 	{
 		var core 	= function( selector )
 		{
-			return $( selector, '.' + name );
+			return $( selector, 'div.' + name );
 		}
 
 		core.socket 		= function()

@@ -22,11 +22,11 @@
 
             ele.replaceWith
             (
-                '<!-- MODULE ' + ele.attr( 'name' ).toUpperCase() +  ' START -->' +
+                '<!-- MODULE ' + name.toUpperCase() +  ' START -->' +
 
-                '<div class="module module-' + ele.attr( 'name' ).toLowerCase() + '">' + html + '</div>' +
+                '<div class="module module-' + name.toLowerCase() + '">' + html + '</div>' +
 
-                '<!-- MODULE ' + ele.attr( 'name' ).toUpperCase() +  ' END -->'
+                '<!-- MODULE ' + name.toUpperCase() +  ' END -->'
             );
         });
 

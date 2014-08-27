@@ -14,23 +14,8 @@ module.exports = function( $ )
 		},
 		__ready   : function( $ )
 		{
-			
-		},
-		events : 
-		({
-			'sign-up' : function()
-			{
-
-			},
-			'sign-in' : function()
-			{
-
-			},
-			'sign-out' : function()
-			{
-
-			}
-		})
+			$( 'div' ).css('background-color', 'red' );
+		}
 
 		/*function( socket, name, data )
 		{
