@@ -2,3 +2,4 @@ node_modules/*
 dst
 /resources
 npm-debug.log
+src/js/server/book.selling.config.js

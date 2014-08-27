@@ -76,10 +76,10 @@
                 {% for key, book in books %}
                     <tr>
                         <td>{{ book.book_id }}</td>
-                        <td>Ravi Kumar</td>
-                        <td>India</td>
-                        <td>23/12/2012</td>
-                        <td>Paid</td>
+                        <td>{{ book.book_isbn }}</td>
+                        <td>{{ book.book_title }}</td>
+                        <td>{{ book.book_editorial }}</td>
+                        <td>{{ book.book_author }}</td>
                         <td>
 
                             <span class="label label-success">Active</span>
