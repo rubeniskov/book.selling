@@ -11,11 +11,11 @@
         <!-- Sidebar navigation -->
           <nav>
             <ul id="navi">
-              <li><a href="myaccount.html">Mi cuenta</a></li>
-              <li><a href="wish-list.html">Mis libros</a></li>
-              <li><a href="order-history.html">Mis compras</a></li>
-              <li><a href="subir-libro.html">Subir libro</a></li>
-			  <li><a href="edit-profile.html">Editar perfil</a></li>
+                <li><a href="./my-account">Mi cuenta</a></li>
+                <li><a href="./my-account-books">Mis libros</a></li>
+                <li><a href="./my-account-purchases">Mis compras</a></li>
+                <li><a href="./my-account-uploaded-books">Subir libro</a></li>
+                <li><a href="./my-account-update-profile">Editar perfil</a></li>
             </ul>
           </nav>
 
@@ -28,98 +28,96 @@
 
           <div class="form form-small">
                                       <!-- Edit profile form (not working)-->
-                                      <form class="form-horizontal">
-                                          <!-- ISBN -->
-                                          <div class="form-group">
-                                            <label class="control-label col-md-2" for="isbn">ISBN</label>
-                                            <div class="col-md-6">
-                                              <input type="text" class="form-control" id="isbn1">
-                                            </div>
-                                          </div>   
-                                          <!-- Titulo -->
-                                          <div class="form-group">
-                                            <label class="control-label col-md-2" for="titulo">Titulo</label>
-                                            <div class="col-md-6">
-                                              <input type="text" class="form-control" id="titulo1">
-                                            </div>
-                                          </div>
-                      <!-- Editorial -->
-                                          <div class="form-group">
-                                            <label class="control-label col-md-2" for="editorial">Editorial</label>
-                                            <div class="col-md-6">
-                                              <input type="text" class="form-control" id="editorial1">
-                                            </div>
-                                          </div>
-                                          <!-- Autor -->
-                                          <div class="form-group">
-                                            <label class="control-label col-md-2" for="autor">Autor</label>
-                                            <div class="col-md-6">
-                                              <input type="text" class="form-control" id="autor1">
-                                            </div>
-                                          </div> 
+                <form class="form-horizontal">
+                    <!-- ISBN -->
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="isbn">ISBN</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="isbn1">
+                            </div>
+                    </div>   
+
+                    <!-- Titulo -->
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="titulo">Titulo</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="titulo1">
+                            </div>
+                    </div>
+
+                    <!-- Editorial -->
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="editorial">Editorial</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="editorial1">
+                            </div>
+                    </div>
+                    <!-- Autor -->
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="autor">Autor</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="autor1">
+                            </div>
+                    </div> 
+
                     <!-- Idioma -->
-                                          <div class="form-group">
-                                            <label class="control-label col-md-2" for="language">Idioma</label>
-                                            <div class="col-md-6">
-                                              <input type="text" class="form-control" id="language1">
-                                            </div>
-                                          </div>                        
-                                          <!-- Imagen -->
-                                          <div class="form-group">
-                                            
-                    <label for="ejemplo_archivo_1">Subir</label>
-                                            <div class="col-md-6">
-                                            
-                        <input type="file" id="ejemplo_archivo_1">
-                        
-                                            </div>
-                                          </div>                        
-                                          <!-- Descripcion -->
-                                          <div class="form-group">
-                                            <label class="control-label col-md-2" for="description">Descripcion</label>
-                                            <div class="col-md-6">
-                                              <textarea class="form-control" rows="5" id="description1"></textarea>
-                                            </div>
-                                          </div>  
-                      <!-- Pages -->
-                                          <div class="form-group">
-                                            <label class="control-label col-md-2" for="pages">Nº paginas</label>
-                                            <div class="col-md-6">
-                                              <input type="text" class="form-control" id="pages1">
-                                            </div>
-                                          </div>
-                      <!-- Precio -->
-                                          <div class="form-group">
-                                            <label class="control-label col-md-2" for="price">Precio</label>
-                                            <div class="col-md-6">
-                                              <input type="text" class="form-control" id="price1">
-                                            </div>
-                                          </div>
-                      
-                                          <!-- Checkbox -->
-                                          <div class="form-group">
-                                             <div class="col-md-6 col-md-offset-2">
-                                                <label class="checkbox inline">
-                                                   <input type="checkbox" id="inlineCheckbox3" value="agree"> Estoy de acuerdo con las condiciones.
-                                                </label>
-                                             </div>
-                                          </div> 
-                                          
-                                          <!-- Buttons -->
-                                          <div class="form-group">
-                                             <!-- Buttons -->
-                       <div class="col-md-6 col-md-offset-2">
-                        <button type="submit" class="btn btn-default">Subir</button>
-                        <button type="reset" class="btn btn-default">Limpiar campos</button>
-                       </div>
-                                          </div>
-                                      </form>
-                </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="language">Idioma</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="language1">
+                            </div>
+                    </div>    
 
-                                                                                                         
+                    <!-- Imagen -->
+                    <div class="form-group">
 
+                        <label for="ejemplo_archivo_1">Subir</label>
+                            <div class="col-md-6">
+                                <input type="file" id="ejemplo_archivo_1">
+                            </div>
+                    </div>  
 
+                    <!-- Descripcion -->
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="description">Descripcion</label>
+                            <div class="col-md-6">
+                                <textarea class="form-control" rows="5" id="description1"></textarea>
+                            </div>
+                    </div>  
+                    <!-- Pages -->
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="pages">Nº paginas</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="pages1">
+                            </div>
+                    </div>
+                    <!-- Precio -->
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="price">Precio</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="price1">
+                            </div>
+                    </div>
 
+                    <!-- Checkbox -->
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-2">
+                            <label class="checkbox inline">
+                                <input type="checkbox" id="inlineCheckbox3" value="agree"> Estoy de acuerdo con las condiciones.
+                            </label>
+                            </div>
+                    </div> 
+
+                    <!-- Buttons -->
+                    <div class="form-group">
+                        <!-- Buttons -->
+                        <div class="col-md-6 col-md-offset-2">
+                            <button type="submit" class="btn btn-default">Subir</button>
+                            <button type="reset" class="btn btn-default">Limpiar campos</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
     </div>
   </div>
 </div>

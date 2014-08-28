@@ -32,6 +32,7 @@
 			"src/js/client/jquery.js",
 			"src/js/client/bootstrap.js",
 			"src/js/client/bootstrap-validator.js",
+			"src/js/client/nav.js",
 			"src/js/client/owl-carousel.js",
 			"src/js/client/book.selling.core.js"
 		],
