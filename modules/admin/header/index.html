@@ -7,7 +7,7 @@
         <div class="col-md-4">
           <!-- Logo. -->
           <div class="logo">
-            <h1><a href="#">BookSelling<span class="bold">Admin</span></a></h1>
+            <h1><a href="./home">BookSelling<span class="bold">Admin</span></a></h1>
             <p class="meta">Tu web de libros usados.</p>
           </div>
           <!-- Logo ends -->
@@ -29,7 +29,7 @@
               </div>
               <div class="mcol-right">
                 <!-- Number of visitors -->
-                <p><a href="#">7000</a> <em>Usuarios</em></p>
+                <p><a href="#">{{users}}</a> <em>Usuarios</em></p>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -42,7 +42,7 @@
               </div>
               <div class="mcol-right">
                 <!-- Number of visitors -->
-                <p><a href="#">3000</a> <em>Libros  </em></p>
+                <p><a href="#">{{books}}</a> <em>Libros  </em></p>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -66,5 +66,40 @@
       </div>
     </div>
   </header>
+  <!-- Main content starts -->
+
+<div class="content">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-dropdown"><a href="#">Men&uacute;</a></div>
+
+        <!--- Sidebar navigation -->
+        <!-- If the main navigation has sub navigation, then add the class "has_sub" to "li" of main navigation. -->
+        <ul id="nav">
+          <!-- Main menu with font awesome icon -->
+          <li class="open"><a href="./home"><i class="fa fa-home"></i> Inicio</a>
+            <!-- Sub menu markup 
+            <ul>
+              <li><a href="#">Submenu #1</a></li>
+              <li><a href="#">Submenu #2</a></li>
+              <li><a href="#">Submenu #3</a></li>
+            </ul>-->
+          </li>
+          <li class="has_sub">
+            <a href="#"><i class="fa fa-list-alt"></i> Gesti&oacute;n web  <span class="pull-right"><i class="fa fa-chevron-right"></i></span></a>
+                  <ul>
+
+                    <li><a href="./manage-users">Dar de baja usuario</a></li>
+                   
+                    <li><a href="./manage-books">Dar de baja libro</a></li>
+                   
+                  </ul>
+          </li>     
+               
+        </ul>
+    </div>
+
+    <!-- Sidebar ends -->
 
 <!-- Header ends -->
