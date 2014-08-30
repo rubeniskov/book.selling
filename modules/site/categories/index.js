@@ -3,7 +3,7 @@ module.exports = function( $ )
 	return ({
 		__render : function()
 		{
-			var query 	= $.mysql.query( "SELECT * FROM tb_books limit 8,8 " );
+			var query 	= $.mysql.query( "SELECT * FROM tb_books" );
 
 			if( query.error )
 			{
