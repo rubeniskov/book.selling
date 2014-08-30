@@ -377,14 +377,14 @@
 					</div>
 					<div id="owl-recent" class="owl-carousel">
 						<!-- Item -->
-						{% for key, book in books %}
+						{% for key, item in carousel %}
 						<div class="item">
 							<a href="./book-details"><img src="img/photos/4.png" alt="" class="img-responsive" /></a>
 							<!-- Heading -->
-							<h4><a href="./book-details">{{ book.book_title}}<span class="pull-right">{{ book.book_price}}</span></a></h4>
+							<h4><a href="./book-details">{{ item.book_title}}<span class="pull-right">{{ item.book_price}}</span></a></h4>
 							<div class="clearfix"></div>
 							<!-- Paragraph -->
-							<p>{{ book.book_author}}</p>
+							<p>{{ item.book_author}}</p>
 						</div>
 						 {% endfor %}   
 						

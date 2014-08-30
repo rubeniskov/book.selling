@@ -41,21 +41,26 @@ CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_books` (
     `book_image`            BLOB            NULL DEFAULT NULL,
     `book_description`      TEXT            NULL DEFAULT NULL,
     `book_pages`            INT(3)          NULL DEFAULT NULL,
-    `book_price`            INT(3)          NOT NULL,
     UNIQUE KEY (`book_isbn`))
 ENGINE = InnoDB;
 
 
 
 -- -----------------------------------------------------
--- Table `db_bookselling`.`tb_mislibros`
+-- Table `db_bookselling`.`tb_books_uploaded`--Libros subidos
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_bookselling`.`tb_users_books` ;
+DROP TABLE IF EXISTS `db_bookselling`.`tb_books_uploaded` ;
 
-CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_users_books` (
+CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_books_uploaded` (
+  `book_uploaded_id`        INT(8)          NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+  `book_uploaded_date`      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `book_uploaded_price`     INT(3) NOT NULL,
   `user_id`                 INT(8) NOT NULL,
   `book_id`                 INT(8) NOT NULL,
-  PRIMARY KEY (`user_id`, `book_id`),
+  
+
+
+  UNIQUE KEY (`user_id`, `book_id`),
   CONSTRAINT `fk__tb_users__user_id`
     FOREIGN KEY (`user_id`)
     REFERENCES `db_bookselling`.`tb_users` (`user_id`)
@@ -67,6 +72,43 @@ CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_users_books` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `db_bookselling`.`tb_purchases`--Compras
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `db_bookselling`.`tb_purchases` ;
+
+CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_purchases` (
+  `purchase_id`            INT(8)          NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+  `purchase_date`          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `user_id`                 INT(8) NOT NULL,
+
+  UNIQUE KEY (`user_id`, `book_id`),
+  CONSTRAINT `fk__tb_users__user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `db_bookselling`.`tb_users` (`user_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `db_bookselling`.`tb_books_purchases`--Libros vendidos
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `db_bookselling`.`tb_books_purchases` ;
+
+CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_books_purchases` (
+  `purchase_id`                  INT(8) NOT NULL,
+  `books_uploaded_id`             INT(8) NOT NULL
+
+  PRIMARY KEY (`purchase_id`, `book_id`),
+  CONSTRAINT `fk__tb_users__user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `db_bookselling`.`tb_users` (`user_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
 
 
 INSERT INTO `db_bookselling`.`tb_books`
