@@ -90,11 +90,11 @@ CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_purchases` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `db_bookselling`.`tb_books_purchases`--Libros vendidos
+-- Table `db_bookselling`.`tb_books_purchased`--Libros vendidos
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_bookselling`.`tb_books_purchases` ;
+DROP TABLE IF EXISTS `db_bookselling`.`tb_books_purchased` ;
 
-CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_books_purchases` (
+CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_books_purchased` (
   `purchase_id`             INT(8) NOT NULL,
   `book_uploaded_id`        INT(8) NOT NULL,
 
@@ -107,16 +107,21 @@ CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_books_purchases` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- View `db_bookselling`.`v_user_books`--Libros vendidos
+-- View `db_bookselling`.`v_books_available` --Libros disponibles
 -- -----------------------------------------------------
-CREATE OR REPLACE VIEW `db_bookselling`.`v_user_books` AS
-SELECT 
-    *
+CREATE OR REPLACE VIEW `db_bookselling`.`v_books_available` AS
+SELECT
+    `bu`.`book_uploaded_id`, 
+    `b`.`book_id`,
+    `b`.`book_isbn`
 FROM
-    `db_bookselling`.`tb_books_uploaded`
+    `db_bookselling`.`tb_books_uploaded` as `bu`
         LEFT JOIN
-    `db_bookselling`.`tb_books` USING ( `book_id` );
-
+    `db_bookselling`.`tb_books` AS `b` USING (`book_id`)
+        LEFT join
+    `db_bookselling`.`tb_books_purchased` as `bp` ON `bu`.`book_uploaded_id` = `bp`.`book_uploaded_id`
+WHERE
+    `bp`.`book_uploaded_id` IS NULL;
 
 
 INSERT INTO `db_bookselling`.`tb_books`
@@ -370,6 +375,11 @@ VALUES
     1
 ),
 (
+    20.15,
+    2,
+    1
+),
+(
     50.15,
     2,
     3
@@ -395,7 +405,7 @@ VALUES
     1
 );
 
-INSERT INTO `db_bookselling`.`tb_books_purchases`
+INSERT INTO `db_bookselling`.`tb_books_purchased`
 (
     `purchase_id`,
     `book_uploaded_id`
