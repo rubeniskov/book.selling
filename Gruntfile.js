@@ -1,6 +1,12 @@
 module.exports = function(grunt) {
 
-    var pkg     = grunt.file.readJSON(  "package.json" );
+    var pkg             = grunt.file.readJSON(  "package.json" ),
+
+        compileModules  = function() 
+        {
+            
+            console.log( pkg );
+        };
 
     grunt.initConfig
     ({
@@ -98,6 +104,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks( "grunt-contrib-less" );
     grunt.loadNpmTasks( "grunt-contrib-cssmin" );
 
-    grunt.registerTask("default", [ "less", "cssmin", "concat", "uglify"]);
+    grunt.registerTask("default", [ "less", "cssmin", "concat", "uglify" ]);
+
+    compileModules();
 
 };
