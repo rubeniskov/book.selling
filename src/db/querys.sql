@@ -106,16 +106,8 @@ CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_books_purchases` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
--- -----------------------------------------------------
--- View `db_bookselling`.`v_user_books`--Libros vendidos
--- -----------------------------------------------------
-CREATE OR REPLACE VIEW `db_bookselling`.`v_user_books` AS
-SELECT 
-    *
-FROM
-    `db_bookselling`.`tb_books_uploaded`
-        LEFT JOIN
-    `db_bookselling`.`tb_books` USING ( `book_id` );
+
+
 
 
 
@@ -386,35 +378,4 @@ VALUES
 );
 
 
-INSERT INTO `db_bookselling`.`tb_purchases`
-(
-    `user_id`
-)
-VALUES
-(
-    1
-);
-
-INSERT INTO `db_bookselling`.`tb_books_purchases`
-(
-    `purchase_id`,
-    `book_uploaded_id`
-)
-VALUES
-(
-    1,
-    1
-),
-(
-    1,
-    2
-),
-(
-    1,
-    3
-),
-(
-    1,
-    4
-);
 
