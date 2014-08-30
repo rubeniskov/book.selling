@@ -1,11 +1,44 @@
 module.exports = function(grunt) {
 
-    var pkg             = grunt.file.readJSON(  "package.json" ),
+    var walk        = require('walk'),
+
+        path        = require("path"),
+
+        fs          = require("fs"),
+        
+        pkg         = grunt.file.readJSON(  "package.json" ),
+        
+        files       = [],
 
         compileModules  = function() 
         {
+            console.log( 'Test' );
             
-            console.log( pkg );
+            var files   = fs.readdirSync( './services' );
+
+            files.every( function()
+            {
+                console.log( arguments );
+            });
+
+            console.log( files );
+
+            /*var walker      = walk.walk( './services', { followLinks: false } );
+
+            walker.on('file', function(root, stat, next) 
+            {
+                // Add this file to the list of files
+                files.push(root + '/' + stat.name);
+                
+                next();
+
+                console.log( root );
+            });
+
+            walker.on('end', function() 
+            {
+                console.log(files);
+            });*/
         };
 
     grunt.initConfig
@@ -106,6 +139,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask("default", [ "less", "cssmin", "concat", "uglify" ]);
 
-    compileModules();
+    console.log( 'Compile Modules' );
+
+    compileModules();    
 
 };
