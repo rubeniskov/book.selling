@@ -159,10 +159,22 @@
                 "my-account": {
                     "events": []
                 },
+                "my-account-books": {
+                    "events": []
+                },
+                "my-account-books-purchased": {
+                    "events": []
+                },
                 "my-account-personal-menu": {
                     "events": []
                 },
                 "my-account-profile": {
+                    "events": []
+                },
+                "my-account-profile-update": {
+                    "events": []
+                },
+                "my-account-uploaded-books": {
                     "events": []
                 },
                 "sign-in": {

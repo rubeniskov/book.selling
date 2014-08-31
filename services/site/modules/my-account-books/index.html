@@ -1,0 +1,28 @@
+<!-- Main content -->
+<h5 class="title">Mis libros</h5>
+
+<table class="table table-striped tcart">
+    <thead>
+        <tr>
+            <th>ISBN</th>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Editorial</th>
+            <th>Precio</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for key, book in books %}
+        <tr>
+            <td>{{book.book_isbn}}</td>
+            <td><a href="/book-details/{{book.book_isbn}}">{{book.book_title}}</a>
+            </td>
+            <td>{{book.book_author}}</td>
+            <td>{{book.book_editorial}}</td>
+            <td>{{book.book_price}}</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
