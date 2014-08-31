@@ -140,6 +140,9 @@
         },
         "site": {
             "modules": {
+                "books-carousel": {
+                    "events": []
+                },
                 "books-last-purchases": {
                     "events": []
                 },
@@ -159,33 +162,17 @@
                         "sign-out"
                     ]
                 },
+                "header-nav": {
+                    "events": []
+                },
                 "home": {
                     "events": []
                 },
-                "my-account": {
-                    "events": []
-                },
-                "my-account-books": {
-                    "events": []
-                },
-                "my-account-purchases": {
-                    "events": []
-                },
-                "my-account-update-profile": {
-                    "events": []
-                },
-                "my-account-uploaded-books": {
-                    "events": []
-                },
-                "resources": {
+                "modals": {
                     "events": []
                 },
                 "sign-in": {
-                    "events": [
-                        "sign-up",
-                        "sign-in",
-                        "sign-out"
-                    ]
+                    "events": []
                 },
                 "sign-up": {
                     "events": [
@@ -193,6 +180,9 @@
                         "sign-in",
                         "sign-out"
                     ]
+                },
+                "template": {
+                    "events": []
                 }
             },
             "views": [
