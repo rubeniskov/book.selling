@@ -23,7 +23,7 @@
 
             user            : 'root',
 
-            password        : '',
+            password        : 'root',
             
             database        : 'db_bookselling'
         },

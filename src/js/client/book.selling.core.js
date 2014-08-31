@@ -31,8 +31,6 @@
 		$( document.body ).ready( function()
 		{
 			fn.call( window, core );
-
-			$.socket.emit( 'module.ready', name );
 		});
 	}
 
