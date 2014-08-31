@@ -28,7 +28,7 @@
             database        : 'db_bookselling'
         },
 
-        service      : 'admin',
+        service      : 'site',
 
         services     : pkg.services
 
