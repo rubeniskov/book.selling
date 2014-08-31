@@ -2,6 +2,8 @@ module.exports = function(grunt) {
 
     var walk        = require('walk'),
 
+        und         = require("underscore"),
+
         path        = require("path"),
 
         fs          = require("fs"),
@@ -12,33 +14,77 @@ module.exports = function(grunt) {
 
         compileModules  = function() 
         {
-            console.log( 'Test' );
-            
-            var files   = fs.readdirSync( './services' );
+            var modules, views, m_script,
 
-            files.every( function()
+                services    = fs.readdirSync( './services' );
+
+            pkg.services    = {};
+
+            services = 
+
+            und.each
+            ( 
+                und.filter( services, function( service )
+                {
+                    return !( /^\.+/ ).test( service );
+                }), 
+                function( service )
+                {
+                    modules     = fs.readdirSync( path.join( './services', service, 'modules' ) );
+
+                    views       = fs.readdirSync( path.join( './services', service, 'views' ) );
+
+                    pkg.services[ service ] = 
+                    ({
+                        modules : {},
+
+                        views   : []
+                    });
+                    
+                    und.each
+                    ( 
+                        und.filter( modules, function( module )
+                        {
+                            return !( /^\.+/ ).test( module );
+                        }),
+                        function( module )
+                        {
+                            m_script        = path.join( __dirname, 'services', service, 'modules', module, 'index.js' )
+
+                            pkg.services[ service ][ 'modules' ][ module ] = 
+                            ({
+                                events : []
+                            });
+
+                            if( fs.existsSync( m_script ) && ( m_script = require( m_script ) ) )
+                            {
+                                ( m_script = m_script() ) && m_script.events && und.each( m_script.events, function( fn, e_name )
+                                {
+                                    pkg.services[ service ][ 'modules' ][ module ][ 'events' ].push( e_name );
+                                });
+                            }
+                            
+                        }
+                    );
+
+                    und.each
+                    ( 
+                        und.filter( views, function( view )
+                        {
+                            return !( /^\.+/ ).test( view );
+                        }),
+                        function( view )
+                        {
+                            pkg.services[ service ][ 'views' ].push( view.replace( '.html', '' ) );
+                        }
+                    );
+                }
+            );
+    
+            if( fs.writeFileSync("./package.json",  JSON.stringify( pkg, null, 4 )) );
             {
-                console.log( arguments );
-            });
-
-            console.log( files );
-
-            /*var walker      = walk.walk( './services', { followLinks: false } );
-
-            walker.on('file', function(root, stat, next) 
-            {
-                // Add this file to the list of files
-                files.push(root + '/' + stat.name);
-                
-                next();
-
-                console.log( root );
-            });
-
-            walker.on('end', function() 
-            {
-                console.log(files);
-            });*/
+                console.log( 'Package.json saved!' );
+            }
         };
 
     grunt.initConfig

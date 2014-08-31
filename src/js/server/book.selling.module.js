@@ -6,43 +6,82 @@
 
         path        = require("path"),
 
-        sections    = path.join( $.config.dir.modules, $.config.view ),
+        fs          = require("fs");
 
-        main        = path.join( sections, 'index.html' );
-
-    $.module        = function( name )
+    $.module        = function( service, name )
     {
-        $main       = cheerio.load( swig.renderFile( main ) );
+        return $.module.load( service, name );
+    }
 
-        $main('module[name]').each( function( i, element )
+    $.module.render     = function( service, html, includes )
+    {
+        var _$ = cheerio.load( html );
+
+        _$('module[name]').each( function( i, element )
         {
-            var ele     = $main( element ),
+            var element = _$( element ),
 
-                html    = $.module.load( ele.attr( 'name' ) == 'main' ? name : ele.attr( 'name' ), $main );
+                name    = element.attr( 'name' ),
 
-            ele.replaceWith
-            (
-                '<!-- MODULE ' + name.toUpperCase() +  ' START -->' +
+                module  = $.module.load( service, name ),
 
-                '<div class="module module-' + name.toLowerCase() + '">' + html + '</div>' +
+                html    = 'Module ' + name + ' doesn\'t found';
 
-                '<!-- MODULE ' + name.toUpperCase() +  ' END -->'
-            );
+                if( module.html )
+                {
+                    html = module.html;
+                }
+
+                if( includes && !includes[ name ] && module.script && module.script.__ready )
+                {
+                    includes[ name ] = module.script.__ready;
+                }
+
+                element.replaceWith
+                (
+                    '<!-- MODULE ' + name.toUpperCase() +  ' START -->' +
+
+                    '<div class="module module-' + name.toLowerCase() + '">' + $.module.render( service, html, includes ) + '</div>' +
+
+                    '<!-- MODULE ' + name.toUpperCase() +  ' END -->'
+                );
         });
 
-        return $main.html();     
+        return _$.html();
     }
 
-    $.module.getHTML    = function( name )
+    $.module.load       = function( service, name )
     {
-        return path.join( sections, name, 'index.html' );
+        var script = $.module.getScript( service, name );
+
+        return ({ 
+            html    : $.module.getHTML( service, name, script && script.__render && script.__render.call ? script.__render.call( null ) : {} ), 
+
+            script  : script
+        });
     }
 
-    $.module.getScript  = function( name )
+    $.module.getFile    = function( service, name, file )
     {
-        return require( path.join( sections, name, 'index.js' ) )( $ );
+        var file    = path.join( $.config.dir.root, 'services', service, 'modules', name, file );
+
+        return fs.existsSync( file ) ? file : false;
     }
 
+    $.module.getHTML    = function( service, name, data )
+    {
+        var html    = $.module.getFile( service, name, 'index.html' );
+
+        return html ? swig.renderFile( html, data ) : 'Module index.html - ' + name + ' doesn\'t found';
+    }
+
+    $.module.getScript  = function( service, name )
+    {
+        var script  = $.module.getFile( service, name, 'index.js' );
+
+        return require( script )( $ );
+    }
+return false;
     $.module.load       = function( name, context )
     {
         var html        = $.module.getHTML( name ),

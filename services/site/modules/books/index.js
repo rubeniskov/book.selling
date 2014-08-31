@@ -32,7 +32,7 @@ module.exports = function( $ )
 			recent.trigger('owl.prev');
 	  })
 			/*$( 'div' ).css('background-color', 'red' );*/
-		}
+		},
 
 		/*function( socket, name, data )
 		{
@@ -66,5 +66,10 @@ module.exports = function( $ )
 				break;
 			};
 		}*/
+		events : 
+		({
+
+			'sign-up': function(){}
+		})
 	})
 };

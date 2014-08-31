@@ -1,102 +1,207 @@
 {
-	"name" : "BookSelling",
-
-	"alias" : "book.selling",
-
-	"version" : "0.0.1",
-
-	"description" : "",
-	
-	"repository" : 
-	{
-		"type": "git",
-
-		"url": "https://github.com/foxnet-es/book.selling.git"
-	},
-
-	"main" : "book.selling.server.js",
-
-	"destination" : "dst",
-
-	"scripts" : 
-	{
-		"test" : "echo \"Error no test specified\" && exit 1"
-	},
-
-	"sources" :
-	{
-		"client" :
-		[
-			
-			"src/js/client/socket.io.js",
-			"src/js/client/jquery.js",
-			"src/js/client/bootstrap.js",
-			"src/js/client/bootstrap-validator.js",
-			"src/js/client/nav.js",
-			"src/js/client/owl-carousel.js",
-			"src/js/client/book.selling.core.js"
-		],
-
-		"server" :
-		[
-			"src/js/server/book.selling.core.js",
-			"src/js/server/book.selling.config.js",
-			"src/js/server/book.selling.mysql.js",
-			"src/js/server/book.selling.socket.js",
-			"src/js/server/book.selling.http.js",
-			"src/js/server/book.selling.module.js",
-			"src/js/server/book.selling.view.js",
-			"src/js/server/book.selling.login.js"
-		]
-
-	},
-
-	"views" :
-	{
-		"site":
-		{
-			"modules":
-			[
-				"header", "footer", "home"
-			]
-		},
-
-		"admin" :
-		{
-			"modules":
-			[
-				"header", "footer", "home"
-			]
-		}
-	},
-
-	"less" : "src/less/book.selling.less",
-
-	"author" : "Jorge Alonso López",
-
-	"license" : "ISC",
-
-	"devDependencies" : 
-	{
-		"connect" 			: "~3.1.1",
-		"connect-mongo" 	: "~0.4.1",
-		"connect-session" 	: "~0.0.1",
-		"mime" 				: "~1.2.11",
-		"underscore"		: "~1.7.0",
-		"swig" 				: "~1.4.2",
-		"mysql" 			: "~2.4.2",
-		"mongodb" 			: "~1.4.8",
-		"socket.io" 		: "~1.0.6",
-		"cheerio" 			: "~0.17.0",
-		"deasync" 			: "~0.0.7",
-		"walk" 				: "~2.3.3",
-
-		"grunt" 				: "~0.4.5",
-		"grunt-contrib-uglify" 	: "~0.5.0",
-		"grunt-contrib-watch" 	: "~0.6.1",
-		"grunt-contrib-clean" 	: "~0.5.0",
-		"grunt-contrib-concat" 	: "~0.4.0",
-		"grunt-contrib-cssmin" 	: "~0.10.0",
-		"grunt-contrib-less" 	: "~0.11.3"
-	}
+    "name": "BookSelling",
+    "alias": "book.selling",
+    "version": "0.0.1",
+    "description": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/foxnet-es/book.selling.git"
+    },
+    "main": "book.selling.server.js",
+    "destination": "dst",
+    "scripts": {
+        "test": "echo \"Error no test specified\" && exit 1"
+    },
+    "sources": {
+        "client": [
+            "src/js/client/socket.io.js",
+            "src/js/client/jquery.js",
+            "src/js/client/bootstrap.js",
+            "src/js/client/bootstrap-validator.js",
+            "src/js/client/nav.js",
+            "src/js/client/owl-carousel.js",
+            "src/js/client/book.selling.core.js"
+        ],
+        "server": [
+            "src/js/server/book.selling.core.js",
+            "src/js/server/book.selling.config.js",
+            "src/js/server/book.selling.mysql.js",
+            "src/js/server/book.selling.socket.js",
+            "src/js/server/book.selling.http.js",
+            "src/js/server/book.selling.module.js",
+            "src/js/server/book.selling.view.js",
+            "src/js/server/book.selling.service.js",
+            "src/js/server/book.selling.login.js"
+        ]
+    },
+    "views": {
+        "site": {
+            "modules": [
+                "header",
+                "footer",
+                "home"
+            ]
+        },
+        "admin": {
+            "modules": [
+                "header",
+                "footer",
+                "home"
+            ]
+        }
+    },
+    "less": "src/less/book.selling.less",
+    "author": "Jorge Alonso López",
+    "license": "ISC",
+    "devDependencies": {
+        "connect": "~3.1.1",
+        "connect-mongo": "~0.4.1",
+        "connect-session": "~0.0.1",
+        "mime": "~1.2.11",
+        "underscore": "~1.7.0",
+        "swig": "~1.4.2",
+        "mysql": "~2.4.2",
+        "mongodb": "~1.4.8",
+        "socket.io": "~1.0.6",
+        "cheerio": "~0.17.0",
+        "deasync": "~0.0.7",
+        "walk": "~2.3.3",
+        "grunt": "~0.4.5",
+        "grunt-contrib-uglify": "~0.5.0",
+        "grunt-contrib-watch": "~0.6.1",
+        "grunt-contrib-clean": "~0.5.0",
+        "grunt-contrib-concat": "~0.4.0",
+        "grunt-contrib-cssmin": "~0.10.0",
+        "grunt-contrib-less": "~0.11.3"
+    },
+    "services": {
+        "admin": {
+            "modules": {
+                "books": {
+                    "events": []
+                },
+                "footer": {
+                    "events": []
+                },
+                "header": {
+                    "events": [
+                        "sign-up",
+                        "sign-in",
+                        "sign-out"
+                    ]
+                },
+                "home": {
+                    "events": []
+                },
+                "my-account": {
+                    "events": []
+                },
+                "my-account-books": {
+                    "events": []
+                },
+                "my-account-purchases": {
+                    "events": []
+                },
+                "my-account-update-profile": {
+                    "events": []
+                },
+                "my-account-uploaded-books": {
+                    "events": []
+                },
+                "resources": {
+                    "events": []
+                },
+                "sign-in": {
+                    "events": [
+                        "sign-up",
+                        "sign-in",
+                        "sign-out"
+                    ]
+                },
+                "sign-up": {
+                    "events": [
+                        "sign-up",
+                        "sign-in",
+                        "sign-out"
+                    ]
+                }
+            },
+            "views": [
+                "book",
+                "books",
+                "contact",
+                "home",
+                "my-account-books-purchased",
+                "my-account-books-sold",
+                "my-account-books",
+                "my-account-profile-update",
+                "my-account-profile"
+            ]
+        },
+        "site": {
+            "modules": {
+                "books": {
+                    "events": [
+                        "sign-up"
+                    ]
+                },
+                "footer": {
+                    "events": []
+                },
+                "header": {
+                    "events": [
+                        "sign-up",
+                        "sign-in",
+                        "sign-out"
+                    ]
+                },
+                "home": {
+                    "events": []
+                },
+                "my-account": {
+                    "events": []
+                },
+                "my-account-books": {
+                    "events": []
+                },
+                "my-account-purchases": {
+                    "events": []
+                },
+                "my-account-update-profile": {
+                    "events": []
+                },
+                "my-account-uploaded-books": {
+                    "events": []
+                },
+                "resources": {
+                    "events": []
+                },
+                "sign-in": {
+                    "events": [
+                        "sign-up",
+                        "sign-in",
+                        "sign-out"
+                    ]
+                },
+                "sign-up": {
+                    "events": [
+                        "sign-up",
+                        "sign-in",
+                        "sign-out"
+                    ]
+                }
+            },
+            "views": [
+                "book",
+                "books",
+                "contact",
+                "home",
+                "my-account-books-purchased",
+                "my-account-books-sold",
+                "my-account-books",
+                "my-account-profile-update",
+                "my-account-profile"
+            ]
+        }
+    }
 }

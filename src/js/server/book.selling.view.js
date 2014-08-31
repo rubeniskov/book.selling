@@ -1,20 +1,29 @@
 (function( $ ){
     
-    /*var swig        = require('swig'),
+    var swig        = require('swig'),
 
         cheerio     = require("cheerio"),
 
-        path        = require("path"),
+        fs          = require("fs"),
 
-        sections    = path.join( $.config.dir.modules, 'site' ),
+        path        = require("path");
 
-        main        = path.join( sections, 'index.html' );
-
-    $.view          = function( name )
+    $.view          = function( service, view, app )
     {
-        $main       = cheerio.load( swig.renderFile( main ) );
+        var incls   = {},
 
-        $main('module[name]').each( function( i, element )
+            views   = $.config.services[ service ][ 'views'][ view ],
+
+            html    = path.join( $.config.dir.root, 'services', service, 'views', view + '.html' );
+
+            if( fs.existsSync( html ) )
+            {
+                return { html : $.module.render( service, swig.renderFile( html, { } ), incls ), includes : incls };
+            }
+
+        return { html : '<alert>View Not Found</alert>' };
+
+        /*$main('module[name]').each( function( i, element )
         {
             var ele     = $main( element ),
 
@@ -23,9 +32,9 @@
             ele.replaceWith( html );
         });
 
-        return $main.html();     
+        return $main.html(); */    
     }
-
+    /*
     $.view.getHTML      = function( name )
     {
         return path.join( sections, name, 'index.html' );

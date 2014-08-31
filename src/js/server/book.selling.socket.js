@@ -19,6 +19,25 @@
 
         io( server ).on('connection', function( socket )
         {
+            /*socket.on( 'ready', function( args )
+            {
+                console.log(arguments);
+            });*/ 
+
+            var fn = function( args )
+            {
+                console.log( arg );
+                //console.log( arguments );
+                /*console.log( 'Getting event ' + args.module + ' - ' + args.cmd );   
+
+                var module = $.module.getScript( args.module );
+               
+                if( module.events  && ( sevent = module.events[ args.cmd ] ))
+                    sevent.call( this, args.params );*/
+            }
+
+            socket.on()
+            return;
             socket.on( 'event', function( args )
             {
                 console.log(arguments);

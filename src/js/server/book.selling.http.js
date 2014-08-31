@@ -22,51 +22,35 @@
         {
             var uri         = url.parse( request.url ).pathname,
 
-                filename    = path.join( process.cwd(),  uri ),
+                filename    = path.join( process.cwd(),  uri );
 
-                segments    = uri.split( '/' ).slice( 1 );
-
-                section     = segments[ 0 ] || 'home',
-
-                contentType = "text/html",
-
-                statusCode  = 500,
-
-                data        = "Error";
-
-            if( fs.existsSync( filename ) && !fs.statSync( filename ).isDirectory() )
+            if( ( /\..*$/ ).test( uri ) )
             {
-                return fs.readFile(filename, "binary", function(err, file) 
+                if( fs.existsSync( filename ) && !fs.statSync( filename ).isDirectory() )
                 {
-                    if( err ) 
-                    {        
-                        return data = err;
-                    }
+                    return fs.readFile( filename, "binary", function( err, file ) 
+                    {
+                        if( err ) 
+                        {        
+                            return data = err;
+                        }
 
-                    response
-                    .set
-                    ({
-                        'Content-Type': mime.lookup( filename ),
-                        //'Content-Length': '123',
-                        //'ETag': '12345'
-                    })
-                    .status( 200 )
-                    .send( file );
-                });
+                        response
+                        .set
+                        ({
+                            'Content-Type': mime.lookup( filename ),
+                            //'Content-Length': '123',
+                            //'ETag': '12345'
+                        })
+                        .status( 200 )
+                        .send( file );
+                    });
+                }
             }
-            else if( true || modules.test( section ) )
+            else
             {
-                data        = $.module( section );
-                statusCode  = 200;
+                $.service( 'site', { request : request, response : response } );
             }
-
-            response
-            .set
-            ({
-                'Content-Type': contentType
-            })
-            .status( statusCode )
-            .send( data );
         });
 
     $.server =

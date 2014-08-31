@@ -1,8 +1,10 @@
 (function( $ ){
 
-    var path    = require("path"), 
+    var path    = require("path"),
 
-        root    = process.cwd();
+        root    = process.cwd(),
+
+        pkg     = require( path.join( root,  "package.json" ) );
 
     $.config =
     {
@@ -21,10 +23,13 @@
 
             user            : 'root',
 
-            password        : 'root',
+            password        : '',
             
             database        : 'db_bookselling'
-        }
+        },
+
+        services     : pkg.services
+
     }
 
 
