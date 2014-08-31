@@ -335,7 +335,7 @@ CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_books` (
     `book_image`            BLOB            NULL DEFAULT NULL,
     `book_description`      TEXT            NULL DEFAULT NULL,
     `book_pages`            INT(3)          NULL DEFAULT NULL,
-    `book_price`            INT(3)          NOT NULL,
+    `book_price`            DECIMAL(5,2) NOT NULL,
     UNIQUE KEY (`book_isbn`))
 ENGINE = InnoDB;
 
@@ -521,18 +521,18 @@ VALUES
     "Ken Follett",
     "Español",
     FROM_BASE64( @image ),
-    "En el año 1933, Berlín es un foco de agitación política y social. Lady Maud, ahora la esposa de Walter von Ulrich y madre de dos hijos, publica artículos en una revista semanal que ridiculizan al partido nazi mientras su marido manifiesta su oposición en el gobierno. Sin embargo, parece que nada podrá frenar el poder ascendente del canciller Adolf Hitler. Cuando Maud recibe la visita de Ethel Williams y su hijo Lloyd, todos serán testigos de la tiranía y la represión de la nueva Alemania. El reino del Tercer Reich se extenderá hasta Francia y más allá de la frontera rusa. Mientras, en Inglaterra, Lloyd Williams, activista político como su madre, luchará en el ejército británico para intentar frenar dicho avance, antes de alistarse en las brigadas internacionales de la guerra civil española, donde participará en la ofensiva de Zaragoza y la batalla de Belchite. Ty Gwyn, la mansión familiar de los Fitzherbert en País de Gales, se convertirá en acantonamiento para oficiales, y durante su estancia, Lloyd se sentirá atraído por la mujer de Boy Fitzherbert, la rica heredera americana Daisy Peshkov. En esta magnífica novela épica, Ken Follett transportará al lector a través de una Europa en ruinas, quebrada de nuevo por las guerras y los conflictos ideológicos. Los hijos de las cinco familias, protagonistas de La caída de los gigantes, forjarán su destino en los años turbulentos de la Segunda Guerra Mundial, la guerra civil española, el bombardeo de Pearl Harbor y la era de las bombas atómicas americanas y soviéticas.",
+    "El invierno del mundo es una novela histórica, que constituye el segundo libro de la Trilogía del Siglo The Century, de Ken Follett, que comenzó con La caída de los gigantes.",
     960,
     10.40
 ),
 (
     "978-8490322222",
     "Dime quien soy",
-    "PLAZA & JANES EDITORES",
+    "Plaza & Janes Editores",
     "Julia Navarro",
     "Español",
     FROM_BASE64( @image ),
-    "Una periodista recibe una propuesta para investigar la azarosa vida de su bisabuela, una mujer de la que sólo se sabe que huyó de España abandonando a su marido y a su hijo poco antes de que estallara la Guerra Civil. Para rescatarla del olvido deberá reconstruir su historia desde los cimientos, siguiendo los pasos de su bi ografía y encajando, una a una, todas las piezas del inmenso y extraordinario puzzle de su existencia. Marcada por los hombres que pasaron por su vida -el empresario Santiago Carranza, el revolucionario Pierre Comte, el periodista estadounidense Albert James y el médico militar vinculado al nazismo Max von Schumann-, la vida de Amelia Garayoa es la de una mujer que aprendió que en la vidsa no se puede volver sobre el pasado para deshacerlo. Desde la España republicana hasta la caída del Muro de Berlín, pasando por la Segunda Guerra mundial y los oscuros años de la Guerra fría, esta burguesa y revolucionaria, esposa y amante, espía y asesina, actuará siempre de acuerdo a sus principios, enfrentándose a todo y cometiendo errores que no terminará nunca de pagar. Memoria de un siglo convulso, caracterizado por la barbarie de los totalitarismos, esta obra es una vuelta de tuerca en la trayectoria de una de nuestras novelistas más internacionales. Dime quién soy sorprende por su dramatismo e instrospección, por su intriga y por sus emociones a flor de piel. Una aventura desgarradora y cautivadora que tiene unos personajes excepcionalmente perfilados y literariamente inolvidables. La esperada nueva novela de Julia Navarro es el magnífico retrato de quienes vivieron intensa y apasionadamente un siglo turbulento. Ideología y compromiso en estado puro, amores y desamores desgarrados, aventura e historia de un siglo hecho pedazos, esta novela no sólo hechizará a los lectores de Julia Navarro sino que fascinará a todos aquellos interesados en nuestra propia historia.",
+    "Una periodista recibe una propuesta para investigar la azarosa vida de su bisabuela, una mujer de la que sólo se sabe que huyó de España abandonando a su marido y a su hijo poco antes de que estallara la Guerra Civil. Para rescatarla del olvido deberá reconstruir su historia desde los cimientos, siguiendo los pasos de su biografía y encajando, una a una, todas las piezas del inmenso y extraordinario puzzle de su existencia. Marcada por los hombres que pasaron por su vida -el empresario Santiago Carranza, el revolucionario Pierre Comte, el periodista estadounidense Albert James y el médico militar vinculado al nazismo Max von Schumann-, la vida de Amelia Garayoa es la de una mujer que aprendió que en la vida no se puede volver sobre el pasado para deshacerlo. Desde la España republicana hasta la caída del Muro de Berlín, pasando por la Segunda Guerra mundial y los oscuros años de la Guerra fría, esta burguesa y revolucionaria, esposa y amante, espía y asesina, actuará siempre de acuerdo a sus principios, enfrentándose a todo y cometiendo errores que no terminará nunca de pagar.",
     1104,
     9.46
 ),
@@ -583,8 +583,8 @@ VALUES
 (
     "978-8466315470",
     "¿Cómo criar al perro perfecto?",
-    "PUNTO DE LECTURA",
-    "JIM & JO PELTIER, MELISSA MILIO",
+    "Punto de lectura",
+    "Jim & Jo Peltier & Melissa Milio",
     "Español",
     FROM_BASE64( @image ),
     "¿Quieres traer un perrito a casa pero tienes miedo de que un animalito tan adorable pueda convertirse en tu peor pesadilla? ¿Tu cachorro no para de morder los muebles? ¿Es incapaz de caminar con correa? ¿No sabes qué hacer para enseñarlo a controlar los esfínteres? ¿No te hace caso cuando lo llamas? ¿Estás desesperado porque no sabes qué hacer para que deje de llorar o aullar? Los cachorros poseen en su ADN la capacidad de aprender reglas y límites de las sociedades en las que viven. Si sabes comunicar con claridad las normas de convivencia en casa desde el primer día, tu mejor amigo se convertirá en el perro de tus sueños",
@@ -595,7 +595,7 @@ VALUES
     "978-8416051403",
     "Naruto 67",
     "Planeta DeAgostini Cómics",
-    " Masashi Kishimoto",
+    "Masashi Kishimoto",
     "Español",
     FROM_BASE64( @image ),
     "Obito se ha transformado por completo en el jinchûriki de Jûbi, la bestia de diez colas. ¡Al alojar al bijû en su seno demuestra un poder apabullante cuando echa abajo la barrera protectora! La situación es desfavorable, pero Naruto y Sasuke pugnan por encontrar un hueco por el que lanzar un contraataque, sirviéndose de los poderes de resurrección de ultratumba de los Hokage. ¿¡Qué ocurrirá!?",
@@ -605,7 +605,7 @@ VALUES
 (
     "978-8490601334",
     "Intensidad MAX",
-    "LA ESFERA DE LOS LIBROS, S.L.",
+    "La esfera de los libros S.L.",
     "Elsa Pataki y Fernando Sartorius",
     "Español",
     FROM_BASE64( @image ),
@@ -638,7 +638,7 @@ VALUES
 (
     "978-8497775311",
     "El arte de la guerra",
-    "EDICIONES OBELISCO S.L.",
+    "Ediciones obelisco S.L.",
     "Sun Tzu",
     "Español",
     FROM_BASE64( @image ),
@@ -660,7 +660,7 @@ VALUES
 (
     "978-8493769482",
     "Los viajes de Jupiter",
-    "INTERFOLIO",
+    "Interfolio",
     "Ted Simon",
     "Español",
     FROM_BASE64( @image ),
@@ -693,7 +693,7 @@ VALUES
 (
     "978-8498721515",
     "La sombra",
-    "ZETA BOLSILLO",
+    "Zeta bolsillo",
     "John Katzenbach",
     "Español",
     FROM_BASE64( @image ),
@@ -704,7 +704,7 @@ VALUES
 (
     "978-8494120510",
     "Las ranas tambien se enamorans",
-    "EDICIONES VERSATIL, S.L.",
+    "Ediciones versátil S.L.",
     "Megan Maxwell",
     "Español",
     FROM_BASE64( @image ),
