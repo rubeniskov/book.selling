@@ -156,6 +156,15 @@
                 "modals": {
                     "events": []
                 },
+                "my-account": {
+                    "events": []
+                },
+                "my-account-personal-menu": {
+                    "events": []
+                },
+                "my-account-profile": {
+                    "events": []
+                },
                 "sign-in": {
                     "events": []
                 },
@@ -175,10 +184,10 @@
                 "contact",
                 "home",
                 "my-account-books-purchased",
-                "my-account-books-sold",
                 "my-account-books",
                 "my-account-profile-update",
-                "my-account-profile"
+                "my-account-profile",
+                "my-account-uploaded-books"
             ]
         }
     }
