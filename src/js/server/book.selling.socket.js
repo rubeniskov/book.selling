@@ -27,7 +27,7 @@
             {
                 module.events && module.events.length && und.each( module.events, function( event_name )
                 {
-                    socket.once( 'module-' + name_module + '.' + event_name , function( data )
+                    socket.on( 'module-' + name_module + '.' + event_name , function( data )
                     {
                         var module = $.module( service, name_module ),
 
