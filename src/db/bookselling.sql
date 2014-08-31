@@ -125,6 +125,19 @@ FROM
 WHERE
     `bp`.`book_uploaded_id` IS NULL;
 
+-- -----------------------------------------------------
+-- View `db_bookselling`.`v_books_purchased` --Libros comprados
+-- -----------------------------------------------------
+CREATE OR REPLACE VIEW `db_bookselling`.`v_books_purchased` AS
+SELECT
+    *
+FROM
+    `db_bookselling`.`tb_books_purchased`
+        LEFT join
+    `db_bookselling`.`tb_books_uploaded` USING (`book_uploaded_id`)
+        LEFT JOIN
+   `db_bookselling`.`tb_books` USING (`book_id`);
+
 
 INSERT INTO `db_bookselling`.`tb_books`
 (

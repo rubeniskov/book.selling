@@ -4,15 +4,19 @@ module.exports = function( $ )
 		__render : function()
 		{
 			
-			var query 	= $.mysql.query( "SELECT * FROM tb_books limit 8,8" );
-			
+			var query 	= $.mysql.query( "SELECT * FROM tb_books limit 0,8" );
+			var query2 	= $.mysql.query( "SELECT * FROM tb_books " );
+			var query3 	= $.mysql.query( "SELECT * FROM tb_books " );
 
 			if( query.error )
 			{
 				return false;
 			}
 
-			return { books : query.result };
+			return ({ 
+				books : query2.result,
+				carousel : query.result
+			});
 		},
 		__ready   : function( $ )
 		{

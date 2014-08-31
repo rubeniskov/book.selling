@@ -4,14 +4,19 @@ module.exports = function( $ )
 
 		__render : function()
 		{
-			var query 	= $.mysql.query( "SELECT * FROM tb_books" );
+			var query 	= $.mysql.query( "SELECT * FROM db_bookselling.tb_purchases" );
+			//var query2 	= $.mysql.query( "SELECT * FROM db_bookselling.tb_books_purchased;" );
 
 			if( query.error )
 			{
 				return false;
 			}
 
-			return { books : query.result };
+			return ({ 
+
+					purchases:query.result
+
+					});
 		}
 	})
 };
