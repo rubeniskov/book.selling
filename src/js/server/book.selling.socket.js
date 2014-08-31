@@ -1,6 +1,10 @@
 (function( $ ){
     
-    var io          = require('socket.io');
+    var io          = require('socket.io'),
+
+        und         = require('underscore'),
+
+        service     = $.config.service;
 
         //onevent     = io.Socket.prototype.onevent;
 
@@ -15,19 +19,15 @@
 
     $.socket        = function( server )
     {
-        return false;
         var sevent;
 
         io( server ).on('connection', function( socket )
         {
-            und.each( $.config.services[ 'site' ].modules, function( module, name_module )
+            und.each( $.config.services[ service ].modules, function( module, name_module )
             {
-<<<<<<< HEAD
                 module.events && module.events.length && und.each( module.events, function( event_name )
                 {
-                    console.log( event_name, name_module + '.' + event_name );
-                    
-                    socket.on( name_module + '.' + event_name , function()
+                    socket.once( 'module-' + name_module + '.' + event_name , function( data )
                     {
                         var module = $.module( service, name_module ),
 
@@ -35,25 +35,12 @@
 
                             events = script.events;
 
-                            events[ event_name ] && events[ event_name ].call(); 
-
-                            console.log( arguments );
+                            events[ event_name ] && events[ event_name ].call( this, data );
                     });
                 });
             });
-            
-            /*socket.on( 'module.ready', function( name )
-            {
-                var module = $.module( service, name.replace( 'module-', '' ) );
-                
-                console.log( module );
-            });*/
 
             return;
-=======
-                console.log(arguments);
-            });*/ 
->>>>>>> FETCH_HEAD
 
             var fn = function( args )
             {
@@ -67,8 +54,8 @@
                     sevent.call( this, args.params );*/
             }
 
-            socket.on()
-            return;
+            
+            
             socket.on( 'event', function( args )
             {
                 console.log(arguments);

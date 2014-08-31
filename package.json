@@ -140,6 +140,9 @@
         },
         "site": {
             "modules": {
+                "books": {
+                    "events": []
+                },
                 "books-carousel": {
                     "events": []
                 },
@@ -156,30 +159,27 @@
                     "events": []
                 },
                 "header": {
-                    "events": [
-                        "sign-up",
-                        "sign-in",
-                        "sign-out"
-                    ]
+                    "events": []
                 },
                 "header-nav": {
                     "events": []
                 },
-<<<<<<< HEAD
-=======
                 "home": {
+                    "events": []
+                },
+                "home-carousel": {
+                    "events": []
+                },
+                "home-slider": {
                     "events": []
                 },
                 "modals": {
                     "events": []
                 },
->>>>>>> FETCH_HEAD
                 "sign-in": {
                     "events": []
                 },
                 "sign-up": {
-<<<<<<< HEAD
-=======
                     "events": [
                         "sign-up",
                         "sign-in",
@@ -187,7 +187,6 @@
                     ]
                 },
                 "template": {
->>>>>>> FETCH_HEAD
                     "events": []
                 }
             },

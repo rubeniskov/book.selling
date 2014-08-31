@@ -14,7 +14,7 @@
 
         mime    = require("mime"),
 
-        modules = new RegExp( [ "home", "books" ].join('|') ),
+        service = $.config.service,
 
         port    = process.argv[2] || 8888;
 
@@ -49,7 +49,7 @@
             }
             else
             {
-                $.service( 'site', { request : request, response : response } );
+                $.service( service, { request : request, response : response } );
             }
         });
 

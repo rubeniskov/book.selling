@@ -188,19 +188,16 @@ module.exports = function( $ )
                     }
                 }
             })
-                .submit(function(e) {
-                    e.preventDefault();
+            .submit(function(e) {
+                e.preventDefault();
 
-                    $.socket.emit('exec', {
-                        module: 'books',
-                        cmd: 'sign-up',
-                        data: $(this).serializeObject()
-                    });
-                });
+                $.socket.emit( 'sign-up', $(this).serializeObject() );
+            });
         },
         events: ({
-            'sign-up': function() {
-
+            'sign-up': function( user_data ) 
+            {
+                $.login.signUp( user_data );
             },
             'sign-in': function() {
 
