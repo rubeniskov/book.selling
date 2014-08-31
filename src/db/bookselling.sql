@@ -4,7 +4,9 @@ DROP SCHEMA IF EXISTS `db_bookselling` ;
 CREATE SCHEMA IF NOT EXISTS `db_bookselling` DEFAULT CHARACTER SET UTF8 ;
 USE `db_bookselling` ;
 
-SET @image := '/Users/rubenlopezgomez/Workspace/book.selling/img/books/harry-potter-la-piedra-filosofal.jpeg';
+SET @image := 'C:/Users/Jorge/Desktop/workspace/book.selling/img/booksharry-potter-la-piedra-filosofal.jpeg';
+
+-- SET @image := '/Users/rubenlopezgomez/Workspace/book.selling/img/books/harry-potter-la-piedra-filosofal.jpeg';
 
 -- -----------------------------------------------------
 -- Table `db_bookselling`.`tb_users`
@@ -82,6 +84,8 @@ DROP TABLE IF EXISTS `db_bookselling`.`tb_purchases` ;
 CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_purchases` (
   `purchase_id`             INT(8)          NOT NULL PRIMARY KEY AUTO_INCREMENT, 
   `purchase_date`           TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `purchase_status`         ENUM( "En proceso","Entregado","En envio" ),
+  `purchase_price`          DECIMAL(5,2) NOT NULL,
   `user_id`                 INT(8) NOT NULL,
 
   CONSTRAINT `fk__tb_user__user_id`
@@ -432,11 +436,16 @@ VALUES
 
 INSERT INTO `db_bookselling`.`tb_purchases`
 (
-    `user_id`
+    `user_id`,
+    `purchase_status`,
+    `purchase_price`     
+   
 )
 VALUES
 (
-    1
+    1,
+    "En proceso",
+    24.60
 );
 
 INSERT INTO `db_bookselling`.`tb_books_purchased`

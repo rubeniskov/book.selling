@@ -1,10 +1,10 @@
 (function( $ ){
 
-    var connect = require('connect'),
+    var connect = require('express'),
 
         app     = connect(),
         
-        mongos  = require('connect-mongo')(connect),
+      // mongos  = require('connect-mongo')(connect),
 
         url     = require("url"),
 
