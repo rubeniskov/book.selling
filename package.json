@@ -140,7 +140,7 @@
         },
         "site": {
             "modules": {
-                "books": {
+                "books-carousel": {
                     "events": []
                 },
                 "books-last-purchases": {
@@ -162,13 +162,32 @@
                         "sign-out"
                     ]
                 },
+                "header-nav": {
+                    "events": []
+                },
+<<<<<<< HEAD
+=======
                 "home": {
                     "events": []
                 },
+                "modals": {
+                    "events": []
+                },
+>>>>>>> FETCH_HEAD
                 "sign-in": {
                     "events": []
                 },
                 "sign-up": {
+<<<<<<< HEAD
+=======
+                    "events": [
+                        "sign-up",
+                        "sign-in",
+                        "sign-out"
+                    ]
+                },
+                "template": {
+>>>>>>> FETCH_HEAD
                     "events": []
                 }
             },

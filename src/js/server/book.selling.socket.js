@@ -1,10 +1,6 @@
 (function( $ ){
     
-    var io          = require('socket.io'),
-
-        und         = require('underscore'),
-
-        service     = 'site';
+    var io          = require('socket.io');
 
         //onevent     = io.Socket.prototype.onevent;
 
@@ -19,12 +15,14 @@
 
     $.socket        = function( server )
     {
+        return false;
         var sevent;
 
         io( server ).on('connection', function( socket )
         {
             und.each( $.config.services[ 'site' ].modules, function( module, name_module )
             {
+<<<<<<< HEAD
                 module.events && module.events.length && und.each( module.events, function( event_name )
                 {
                     console.log( event_name, name_module + '.' + event_name );
@@ -52,6 +50,10 @@
             });*/
 
             return;
+=======
+                console.log(arguments);
+            });*/ 
+>>>>>>> FETCH_HEAD
 
             var fn = function( args )
             {
@@ -65,8 +67,8 @@
                     sevent.call( this, args.params );*/
             }
 
-            
-            
+            socket.on()
+            return;
             socket.on( 'event', function( args )
             {
                 console.log(arguments);

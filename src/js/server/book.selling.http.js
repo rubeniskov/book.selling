@@ -49,18 +49,8 @@
             }
             else
             {
-                return $.service( 'site', { request : request, response : response } );
+                $.service( 'site', { request : request, response : response } );
             }
-
-            response
-            .set
-            ({
-                'Content-Type': mime.lookup( filename ),
-                //'Content-Length': '123',
-                //'ETag': '12345'
-            })
-            .status( 500 )
-            .send( 'ERROR' );
         });
 
     $.server =

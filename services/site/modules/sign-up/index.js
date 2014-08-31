@@ -1,10 +1,7 @@
-module.exports = function($) {
-    return ({
-
-        __render: function(callback) {
-
-        },
-        __ready: function($) {
+module.exports = function( $ )
+{
+	return ({
+		__ready: function($) {
             $.socket.on('msg', function(data) {
                 $('.alert').text(data.msg).addClass('alert-danger').show();
             });
@@ -213,5 +210,6 @@ module.exports = function($) {
             }
 
         })
-    })
+	})
+	
 };
