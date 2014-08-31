@@ -23,22 +23,33 @@
 
         io( server ).on('connection', function( socket )
         {
-            /*socket.on( 'ready', function( args )
+            und.each( $.config.services[ 'site' ].modules, function( module, name_module )
             {
-                console.log(arguments);
-            });*/
+                module.events && module.events.length && und.each( module.events, function( event_name )
+                {
+                    console.log( event_name, name_module + '.' + event_name );
+                    
+                    socket.on( name_module + '.' + event_name , function()
+                    {
+                        var module = $.module( service, name_module ),
 
-            und( $.config.services[ 'site' ].modules, function( name )
-            {
-                console.log( name );
+                            script = module.script,
+
+                            events = script.events;
+
+                            events[ event_name ] && events[ event_name ].call(); 
+
+                            console.log( arguments );
+                    });
+                });
             });
             
-            socket.on( 'module.ready', function( name )
+            /*socket.on( 'module.ready', function( name )
             {
                 var module = $.module( service, name.replace( 'module-', '' ) );
                 
                 console.log( module );
-            });
+            });*/
 
             return;
 

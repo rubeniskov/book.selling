@@ -165,37 +165,11 @@
                 "home": {
                     "events": []
                 },
-                "my-account": {
-                    "events": []
-                },
-                "my-account-books": {
-                    "events": []
-                },
-                "my-account-purchases": {
-                    "events": []
-                },
-                "my-account-update-profile": {
-                    "events": []
-                },
-                "my-account-uploaded-books": {
-                    "events": []
-                },
-                "resources": {
-                    "events": []
-                },
                 "sign-in": {
-                    "events": [
-                        "sign-up",
-                        "sign-in",
-                        "sign-out"
-                    ]
+                    "events": []
                 },
                 "sign-up": {
-                    "events": [
-                        "sign-up",
-                        "sign-in",
-                        "sign-out"
-                    ]
+                    "events": []
                 }
             },
             "views": [
