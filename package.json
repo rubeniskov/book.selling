@@ -140,10 +140,14 @@
         },
         "site": {
             "modules": {
-                "books": {
-                    "events": [
-                        "sign-up"
-                    ]
+                "books-last-purchases": {
+                    "events": []
+                },
+                "books-list": {
+                    "events": []
+                },
+                "books-nav": {
+                    "events": []
                 },
                 "footer": {
                     "events": []
@@ -192,7 +196,6 @@
                 }
             },
             "views": [
-                "book",
                 "books",
                 "contact",
                 "home",

@@ -15,6 +15,7 @@
 
     $.socket        = function( server )
     {
+        return false;
         var sevent;
 
         io( server ).on('connection', function( socket )
