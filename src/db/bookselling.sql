@@ -4,9 +4,299 @@ DROP SCHEMA IF EXISTS `db_bookselling` ;
 CREATE SCHEMA IF NOT EXISTS `db_bookselling` DEFAULT CHARACTER SET UTF8 ;
 USE `db_bookselling` ;
 
-SET @image := 'C:/Users/Jorge/Desktop/workspace/book.selling/img/booksharry-potter-la-piedra-filosofal.jpeg';
+-- SET @image := 'C:/Users/Jorge/Desktop/workspace/book.selling/img/booksharry-potter-la-piedra-filosofal.jpeg';
 
--- SET @image := '/Users/rubenlopezgomez/Workspace/book.selling/img/books/harry-potter-la-piedra-filosofal.jpeg';
+SET @image := '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
+QqIowFA6ADsKQh//2Q==';
 
 -- -----------------------------------------------------
 -- Table `db_bookselling`.`tb_users`
@@ -162,7 +452,7 @@ VALUES
     "Debolsillo",
     "Ken Follett",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "En el año 1933, Berlín es un foco de agitación política y social. Lady Maud, ahora la esposa de Walter von Ulrich y madre de dos hijos, publica artículos en una revista semanal que ridiculizan al partido nazi mientras su marido manifiesta su oposición en el gobierno. Sin embargo, parece que nada podrá frenar el poder ascendente del canciller Adolf Hitler. Cuando Maud recibe la visita de Ethel Williams y su hijo Lloyd, todos serán testigos de la tiranía y la represión de la nueva Alemania. El reino del Tercer Reich se extenderá hasta Francia y más allá de la frontera rusa. Mientras, en Inglaterra, Lloyd Williams, activista político como su madre, luchará en el ejército británico para intentar frenar dicho avance, antes de alistarse en las brigadas internacionales de la guerra civil española, donde participará en la ofensiva de Zaragoza y la batalla de Belchite. Ty Gwyn, la mansión familiar de los Fitzherbert en País de Gales, se convertirá en acantonamiento para oficiales, y durante su estancia, Lloyd se sentirá atraído por la mujer de Boy Fitzherbert, la rica heredera americana Daisy Peshkov. En esta magnífica novela épica, Ken Follett transportará al lector a través de una Europa en ruinas, quebrada de nuevo por las guerras y los conflictos ideológicos. Los hijos de las cinco familias, protagonistas de La caída de los gigantes, forjarán su destino en los años turbulentos de la Segunda Guerra Mundial, la guerra civil española, el bombardeo de Pearl Harbor y la era de las bombas atómicas americanas y soviéticas.",
     960,
     10.40
@@ -173,7 +463,7 @@ VALUES
     "PLAZA & JANES EDITORES",
     "Julia Navarro",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "Una periodista recibe una propuesta para investigar la azarosa vida de su bisabuela, una mujer de la que sólo se sabe que huyó de España abandonando a su marido y a su hijo poco antes de que estallara la Guerra Civil. Para rescatarla del olvido deberá reconstruir su historia desde los cimientos, siguiendo los pasos de su bi ografía y encajando, una a una, todas las piezas del inmenso y extraordinario puzzle de su existencia. Marcada por los hombres que pasaron por su vida -el empresario Santiago Carranza, el revolucionario Pierre Comte, el periodista estadounidense Albert James y el médico militar vinculado al nazismo Max von Schumann-, la vida de Amelia Garayoa es la de una mujer que aprendió que en la vidsa no se puede volver sobre el pasado para deshacerlo. Desde la España republicana hasta la caída del Muro de Berlín, pasando por la Segunda Guerra mundial y los oscuros años de la Guerra fría, esta burguesa y revolucionaria, esposa y amante, espía y asesina, actuará siempre de acuerdo a sus principios, enfrentándose a todo y cometiendo errores que no terminará nunca de pagar. Memoria de un siglo convulso, caracterizado por la barbarie de los totalitarismos, esta obra es una vuelta de tuerca en la trayectoria de una de nuestras novelistas más internacionales. Dime quién soy sorprende por su dramatismo e instrospección, por su intriga y por sus emociones a flor de piel. Una aventura desgarradora y cautivadora que tiene unos personajes excepcionalmente perfilados y literariamente inolvidables. La esperada nueva novela de Julia Navarro es el magnífico retrato de quienes vivieron intensa y apasionadamente un siglo turbulento. Ideología y compromiso en estado puro, amores y desamores desgarrados, aventura e historia de un siglo hecho pedazos, esta novela no sólo hechizará a los lectores de Julia Navarro sino que fascinará a todos aquellos interesados en nuestra propia historia.",
     1104,
     9.46
@@ -184,7 +474,7 @@ VALUES
     "Debolsillo",
     "Walter Isaacson",
     "Inglés",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "La muerte de Steve Jobs conmocionó al mundo. Tras entrevistar a Jobs en más de cuarenta ocasiones en sus últimos años, además de a un centenar de personas de su entorno, familiares, amigos, adversarios y colegas, Walter Isaacson nos presenta la única biografía escrita con la colaboración de Jobs, el retrato definitivo de uno de los iconos indiscutibles de nuestro tiempo, la crónica de la agitada vida y de la abrasiva personalidad del genio cuya creatividad y energía revolucionaron seis industrias: la informática, el cine de animación, la música, la telefonía, las tabletas y la edición digital. Aquí, Jobs habla con una sinceridad a veces brutal sobre la gente con la que trabajó y contra la que compitió. De igual modo, sus amigos, rivales y colegas ofrecen una visión sin edulcorar de las pasiones, los demonios, el perfeccionismo, los deseos, el talento, los trucos y la obsesión por controlarlo todo que modelaron su visión empresarial y los innovadores productos que logró crear. Su historia, por tanto, está llena de enseñanzas sobre innovación, carácter, liderazgo y valores. La vida de un genio capaz de enfurecer y seducir a partes iguales",
     744,
     12.36
@@ -195,7 +485,7 @@ VALUES
     "Ediciones Península",
     "Juan Reinaldo Sánchez",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "Juan Reinaldo Sánchez estuvo 17 años, entre 1977 y 1994, vigilando cada paso de Fidel Castro, como miembro del equipo de seguridad del mandatario, que acabó dirigiendo. Durante todo ese tiempo, en el que fue un empleado abnegado y fiel, que idolatraba a su jefe, anotó en su libreta muchos de los detalles de la vida privada de Fidel.  A mediados de los noventa, y harto del clima enrarecido que empezaba a reinar entre los integrantes de la escolta de Fidel, Juan Reinaldo Sánchez decidió retirarse del servicio activo. Castro se mostró contrario a su decisión y a partir de aquel momento el antiguo guardaespaldas empezó a sufrir las consecuencias de haber tenido como jefe al dictador cubano. Le envió a la cárcel, de donde consiguió escapar y viajar a Estados Unidos en 2008. Desde Miami, y por primera vez, habla ahora de la vida secreta de quien desde los años sesenta dirige los destinos de todo el pueblo cubano.  ",
     300,
     19.78
@@ -206,7 +496,7 @@ VALUES
     "RC Libros",
     "Oscar Torrente Artero",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "Cualquier técnico electrónico o aficionado a la electrónica necesita en alguna ocasión trabajar con microcontroladores. Esta tarea, durante años compleja, actualmente es mucho más simple gracias a Arduino. Arduino permite que cualquier persona (incluso profana en la electrónica y la programación) pueda realizar circuitos electrónicos que sean capaces de interaccionar con el mundo físico real. Gracias a su sencillez, campos como la robótica o la domótica (por nombrar solo dos) se han visto radicalmente impulsados con la llegada de Arduino, aunque es utilizado en muchos otros campos multidisciplinares, tales como el control y monitoraje de sensores, la activación remota de circuitos electromecánicos (vía Internet incluso), el montaje de instalaciones audiovisuales, etc. Arduino es tanto una placa de circuito impreso que incluye un microcontrolador, como un entorno de desarrollo diseñado para facilitar su programación mediante un lenguaje tremendamente intuitivo. Arduino es hardware y software libre; es decir, que puede descargarse gratuitamente de su web y utilizarse para el desarrollo de cualquier tipo de proyecto sin adquirir ninguna licencia porque su código fuente es público para todo el mundo. Esta obra incluye gran cantidad de ejemplos que facilitan al lector toda la información necesaria para realizar sus propios proyectos, sin requerir ninguna consulta externa. Solo con la ayuda de una placa Arduino UNO y un conjunto básico de componentes electrónicos (resistencias, condensadores, LEDs, etc.), ya podrá hacer realidad todos los circuitos descritos. El desarrollo del libro está pensado para servir de apoyo a la docencia, tanto de formación profesional como en los últimos cursos de la educación secundaria, para aficionados que deseen aprender de forma autodidacta, o como obra de consulta permanente para técnicos en electrónica.",
     588,
     21.60
@@ -217,7 +507,7 @@ VALUES
     "Lippincott Raven",
     "Robert W. Schrier",
     "Inglés",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "Manual que profundiza a traves de numerosas imágenes 3D en el increible mundo de los organos de los seres humanos.",
     456,
     44.50
@@ -228,7 +518,7 @@ VALUES
     "PUNTO DE LECTURA",
     "JIM & JO PELTIER, MELISSA MILIO",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "¿Quieres traer un perrito a casa pero tienes miedo de que un animalito tan adorable pueda convertirse en tu peor pesadilla? ¿Tu cachorro no para de morder los muebles? ¿Es incapaz de caminar con correa? ¿No sabes qué hacer para enseñarlo a controlar los esfínteres? ¿No te hace caso cuando lo llamas? ¿Estás desesperado porque no sabes qué hacer para que deje de llorar o aullar? Los cachorros poseen en su ADN la capacidad de aprender reglas y límites de las sociedades en las que viven. Si sabes comunicar con claridad las normas de convivencia en casa desde el primer día, tu mejor amigo se convertirá en el perro de tus sueños",
     336,
     16.75
@@ -239,7 +529,7 @@ VALUES
     "Planeta DeAgostini Cómics",
     " Masashi Kishimoto",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "Obito se ha transformado por completo en el jinchûriki de Jûbi, la bestia de diez colas. ¡Al alojar al bijû en su seno demuestra un poder apabullante cuando echa abajo la barrera protectora! La situación es desfavorable, pero Naruto y Sasuke pugnan por encontrar un hueco por el que lanzar un contraataque, sirviéndose de los poderes de resurrección de ultratumba de los Hokage. ¿¡Qué ocurrirá!?",
     192,
     6.80
@@ -250,7 +540,7 @@ VALUES
     "LA ESFERA DE LOS LIBROS, S.L.",
     "Elsa Pataki y Fernando Sartorius",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "Guia de entrenamiento personal",
     172,
     17.70
@@ -261,7 +551,7 @@ VALUES
     "La ley",
     "Vicente Gimeno Sendra",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "Recopilatorio de las normas procesales más importantes del ordenamiento jurídico español. Incluye un completo índice de voces. Contenido del Código: - Constitución Española - Legislación orgánica (Ley Orgánica del Poder Judicial) - Ley Orgánica del Tribunal Constitucional - Legislación procesal civil (Ley de Enjuiciamiento Civil, condiciones generales de la contratación, propiedad horizontal, arrendamientos urbanos, patentes, marcas, competencia desleal, propiedad intelectual, venta a plazos y arbitraje) - Legislación procesal penal (Ley de Enjuiciamiento Criminal, jurado y menores) - Legislación procesal contencioso-administrativa (Ley de la Jurisdicción Contencioso-Administrativa) - Legislación procesal laboral Contenido en INTERNET: Además de las normas incorporadas al Código, en INTERNET se incluyen: - Legislación orgánica (Ley Orgánica del Poder Judicial, Ley de Conflictos Jurisdiccionales, Ley Orgánica del Tribunal Constitucional y demarcación y planta) - Legislación procesal civil (Ley de Enjuiciamiento Civil de 1881, Código Civil, Ley y Reglamento Hipotecario, embargo preventivo de buques, asistencia jurídica gratuita, protección al honor, derecho de rectificación, arrendamientos rústicos, sociedades anónimas y limitadas, cooperativas, hipoteca naval y mobiliaria y cambiaria y del cheque) - Legislación procesal penal (habeas corpus y extradición) - Legislación procesal contencioso-administrativa (Ley de Régimen Jurídico de las Administraciones Públicas y del Procedimiento Administrativo Común y asistencia jurídica al Estado) - Legislación procesal laboral (Ley de Procedimiento Laboral) - Formularios (Derecho Procesal Civil)",
     1632,
     24.50
@@ -272,7 +562,7 @@ VALUES
     "Debolsillo",
     "Patrick Rothfuss",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "En una posada en tierra de nadie, un hombre se dispone a relatar, por primera vez, la auténtica historia de su vida. Una historia que únicamente él conoce y que ha quedado diluida tras los rumores, las conjeturas y los cuentos de taberna que le han convertido en un personaje legendario a quien todos daban ya por muerto: Kvothe... músico, mendigo, ladrón, estudiante, mago, héroe y asesino. Ahora va a revelar la verdad sobre sí mismo. Y para ello debe empezar por el principio: su infancia en una troupe de artistas itinerantes, los años malviviendo como un ladronzuelo en las calles de una gran ciudad y su llegada a una universidad donde esperaba encontrar todas las respuestas que había estado buscando.",
     880,
     12.45
@@ -283,7 +573,7 @@ VALUES
     "EDICIONES OBELISCO S.L.",
     "Sun Tzu",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "Es el tratado sobre estrategia más famoso del mundo, que se ha convertido en un libro de culto en el ámbito de la empresa. Varias películas ambientadas en Wall Street han contribuido a popularizar este pequeño libro, que nos propone unos principios válidos tanto en el mundo de la estrategia militar como en el de los negocios o la política. A pesar de su antigüedad, se trata de un libro extremadamente moderno, que ayudará a reflexionar sobre cualquier tipo de problema y a plantear las estrategias necesarias para solucionarlo sin conflictos. LA EXCELENCIA SUPREMA CONSISTE EN QUEBRAR LA RESISTENCIA DEL ENEMIGO SIN LUCHAR (III-2) El arte de la guerra es el mejor libro de estrategia de todos los tiempos. Ideal para aplicar en todos los aspectos de la vida para conseguir la victoria sin entrar en conflicto.",
     112,
     19.90
@@ -294,7 +584,7 @@ VALUES
     "Timun Mas Narrativa",
     "Barney Stinson y Matt Kuhn",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "Todos tenemos un código de conducta. Algunos lo llaman moral, otros religión. Pero los Colegas que realmente saben llaman a este santo grial El Código de los Colegas. Durante años, la sabiduría pasó de generación en generación a través de la tradición oral. Aquí tenemos por primera vez en la Historia el código oficial de conducta para Colegas. Mediante este sagrado y legendario documento, cualquier tío puede llegar a ser un Colega de verdad.",
     208,
     8.60
@@ -305,7 +595,7 @@ VALUES
     "INTERFOLIO",
     "Ted Simon",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "LOS VIAJES DE JÚPITER es considerado, con toda justicia, un libro de culto para todos los públicos en literatura de viajes.",
     800,
     22.15
@@ -316,7 +606,7 @@ VALUES
     "Ediciones Destino",
     "Lorenzo Silva",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "Mientras pasa el fin de semana en familia, el brigada Bevilacqua recibe el aviso de que el cadáver de la alcaldesa de una localidad levantina, cuya desaparición había sido previamente denunciada por el marido, ha sido hallado por unos turistas en la playa. Para cuando Bevilacqua y su equipo llegan y se hacen cargo de la investigación, el juez ya ha levantado el cadáver, las primeras disposiciones están tomadas y se está preparando el funeral. El lugar es un avispero en el que se desatan todo tipo de rumores sobre la víctima, una joven promesa que venía a romper con los modos y corruptelas de los viejos mandarines del partido y que apostaba por renovar el modo de hacer política. Además, el descubrimiento de su agitada vida sexual, que puede calificarse de todo menos insípida, arroja sobre el caso una luz perturbadora. Pero no hay mucho tiempo para indagar y en esta ocasión Bevilacqua y Chamorro deben apresurar una hipótesis en un fuego de intereses cruzados, en el que la causa de la joven política es también la causa de la integridad personal, de la que el país entero parece haberse apeado.",
     352,
     11.70
@@ -327,7 +617,7 @@ VALUES
     "Debate",
     "Francisco de la Torre",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "Pocas cosas tienen peor fama que los impuestos. Sin embargo, los impuestos son el precio de la civilización: en la jungla no existen, y cuando el fraude aumenta, la civilización retrocede. Por eso es tan grave que a la pregunta de si Hacienda somos todos la respuesta suela ser un \"no\" rotundo. Porque, además, todos pagamos impuestos de algún tipo, y nos beneficiamos del gasto público en alguna medida. Pero en los últimos años, ante una crisis fiscal sin precedentes, los ciudadanos están viendo impotentes cómo se suben los impuestos y se recortan las prestaciones sociales. Este libro intenta dar respuesta a muchas preguntas que surgen en esta crisis: ¿Ha habido austeridad o despilfarro en los últimos años? ¿Se ha derrumbado la recaudación sólo por el fraude? ¿Ha servido para algo la subida indiscriminada de impuestos de los últimos tiempos?¿El fraude es una cuestión de grandes empresas o se extiende también a las pequeñas? ¿Qué son los paraísos fiscales?¿Qué trato fiscal han tenido, por ejemplo, el mundo del fútbol o la Banca?¿Son las SICAV un instrumento fiscal privilegiado?¿La solución a estos problemas es una amnistía fiscal?... Esta obra no sólo explica estos temas con claridad sino que aporta cifras contrastadas y vías de solución ante una crisis global de la economía española en la que la fiscalidad está en permanente primer plano. Un libro imprescindible para conocer la realidad de los impuestos y el fraude en España",
     288,
     10.25
@@ -338,7 +628,7 @@ VALUES
     "ZETA BOLSILLO",
     "John Katzenbach",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "En el Berlín de 1943 pocos vieron su cara, y nadie supo su nombre. Entre susurros era conocido como \"Der Schattenmann\", La Sombra, un despiadado delator judío que colaboraba con la Gestapo. Miami, finales del siglo XX. La vida del detective retirado Simon Winter da un giro repentino cuando recibe la visita de una aterrorizada vecina, una anciana cree haber visto a un fantasma del pasado. Cuando a la mañana siguiente aparece estrangulada, Winter es el único que sospecha la terrible verdad: un escurridizo asesino está exterminando a los supervivientes del Holocausto que viven en Miami.",
     456,
     6.60
@@ -349,7 +639,7 @@ VALUES
     "EDICIONES VERSATIL, S.L.",
     "Megan Maxwell",
     "Español",
-    LOAD_FILE( @image ),
+    FROM_BASE64( @image ),
     "Relatos romanticos de parejas de hoy en dia.",
     384,
     13.80
