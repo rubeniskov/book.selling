@@ -3,14 +3,20 @@ module.exports = function( $ )
 	return ({
 		__render : function()
 		{
-			var query 	= $.mysql.query( "SELECT * FROM tb_books limit 8,8 " );
+			var query 	= $.mysql.query( "SELECT * FROM v_books limit 0,8" );
+			var query2 	= $.mysql.query( "SELECT * FROM v_books_available" );
+			var query3	= $.mysql.query( "SELECT * FROM v_books_purchased_last" );
+		;
 
 			if( query.error )
 			{
 				return false;
 			}
 
-			return { books : query.result };
+			return ({ 	carousel : query.result,
+						books  : query2.result,
+						purchase_last: query3.result
+					});
 		},
 		__ready   : function( $ )
 		{

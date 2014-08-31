@@ -34,52 +34,21 @@
                   <th>Titulo</th>
                   <th>Autor</th>
                   <th>Editorial</th>
+                  <th>Precio</th>
           
                 </tr>
               </thead>
               <tbody>
+              {% for key, book in books %}
                 <tr>
-                  <td>1</td>
-                  <td><a href="./book-details">HTC One</a></td>
-                  <td>$530</td>
-                  <td>1</td>
+                  <td>{{book.book_isbn}}</td>
+                  <td><a href="/book-details/{{book.book_isbn}}">{{book.book_title}}</a></td>
+                  <td>{{book.book_author}}</td>
+                  <td>{{book.book_editorial}}</td>
+                  <td>{{book.book_price}}</td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td><a href="./book-details">Sony Xperia</a></td>
-                  <td>$330</td>
-                  <td>2</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td><a href="./book-details">Nokia Asha</a></td>
-                  <td>$230</td>
-                  <td>6</td>
-                </tr>  
-                <tr>
-                  <td>4</td>
-                  <td><a href="./book-details">Xperia Tipo</a></td>
-                  <td>$330</td>
-                  <td>2</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td><a href="./book-details">Apple iPhone</a></td>
-                  <td>$730</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td><a href="./book-details">Windows Mobile</a></td>
-                  <td>$130</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td><a href="./book-details">Galaxy SIII</a></td>
-                  <td>$430</td>
-                  <td>2</td>
-                </tr>                                                                                                             
+                {% endfor %}
+                                                                                                                         
               </tbody>
             </table>
 

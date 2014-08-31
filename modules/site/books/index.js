@@ -4,9 +4,9 @@ module.exports = function( $ )
 		__render : function()
 		{
 			
-			var query 	= $.mysql.query( "SELECT * FROM tb_books limit 0,8" );
-			var query2 	= $.mysql.query( "SELECT * FROM tb_books " );
-			var query3 	= $.mysql.query( "SELECT * FROM tb_books " );
+			var query 	= $.mysql.query( "SELECT * FROM v_books limit 0,8" );
+			var query2 	= $.mysql.query( "SELECT * FROM v_books_available" );
+			
 
 			if( query.error )
 			{

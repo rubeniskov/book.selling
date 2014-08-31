@@ -418,7 +418,18 @@ CREATE OR REPLACE VIEW `db_bookselling`.`v_books_available` AS
 SELECT
     `bu`.`book_uploaded_id`, 
     `b`.`book_id`,
-    `b`.`book_isbn`
+    `b`.`book_isbn`,
+    `b`.`book_title`,
+    `b`.`book_editorial`,
+    `b`.`book_author`,
+   	`b`.`book_language`,
+    `b`.`book_image`,
+    `b`.`book_image_base64`,
+    `b`.`book_description`,
+    `b`.`book_pages`,
+    `b`.`book_price`
+    
+    
 FROM
     `db_bookselling`.`tb_books_uploaded` as `bu`
         LEFT JOIN
@@ -441,8 +452,30 @@ FROM
         LEFT JOIN
    `db_bookselling`.`v_books` USING (`book_id`);
 
+-- -----------------------------------------------------
+-- View `db_bookselling`.`v_books_uploaded` --Libros subidos
+-- -----------------------------------------------------
+
+CREATE OR REPLACE VIEW `db_bookselling`.`v_books_uploaded` AS
+SELECT 
+    *
+FROM
+    `db_bookselling`.`tb_books_uploaded`
+        LEFT JOIN
+    `db_bookselling`.`v_books` USING (`book_id`);
 
 
+-- -----------------------------------------------------
+-- View `db_bookselling`.`v_books_purchased_last` --Ultimos libros comprados
+-- -----------------------------------------------------
+
+CREATE OR REPLACE VIEW `db_bookselling`.`v_books_purchased_last` AS
+SELECT 
+    *
+FROM
+    v_books_purchased
+ORDER BY purchase_id DESC
+LIMIT 4;
 
 INSERT INTO `db_bookselling`.`tb_books`
 (
@@ -716,7 +749,7 @@ VALUES
 (
     20.15,
     2,
-    1
+    9
 ),
 (
     50.15,
