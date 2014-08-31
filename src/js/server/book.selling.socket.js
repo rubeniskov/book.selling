@@ -1,6 +1,10 @@
 (function( $ ){
     
-    var io          = require('socket.io');
+    var io          = require('socket.io'),
+
+        und         = require('underscore'),
+
+        service     = 'site';
 
         //onevent     = io.Socket.prototype.onevent;
 
@@ -15,7 +19,6 @@
 
     $.socket        = function( server )
     {
-        return false;
         var sevent;
 
         io( server ).on('connection', function( socket )
@@ -23,7 +26,21 @@
             /*socket.on( 'ready', function( args )
             {
                 console.log(arguments);
-            });*/ 
+            });*/
+
+            und( $.config.services[ 'site' ].modules, function( name )
+            {
+                console.log( name );
+            });
+            
+            socket.on( 'module.ready', function( name )
+            {
+                var module = $.module( service, name.replace( 'module-', '' ) );
+                
+                console.log( module );
+            });
+
+            return;
 
             var fn = function( args )
             {
@@ -37,8 +54,8 @@
                     sevent.call( this, args.params );*/
             }
 
-            socket.on()
-            return;
+            
+            
             socket.on( 'event', function( args )
             {
                 console.log(arguments);

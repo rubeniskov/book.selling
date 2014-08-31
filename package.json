@@ -140,6 +140,9 @@
         },
         "site": {
             "modules": {
+                "books": {
+                    "events": []
+                },
                 "books-last-purchases": {
                     "events": []
                 },
