@@ -3,8 +3,8 @@ module.exports = function( $ )
 	return ({
 		__render : function()
 		{
-			var query 	= $.mysql.query( "SELECT * FROM v_books_available limit 0,8" );
-			var query2 	= $.mysql.query( "SELECT * FROM v_books_available" );
+			var query 	= $.mysql.query( "SELECT * FROM v_books_available_latest limit 0,8" );
+			var query2 	= $.mysql.query( "SELECT * FROM v_books_available_latest" );
 			var query3	= $.mysql.query( "SELECT * FROM v_books_purchased_last" );
 		;
 

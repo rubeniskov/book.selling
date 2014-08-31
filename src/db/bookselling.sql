@@ -477,6 +477,30 @@ FROM
 ORDER BY purchase_id DESC
 LIMIT 4;
 
+-- -----------------------------------------------------
+-- View `db_bookselling`.`v_books_available_latest` --Novedades
+-- -----------------------------------------------------
+CREATE OR REPLACE VIEW `db_bookselling`.`v_books_available_latest` AS
+SELECT 
+    *
+FROM
+    v_books_available
+ORDER BY book_id DESC
+LIMIT 12
+;
+
+-- -----------------------------------------------------
+-- View `db_bookselling`.`v_books_purchased_top` --Novedades
+-- -----------------------------------------------------
+CREATE OR REPLACE VIEW `db_bookselling`.`v_books_purchased_top` AS
+SELECT 
+    *
+FROM
+    v_books_purchased
+ORDER BY purchase_id ASC
+LIMIT 10;
+
+
 INSERT INTO `db_bookselling`.`tb_books`
 (
     `book_isbn`,
