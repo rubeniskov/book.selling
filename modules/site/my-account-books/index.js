@@ -4,9 +4,8 @@ module.exports = function( $ )
 
 		__render : function()
 		{
-			var query 	= $.mysql.query( "SELECT * FROM tb_books" );
+			var query 	= $.mysql.query( "SELECT * FROM db_bookselling.tb_books_uploaded;" );
 
-			SELECT * FROM db_bookselling.tb_books_uploaded;
 
 			if( query.error )
 			{
