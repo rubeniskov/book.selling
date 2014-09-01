@@ -120,6 +120,9 @@
         },
         "site": {
             "modules": {
+                "book-details": {
+                    "events": []
+                },
                 "books-carousel": {
                     "events": []
                 },
@@ -133,6 +136,9 @@
                     "events": []
                 },
                 "contact": {
+                    "events": []
+                },
+                "contact-map": {
                     "events": []
                 },
                 "footer": {
@@ -192,6 +198,7 @@
                 }
             },
             "views": [
+                "book-details",
                 "books",
                 "contact",
                 "home",

@@ -1,0 +1,122 @@
+<!-- Product details -->
+<div class="product-main">
+    <div class="row">
+        <!-- IMAGENES -->
+        <div class="col-md-6 col-sm-6">
+
+            <!-- Image. Flex slider -->
+            <div class="product-slider">
+                <div class="product-image-slider flexslider">
+                    <ul class="slides">
+                        <!-- Each slide should be enclosed inside li tag. -->
+                        <!-- Slide #1 -->
+                        <li>
+                            <!-- Image -->
+                            <img src="img/photos/1-1.png" alt="" />
+                        </li>
+
+                        <!-- Slide #2 -->
+                        <li>
+                            <img src="img/photos/1-2.png" alt="" />
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- ITEM   -->
+        <div class="col-md-6 col-sm-6">
+            <!-- Title -->
+            <h4 class="title">{{ book.book_title }}</h4>
+            <h5>Precio : {{ book.book_price }}</h5>
+
+            <!-- Quantity and add to cart button -->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-sm" value="1">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-sm" type="button">A&ntilde;adir al carrito</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<br/>
+
+<!-- Description, specs and review -->
+<ul class="nav nav-tabs">
+    <!-- Use uniqe name for "href" in below anchor tags -->
+    <li class="active"><a href="#tab1" data-toggle="tab">Descripci&oacute;n</a>
+    </li>
+    <li><a href="#tab2" data-toggle="tab">Detalles</a>
+    </li>
+
+</ul>
+
+<!-- Tab Content -->
+<div class="tab-content">
+    <!-- Description -->
+    <div class="tab-pane active" id="tab1">
+        <h5>{{ book.book_title }}</h5>
+        <p>{{ book.book_description}}</p>
+
+    </div>
+
+    <!-- Sepcs -->
+    <div class="tab-pane" id="tab2">
+
+        <h5 class="title">Descripci&oacute;n del libro</h5>
+        <table class="table table-striped tcart">
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>ISBN</strong>
+                    </td>
+                    <td>{{ book.book_isbn }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Titulo</strong>
+                    </td>
+                    <td>{{ book.book_title }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Editorial</strong>
+                    </td>
+                    <td>{{ book.book_editorial }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Autor</strong>
+                    </td>
+                    <td>{{ book.book_author }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Idioma</strong>
+                    </td>
+                    <td>{{ book.book_language }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Paginas</strong>
+                    </td>
+                    <td>{{ book.book_pages }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+</div>
