@@ -41,7 +41,7 @@
 
     bs.service.getViews     = function( service, view )
     {
-        return view ? : bs.config.services[ service ][ 'views'];
+        return view ? bs.service.getViews( service )[ view ] : bs.config.services[ service ][ 'views'];
     }
     
 })( BookSelling );

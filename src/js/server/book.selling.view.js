@@ -13,9 +13,11 @@
         if( !service || !view)
             throw bs.debug.error( '[bs.view] -> View Error.' );
 
-        var includes    = {},
+        var error,
 
-            views       = $.service.getViews( service, view ),
+            includes    = {},
+
+            views       = bs.service.getViews( service, view ),
 
             html        = path.join( bs.config.dir.root, 'services', service, 'views', view + '.html' ),
 
