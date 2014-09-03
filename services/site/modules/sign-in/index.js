@@ -6,9 +6,15 @@ module.exports = function( bs )
 
             $('#form-sign-in').submit(function(e) 
             {
+                var credential = $(this).serializeObject();
                 e.preventDefault();
 
-                $.socket.emit( 'sign-in', $(this).serializeObject() );
+                $.socket.emit( 'sign-in', 
+                {
+                    user_email      : credential.user_email,
+
+                    user_password   :$.md5( user_password ) 
+                });
             });
         },
         events: ({
