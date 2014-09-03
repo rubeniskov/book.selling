@@ -29,7 +29,6 @@
             
             database        : 'db_bookselling'
         },
-
         service     : 'site',
 
         services    : pkg.services

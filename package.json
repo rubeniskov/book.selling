@@ -80,9 +80,6 @@
     "services": {
         "admin": {
             "modules": {
-                "books": {
-                    "events": []
-                },
                 "content-books": {
                     "events": []
                 },
@@ -102,12 +99,6 @@
                     "events": []
                 },
                 "header-top-bar": {
-                    "events": []
-                },
-                "sign-in": {
-                    "events": []
-                },
-                "sign-up": {
                     "events": []
                 },
                 "table-books": {
@@ -133,9 +124,6 @@
         "site": {
             "modules": {
                 "book-details": {
-                    "events": []
-                },
-                "books": {
                     "events": []
                 },
                 "books-carousel": {
@@ -174,6 +162,15 @@
                 "home-slider": {
                     "events": []
                 },
+                "modal-cart": {
+                    "events": []
+                },
+                "modal-sign-in": {
+                    "events": []
+                },
+                "modal-sign-up": {
+                    "events": []
+                },
                 "modals": {
                     "events": []
                 },
@@ -198,20 +195,7 @@
                 "my-account-uploaded-books": {
                     "events": []
                 },
-                "register": {
-                    "events": [
-                        "sign-up",
-                        "sign-in",
-                        "sign-out"
-                    ]
-                },
                 "sign-in": {
-                    "events": []
-                },
-                "sign-in-page-info": {
-                    "events": []
-                },
-                "sign-in-page-login": {
                     "events": []
                 },
                 "sign-up": {
@@ -235,8 +219,8 @@
                 "my-account-profile-update",
                 "my-account-profile",
                 "my-account-uploaded-books",
-                "register",
-                "sign-in-page"
+                "sign-in",
+                "sign-up"
             ]
         }
     }

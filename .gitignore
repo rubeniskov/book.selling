@@ -2,7 +2,6 @@ node_modules/*
 dst
 /resources
 npm-debug.log
-src/js/server/book.selling.config.js
 services.zip
 package.json
 ./package.json
