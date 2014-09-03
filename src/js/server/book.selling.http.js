@@ -26,20 +26,22 @@
 
         app.use( cparser() );
 
-        app.use( session({ secret: 'something', store: mstore }) );
+        app.use( session = session({ secret: 'secret' }) );
 
-        /*app.use(function (req, res, next) 
+        app.use(function (req, res, next) 
         {
             var n = req.session.views || 0;
 
             req.session.views = ++n;
 
+            next();
+
             //console.log( req.session );
 
             //res.end( n + ' views')
-        })*/
+        })
 
-        app.use( function( request, response )
+        app.use( function( request, response, next )
         {
             var uri         = url.parse( request.url ).pathname,
 
@@ -70,8 +72,13 @@
             }
             else
             {
-                bs.service( service, { request : request, response : response } );
+                if( bs.config.user.signed )
+                    request.session.user = bs.login.signIn( { user_email : bs.config.user.user_email, user_password : bs.config.user.user_password } ); // SESSION FORZADA USER
+
+                bs.service( service, { user : request.session.user, session : request.session, request : request, response : response, next : next } );
             }
+
+            console.log( 'FROM RENDER ', request.session.views );
         });
 
     bs.server =
@@ -80,7 +87,7 @@
         {
             service     = serv || bs.config.service;
 
-            bs.socket( app.listen( parseInt( port || dport, 10 ) ) );
+            bs.socket( app.listen( parseInt( port || dport, 10 ) ), session );
         },
         stop    : function()
         {

@@ -32,10 +32,20 @@
 						</a> -
                         <span class="bold">25€</span>
                     </span>
+                    
+                    {% if user %}
+                    <span class="lr">
+                        Bienvenido {{ user.user_name }}
+                    </span>
+                    {% else %}
+
                     <!-- Login and Register link -->
                     <span class="lr"><a href="#login" role="button" data-toggle="modal">Acceso</a>
                         o <a href="#register" role="button" data-toggle="modal">Registrarse</a>
                     </span>
+
+                    {% endif %}
+
                 </div>
 
             </div>

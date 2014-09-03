@@ -1,10 +1,10 @@
 module.exports = function($) {
     return ({
 
-        __render: function() {
+        __render: function( app ) {
             var i, purchases,
 
-            query = $.mysql.query("SELECT *, DATE_FORMAT( purchase_date, '%d-%m-%Y') AS purchase_date_formatted FROM db_bookselling.tb_purchases");
+            query = $.mysql.query("SELECT *, DATE_FORMAT( purchase_date, '%d-%m-%Y') AS purchase_date_formatted FROM db_bookselling.tb_purchases WHERE user_id=:user_id", { user_id : app.user.user_id });
             //var query2 	= $.mysql.query( "SELECT * FROM db_bookselling.tb_books_purchased;" );
 
             if (query.error) {

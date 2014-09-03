@@ -1,8 +1,8 @@
-module.exports = function( $ )
+module.exports = function( bs )
 {
 	return ({
 
-		__render 	: function( callback )
+		__render 	: function( app )
 		{
 			
 		}

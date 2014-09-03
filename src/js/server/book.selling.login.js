@@ -15,7 +15,7 @@
         {
             var query = bs.mysql.query( "SELECT * FROM tb_users WHERE user_email=:user_email AND user_password=:user_password", credentials );
 
-            console.log( query );
+            return query.result[ 0 ];
         },
         signOut  : function()
         {

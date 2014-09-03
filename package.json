@@ -16,11 +16,11 @@
         "client": [
             "src/js/client/socket.io.js",
             "src/js/client/jquery.js",
+            "src/js/client/jquery-md5.js",
             "src/js/client/bootstrap.js",
             "src/js/client/bootstrap-validator.js",
             "src/js/client/nav.js",
             "src/js/client/owl-carousel.js",
-            "src/js/client/jquery-md5.js",
             "src/js/client/book.selling.core.js"
         ],
         "server": [
@@ -81,6 +81,9 @@
     "services": {
         "admin": {
             "modules": {
+                "books": {
+                    "events": []
+                },
                 "content-books": {
                     "events": []
                 },
@@ -100,6 +103,12 @@
                     "events": []
                 },
                 "header-top-bar": {
+                    "events": []
+                },
+                "sign-in": {
+                    "events": []
+                },
+                "sign-up": {
                     "events": []
                 },
                 "table-books": {
@@ -125,6 +134,9 @@
         "site": {
             "modules": {
                 "book-details": {
+                    "events": []
+                },
+                "books": {
                     "events": []
                 },
                 "books-carousel": {

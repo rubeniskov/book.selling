@@ -9,6 +9,8 @@
 			return $( selector, 'div.' + name );
 		}
 
+		core.md5 			= $.md5;
+
 		core.socket 		= function()
 		{
 

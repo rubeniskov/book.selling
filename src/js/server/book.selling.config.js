@@ -31,7 +31,16 @@
         },
         service     : 'site',
 
-        services    : pkg.services
+        services    : pkg.services,
+
+        user        :
+        {
+            signed          : true,
+
+            user_email      : 'jal198j@gmail.com',
+
+            user_password   : '81dc9bdb52d04dc20036dbd8313ed055'
+        }
     }
 
 

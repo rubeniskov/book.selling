@@ -6,29 +6,46 @@
 
         service     = bs.config.service;
 
-    bs.socket        = function( server )
+    bs.socket        = function( server, session )
     {
         var sevent;
 
         io( server ).on('connection', function( socket )
         {
-            und.each( bs.config.services[ service ].modules, function( module, name_module )
+            session( socket.request, socket.request.res, function()
             {
-                module.events && module.events.length && und.each( module.events, function( event_name )
+                socket.request.session.socket = socket;
+                
+                und.each( bs.config.services[ service ].modules, function( module, name_module )
                 {
-                    socket.on( 'module-' + name_module + '.' + event_name , function( data )
+                    module.events && module.events.length && und.each( module.events, function( event_name )
                     {
-                        var module = bs.module( service, name_module ),
+                        socket.on( 'module-' + name_module + '.' + event_name , function( data )
+                        {
+                            var module = bs.module( service, name_module, 
+                                { 
+                                    session     : socket.request.session, 
 
-                            script = module.script,
+                                    request     : socket.request, 
 
-                            events = script.events;
+                                    response    : socket.request.res, 
 
-                            events[ event_name ] && events[ event_name ].call( this, data );
+                                    next        : function()
+                                    {
+                                        console.log( 'Socket hasn\'t got next statement' );
+                                    }
+                                }),
+
+                                script = module.script,
+
+                                events = script.events;
+
+                                events[ event_name ] && events[ event_name ].call( this, data );
+                        });
                     });
                 });
-            });
+            })
         });
-    }
+    } 
 
 })( BookSelling );

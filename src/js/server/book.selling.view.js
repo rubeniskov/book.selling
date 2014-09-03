@@ -8,7 +8,7 @@
 
         path        = require("path");
 
-    bs.view         = function( service, view, cb )
+    bs.view         = function( service, view, app, cb )
     {
         if( !service || !view)
             throw bs.debug.error( '[bs.view] -> View Error.' );
@@ -27,7 +27,7 @@
             {
                 if( fs.existsSync( html ) )
                 {
-                    html    = bs.module.render( service, swig.renderFile( html, { } ), includes );
+                    html    = bs.module.render( service, swig.renderFile( html, { } ), includes, app );
                 }
                 else
                 {
