@@ -192,7 +192,13 @@
                 "my-account-profile-update": {
                     "events": []
                 },
+                "my-account-shopping-cart": {
+                    "events": []
+                },
                 "my-account-uploaded-books": {
+                    "events": []
+                },
+                "shopping-cart": {
                     "events": []
                 },
                 "sign-in": {
@@ -218,6 +224,7 @@
                 "my-account-books",
                 "my-account-profile-update",
                 "my-account-profile",
+                "my-account-shopping-cart",
                 "my-account-uploaded-books",
                 "sign-in",
                 "sign-up"
