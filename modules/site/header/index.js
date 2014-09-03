@@ -1,7 +1,7 @@
 module.exports = function($) {
     return ({
 
-        __render: function(callback) {
+        __render: function() {
 
         },
         __ready: function($) {

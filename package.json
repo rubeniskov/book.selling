@@ -183,7 +183,20 @@
                 "my-account-uploaded-books": {
                     "events": []
                 },
+                "register": {
+                    "events": [
+                        "sign-up",
+                        "sign-in",
+                        "sign-out"
+                    ]
+                },
                 "sign-in": {
+                    "events": []
+                },
+                "sign-in-page-info": {
+                    "events": []
+                },
+                "sign-in-page-login": {
                     "events": []
                 },
                 "sign-up": {
@@ -206,7 +219,9 @@
                 "my-account-books",
                 "my-account-profile-update",
                 "my-account-profile",
-                "my-account-uploaded-books"
+                "my-account-uploaded-books",
+                "register",
+                "sign-in-page"
             ]
         }
     }
