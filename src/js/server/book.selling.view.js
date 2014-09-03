@@ -1,4 +1,4 @@
-(function( $ ){
+(function( bs ){
     
     var swig        = require('swig'),
 
@@ -8,66 +8,36 @@
 
         path        = require("path");
 
-    $.view          = function( service, view, app )
+    bs.view         = function( service, view, cb )
     {
-        var incls   = {},
+        if( !service || !view)
+            throw bs.debug.error( '[bs.view] -> View Error.' );
 
-            views   = $.config.services[ service ][ 'views'][ view ],
+        var includes    = {},
 
-            html    = path.join( $.config.dir.root, 'services', service, 'views', view + '.html' );
+            views       = $.service.getViews( service, view ),
 
-            if( fs.existsSync( html ) )
+            html        = path.join( bs.config.dir.root, 'services', service, 'views', view + '.html' ),
+
+            exp         = new RegExp( Object.keys( views || {} ).join( '|' ) );
+
+            if( exp.test( view ) )
             {
-                return { html : $.module.render( service, swig.renderFile( html, { } ), incls ), includes : incls };
+                if( fs.existsSync( html ) )
+                {
+                    html    = bs.module.render( service, swig.renderFile( html, { } ), includes );
+                }
+                else
+                {
+                    error   = bs.debug.error( '[bs.view] -> View ' + service + '.' + view + ' hasn\'t got index.html, please check if file exists.' );
+                }
+            }
+            else
+            {
+                error   = bs.debug.error( '[bs.view] -> View ' + service + '.' + view + ' doesn\'t found.' );
             }
 
-        return { html : '<alert>View Not Found</alert>' };
-
-        /*$main('module[name]').each( function( i, element )
-        {
-            var ele     = $main( element ),
-
-                html    = $.module.load( ele.attr( 'name' ) == 'main' ? name : ele.attr( 'name' ), $main );
-
-            ele.replaceWith( html );
-        });
-
-        return $main.html(); */    
+        return cb && cb.call ? cb.call( bs, error, html, includes ) : ({ error : error, html : html, includes : includes });
     }
-    /*
-    $.view.getHTML      = function( name )
-    {
-        return path.join( sections, name, 'index.html' );
-    }
-
-    $.module.getScript  = function( name )
-    {
-        return require( path.join( sections, name, 'index.js' ) )( $ );
-    }
-
-    $.module.load       = function( name, context )
-    {
-        var html        = $.module.getHTML( name ),
-
-            script      = $.module.getScript( name ),
-
-            $html       = cheerio.load( html );
-
-            if( context && script.__ready )
-                context( 'head' ).append( '<script ref="' + name + '" type="text/javascript">$( document.body ).ready(' + script.__ready +  ')</script>' );
-
-            $html('module[name]').each( function( i, element )
-            {
-                var ele = $html( element );
-
-                console.log( ele );
-
-                ele.replaceWith( $.module.load( ele.attr( 'name' ), context ) );
-            });
-
-            console.log( 'Load Module ' + name );
-
-        return swig.renderFile( $html.html(), script.__render ? script.__render() : {} );
-    }*/
-
+    
 })( BookSelling );

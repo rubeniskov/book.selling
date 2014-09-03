@@ -1,6 +1,6 @@
 (function( global ){
 
-    var $ 					= 
+    var bs 					= 
 
     	module.exports 		= 
 
@@ -9,7 +9,7 @@
 
     };
     
-    $.extend 				= function( target, source ) 
+    bs.extend 				= function( target, source ) 
     {
   		target = target || {};
 
@@ -17,7 +17,7 @@
 		{
 			if (typeof source[prop] === 'object') 
 			{
-				target[prop] = $.extend(target[prop], source[prop]);
+				target[prop] = bs.extend(target[prop], source[prop]);
 			} else 
 			{
 				target[prop] = source[prop];
@@ -25,6 +25,16 @@
 		}
 
 		return target;
-}
+	}
+
+	bs.debug 				= function()
+	{
+
+	}
+
+	bs.debug.error 			= function( message )
+	{
+		return new Error( message );
+	}
 
 })( global );

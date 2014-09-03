@@ -1,10 +1,10 @@
-(function( $ ){
+(function( bs ){
 
     var mysql       = require("mysql"),
 
         deasync     = require('deasync'),
 
-        connection  = mysql.createConnection( $.config.mysql );
+        connection  = mysql.createConnection( bs.config.mysql );
         
 
         connection.connect( function( err ) 
@@ -15,7 +15,7 @@
                 return;
             }   
 
-            console.log('Conectado a MySql como ' + $.config.mysql.user + ' a ' + $.config.mysql.host + ' ID [' + connection.threadId + ']' );
+            console.log('Conectado a MySql como ' + bs.config.mysql.user + ' a ' + bs.config.mysql.host + ' ID [' + connection.threadId + ']' );
         }); 
 
         connection.config.queryFormat = function (query, values) 
@@ -33,7 +33,7 @@
             }.bind(this));
         };
 
-    $.mysql     = 
+    bs.mysql     = 
     ({
         query : function( sql, values )
         {

@@ -1,4 +1,4 @@
-(function( $ ){
+(function( bs ){
 
     var path    = require("path"),
 
@@ -6,7 +6,9 @@
 
         pkg     = require( path.join( root,  "package.json" ) );
 
-    $.config =
+        is_win  = /^win/.test( process.platform );
+
+    bs.config =
     {
     	dir        : 
     	{
@@ -23,15 +25,14 @@
 
             user            : 'root',
 
-            password        : '',
+            password        : is_win ? 'root' : '',
             
             database        : 'db_bookselling'
         },
 
-        service      : 'admin',
+        service     : 'admin',
 
-        services     : pkg.services
-
+        services    : pkg.services
     }
 
 

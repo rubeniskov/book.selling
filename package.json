@@ -57,6 +57,8 @@
         "connect": "~3.1.1",
         "connect-mongo": "~0.4.1",
         "connect-session": "~0.0.1",
+        "express": "~4.8.7",
+        "express-session": "~1.7.6",
         "mime": "~1.2.11",
         "underscore": "~1.7.0",
         "swig": "~1.4.2",
@@ -77,70 +79,50 @@
     "services": {
         "admin": {
             "modules": {
-                "books": {
+                "content-books": {
+                    "events": []
+                },
+                "content-home": {
+                    "events": []
+                },
+                "content-sidebar": {
+                    "events": []
+                },
+                "content-users": {
                     "events": []
                 },
                 "footer": {
                     "events": []
                 },
                 "header": {
+                    "events": []
+                },
+                "header-top-bar": {
+                    "events": []
+                },
+                "table-books": {
                     "events": [
-                        "sign-up",
-                        "sign-in",
-                        "sign-out"
+                        "remove-item"
                     ]
                 },
-                "home": {
-                    "events": []
-                },
-                "my-account": {
-                    "events": []
-                },
-                "my-account-books": {
-                    "events": []
-                },
-                "my-account-purchases": {
-                    "events": []
-                },
-                "my-account-update-profile": {
-                    "events": []
-                },
-                "my-account-uploaded-books": {
-                    "events": []
-                },
-                "resources": {
-                    "events": []
-                },
-                "sign-in": {
+                "table-users": {
                     "events": [
-                        "sign-up",
-                        "sign-in",
-                        "sign-out"
+                        "remove-item"
                     ]
                 },
-                "sign-up": {
-                    "events": [
-                        "sign-up",
-                        "sign-in",
-                        "sign-out"
-                    ]
+                "template": {
+                    "events": []
                 }
             },
             "views": [
-                "book",
-                "books",
-                "contact",
                 "home",
-                "my-account-books-purchased",
-                "my-account-books-sold",
-                "my-account-books",
-                "my-account-profile-update",
-                "my-account-profile"
+                "manage-books",
+                "manage-users"
             ]
         },
         "site": {
             "modules": {
-                "books": {
+                "book-details": {
                     "events": []
                 },
                 "books-carousel": {
@@ -155,6 +137,12 @@
                 "books-nav": {
                     "events": []
                 },
+                "contact": {
+                    "events": []
+                },
+                "contact-map": {
+                    "events": []
+                },
                 "footer": {
                     "events": []
                 },
@@ -164,7 +152,7 @@
                 "header-nav": {
                     "events": []
                 },
-                "home": {
+                "home-books": {
                     "events": []
                 },
                 "home-carousel": {
@@ -176,7 +164,41 @@
                 "modals": {
                     "events": []
                 },
+                "my-account": {
+                    "events": []
+                },
+                "my-account-books": {
+                    "events": []
+                },
+                "my-account-books-purchased": {
+                    "events": []
+                },
+                "my-account-personal-menu": {
+                    "events": []
+                },
+                "my-account-profile": {
+                    "events": []
+                },
+                "my-account-profile-update": {
+                    "events": []
+                },
+                "my-account-uploaded-books": {
+                    "events": []
+                },
+                "register": {
+                    "events": [
+                        "sign-up",
+                        "sign-in",
+                        "sign-out"
+                    ]
+                },
                 "sign-in": {
+                    "events": []
+                },
+                "sign-in-page-info": {
+                    "events": []
+                },
+                "sign-in-page-login": {
                     "events": []
                 },
                 "sign-up": {
@@ -191,14 +213,17 @@
                 }
             },
             "views": [
+                "book-details",
                 "books",
                 "contact",
                 "home",
                 "my-account-books-purchased",
-                "my-account-books-sold",
                 "my-account-books",
                 "my-account-profile-update",
-                "my-account-profile"
+                "my-account-profile",
+                "my-account-uploaded-books",
+                "register",
+                "sign-in-page"
             ]
         }
     }

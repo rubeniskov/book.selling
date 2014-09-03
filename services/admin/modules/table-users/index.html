@@ -1,0 +1,47 @@
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha Nacimiento</th>
+            <th>Sexo</th>
+            <th>Tel&eacute;fono</th>
+            <th>Direcci&oacute;n</th>
+            <th>CP</th>
+            <th>Provincia</th>
+            <th>Pa&iacute;s</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for key, user in users %}
+        <tr>
+            <td>{{ user.user_id }}</td>
+            <td>{{ user.user_email }}</td>
+            <td>{{ user.user_name }}</td>
+            <td>{{ user.user_surname }}</td>
+            <td>{{ user.user_birthdate }}</td>
+            <td>{{ user.user_sex }}</td>
+            <td>{{ user.user_phone }}</td>
+            <td>{{ user.user_address }}</td>
+            <td>{{ user.user_cp }}</td>
+            <td>{{ user.user_state }}</td>
+            <td>{{ user.user_country }}</td>
+            <td>
+
+                <span class="label label-success">Active</span>
+
+            </td>
+
+            <td>
+                <!--Botones de edicion de datos -->
+         
+                <button data-item-id="{{ user.user_id }}" data-item-cmd="remove-item" class="btn btn-xs btn-danger"><i class="fa fa-times"></i> 
+                </button>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,43 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<!-- Title here -->
-		<title>BookSelling</title>
-		<!-- Description, Keywords and Author -->
-		<meta name="description" content="Your description">
-		<meta name="keywords" content="Your,Keywords">
-		<meta name="author" content="ResponsiveWebInc">
-		
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
-		<!-- Styles -->
-		<!-- Bootstrap CSS -->
-		<link href="./css/bootstrap.min.css" rel="stylesheet">
 
-		<link href="./css/bootstrap-validator.css" rel="stylesheet">
-		<!-- Flex slider -->
-		<link href="./css/flexslider.css" rel="stylesheet">
-		<link href="./css/owl.carousel.css" rel="stylesheet">	
-		<link href="./css/font-awesome.min.css" rel="stylesheet">		
-		<!-- Custom CSS -->
-		<link href="./css/style.css" rel="stylesheet">
-		<!-- Stylesheet for Color -->
-		<link href="./css/red.css" rel="stylesheet">
-		
-		<!-- Favicon -->
-		<link rel="shortcut icon" href="./img/favicon/favicon.png">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <!-- Title and other stuffs -->
+    <title>BookSelling - Administrador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
 
-		<script src="./dst/book.selling.js" type="text/javascript"></script>
+
+    <!-- Stylesheets -->
+    <link href="./modules/admin/resources/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font awesome icon -->
+    <link rel="stylesheet" href="./modules/admin/resources/css/font-awesome.min.css">
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="./modules/admin/resources/css/jquery-ui.css">
+    <!-- Calendar -->
+    <link rel="stylesheet" href="./modules/admin/resources/css/fullcalendar.css">
+    <!-- prettyPhoto -->
+    <link rel="stylesheet" href="./modules/admin/resources/css/prettyPhoto.css">
+    <!-- Star rating -->
+    <link rel="stylesheet" href="./modules/admin/resources/css/rateit.css">
+    <!-- Date picker -->
+    <link rel="stylesheet" href="./modules/admin/resources/css/bootstrap-datetimepicker.min.css">
+    <!-- CLEditor -->
+    <link rel="stylesheet" href="./modules/admin/resources/css/jquery.cleditor.css">
+    <!-- Data tables -->
+    <link rel="stylesheet" href="./modules/admin/resources/css/jquery.dataTables.css">
+    <!-- Bootstrap toggle -->
+    <link rel="stylesheet" href="./modules/admin/resources/css/jquery.onoff.css">
+    <!-- Main stylesheet -->
+    <link href="./modules/admin/resources/css/style.css" rel="stylesheet">
+    <!-- Widgets stylesheet -->
+    <link href="./modules/admin/resources/css/widgets.css" rel="stylesheet">
+
+    <script src="./dst/book.selling.js" type="text/javascript"></script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon/favicon.png">
+
+    {% for module, include in view.includes %}
+
+	<script ref="{{ module|lower }}" type="text/javascript">$.use( "module-{{ module|lower }}" ,{{ include }})</script>
+
+	{% endfor %}
+	
+    <script>
+    /* Navigation */
+
+    $(document).ready(function() {
+
+        $(window).resize(function() {
+            if ($(window).width() >= 765) {
+                $(".sidebar #nav").slideDown(350);
+            } else {
+                $(".sidebar #nav").slideUp(350);
+            }
+        });
+
+        $(".has_sub > a").click(function(e) {
+            e.preventDefault();
+            var menu_li = $(this).parent("li");
+            var menu_ul = $(this).next("ul");
+
+            if (menu_li.hasClass("open")) {
+                menu_ul.slideUp(350);
+                menu_li.removeClass("open")
+            } else {
+                $("#nav > li > ul").slideUp(350);
+                $("#nav > li").removeClass("open");
+                menu_ul.slideDown(350);
+                menu_li.addClass("open");
+            }
+        });
+    });
+    </script>
+		
 	</head>
 	
 	<body>
 
-		<module name="header"></module>
-
-		<module name="main"></module>
-
-		<module name="footer"></module>
+		{{ view.html|safe }}
 		
-	</body>	
+	</body>
+
 </html>

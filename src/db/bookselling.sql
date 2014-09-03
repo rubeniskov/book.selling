@@ -362,7 +362,7 @@ CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_books_uploaded` (
   CONSTRAINT `fk__tb_books__book_id`
     FOREIGN KEY (`book_id`)
     REFERENCES `db_bookselling`.`tb_books` (`book_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 

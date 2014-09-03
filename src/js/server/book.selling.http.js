@@ -1,8 +1,10 @@
-(function( $ ){
+(function( bs ){
 
-    var connect = require('express'),
+    var express = require('express'),
 
-        app     = connect(),
+        app     = express(),
+
+        session = require('express-session'),
         
       // mongos  = require('connect-mongo')(connect),
 
@@ -14,9 +16,11 @@
 
         mime    = require("mime"),
 
-        service = $.config.service,
+        service = bs.config.service,
 
         port    = process.argv[2] || 8888;
+
+        app.use(session({secret: 'keyboard cat'}))
 
         app.use( function( request, response )
         {
@@ -49,15 +53,15 @@
             }
             else
             {
-                $.service( service, { request : request, response : response } );
+                bs.service( service, { request : request, response : response } );
             }
         });
 
-    $.server =
+    bs.server =
     ({
         start   : function()
         {
-            $.socket( app.listen( parseInt( port, 10 ) ) );
+            bs.socket( app.listen( parseInt( port, 10 ) ) );
         },
         stop    : function()
         {
