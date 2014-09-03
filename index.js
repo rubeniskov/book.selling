@@ -1,5 +1,7 @@
 /*! BookSelling - v0.0.1 - 2014-08-21 */
 
-var bs 	= require( "book-selling" );
+var argv 	= require('optimist').argv,
 
-bs.server.start( 80 );
+	bs 		= require( "book-selling" );
+
+bs.server.start( argv.service, argv.port );

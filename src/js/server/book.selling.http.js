@@ -18,7 +18,7 @@
 
         service = bs.config.service,
 
-        ddport   = process.argv[2] || 8888;
+        ddport  = process.argv[2] || 8888;
 
         app.use(session({secret: 'keyboard cat'}))
 
@@ -59,8 +59,10 @@
 
     bs.server =
     ({
-        start   : function( port )
+        start   : function( serv, port )
         {
+            service     = serv || bs.config.service;
+
             bs.socket( app.listen( parseInt( port || dport, 10 ) ) );
         },
         stop    : function()

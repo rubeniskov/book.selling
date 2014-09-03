@@ -54,6 +54,7 @@
     "author": "Jorge Alonso López",
     "license": "ISC",
     "devDependencies": {
+        "optimist": "~0.6.1",
         "connect": "~3.1.1",
         "connect-mongo": "~0.4.1",
         "connect-session": "~0.0.1",
