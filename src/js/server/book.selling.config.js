@@ -29,7 +29,7 @@
             
             database        : 'db_bookselling'
         },
-
+        
         service     : 'admin',
 
         services    : pkg.services
