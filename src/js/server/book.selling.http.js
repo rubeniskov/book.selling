@@ -2,9 +2,13 @@
 
     var express = require('express'),
 
-        app     = express(),
+        cparser = require('cookie-parser'),
 
-        session = require('express-session'),
+        session = require('cookie-session'),
+
+        mstore  = require('express-session-mongo'),
+
+        app     = express(),
         
       // mongos  = require('connect-mongo')(connect),
 
@@ -20,7 +24,20 @@
 
         ddport  = process.argv[2] || 8888;
 
-        app.use(session({secret: 'keyboard cat'}))
+        app.use( cparser() );
+
+        app.use( session({ secret: 'something', store: mstore }) );
+
+        /*app.use(function (req, res, next) 
+        {
+            var n = req.session.views || 0;
+
+            req.session.views = ++n;
+
+            //console.log( req.session );
+
+            //res.end( n + ' views')
+        })*/
 
         app.use( function( request, response )
         {

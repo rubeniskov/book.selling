@@ -1,7 +1,7 @@
-module.exports = function( $ )
+module.exports = function( bs )
 {
 	return ({
-		__ready: function($) {
+		__ready: function( $ ) {
             $.socket.on('msg', function(data) {
                 $('.alert').text(data.msg).addClass('alert-danger').show();
             });
@@ -197,7 +197,7 @@ module.exports = function( $ )
         events: ({
             'sign-up': function( user_data ) 
             {
-                $.login.signUp( user_data );
+                bs.login.signUp( user_data );
             },
             'sign-in': function() {
 

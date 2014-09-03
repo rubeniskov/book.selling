@@ -11,9 +11,11 @@
                 data
             );
         },
-        signIn   : function()
+        signIn   : function( credentials )
         {
-            //server.listen(parseInt(port, 10));
+            var query = bs.mysql.query( "SELECT * FROM tb_users WHERE user_email=:user_email AND user_password=:user_password", credentials );
+
+            console.log( query );
         },
         signOut  : function()
         {
