@@ -69,6 +69,16 @@
                         .send( file );
                     });
                 }
+                else
+                {
+                    response
+                    .set
+                    ({
+                        'Content-Type': 'text/html',
+                    })
+                    .status( 404 )
+                    .send( '<h1>Error 404</h1>' );
+                }
             }
             else
             {
@@ -79,6 +89,17 @@
             }
 
             console.log( 'FROM RENDER ', request.session.views );
+        });
+
+        app.use( function( request, response, next )
+        {
+            response
+            .set
+            ({
+                'Content-Type': 'text/html',
+            })
+            .status( 500 )
+            .send( '<h1>Error 500</h1>' );
         });
 
     bs.server =
