@@ -202,7 +202,9 @@
                     "events": []
                 },
                 "my-account-uploaded-books": {
-                    "events": []
+                    "events": [
+                        "upload-book"
+                    ]
                 },
                 "shopping-cart": {
                     "events": []
@@ -227,6 +229,7 @@
                 "book-details",
                 "books",
                 "contact",
+                "error",
                 "home",
                 "my-account-books-purchased",
                 "my-account-books",

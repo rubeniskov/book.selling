@@ -333,9 +333,10 @@ CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_books` (
     `book_author`           VARCHAR(45)     NOT NULL,
     `book_language`         VARCHAR(200)    NOT NULL,
     `book_image`            BLOB            NULL DEFAULT NULL,
+    `book_category`         VARCHAR(45)     NOT NULL,
     `book_description`      TEXT            NULL DEFAULT NULL,
     `book_pages`            INT(3)          NULL DEFAULT NULL,
-    `book_price`            DECIMAL(5,2) NOT NULL,
+    `book_price`            DECIMAL(5,2) 	NOT NULL,
     UNIQUE KEY (`book_isbn`))
 ENGINE = InnoDB;
 
@@ -508,11 +509,14 @@ INSERT INTO `db_bookselling`.`tb_books`
     `book_editorial`,
     `book_author`,
     `book_language`,
+    `book_category`,
     `book_image`,
     `book_description`,
     `book_pages`,
     `book_price`
 )
+ 
+                   
 VALUES
 (
     "978-8490328156",
@@ -520,6 +524,7 @@ VALUES
     "Debolsillo",
     "Ken Follett",
     "Español",
+    "Accion y Aventura",
     FROM_BASE64( @image ),
     "El invierno del mundo es una novela histórica, que constituye el segundo libro de la Trilogía del Siglo The Century, de Ken Follett, que comenzó con La caída de los gigantes.",
     960,
@@ -531,6 +536,7 @@ VALUES
     "Plaza & Janes Editores",
     "Julia Navarro",
     "Español",
+    "Accion y Aventura",
     FROM_BASE64( @image ),
     "Una periodista recibe una propuesta para investigar la azarosa vida de su bisabuela, una mujer de la que sólo se sabe que huyó de España abandonando a su marido y a su hijo poco antes de que estallara la Guerra Civil. Para rescatarla del olvido deberá reconstruir su historia desde los cimientos, siguiendo los pasos de su biografía y encajando, una a una, todas las piezas del inmenso y extraordinario puzzle de su existencia. Marcada por los hombres que pasaron por su vida -el empresario Santiago Carranza, el revolucionario Pierre Comte, el periodista estadounidense Albert James y el médico militar vinculado al nazismo Max von Schumann-, la vida de Amelia Garayoa es la de una mujer que aprendió que en la vida no se puede volver sobre el pasado para deshacerlo. Desde la España republicana hasta la caída del Muro de Berlín, pasando por la Segunda Guerra mundial y los oscuros años de la Guerra fría, esta burguesa y revolucionaria, esposa y amante, espía y asesina, actuará siempre de acuerdo a sus principios, enfrentándose a todo y cometiendo errores que no terminará nunca de pagar.",
     1104,
@@ -542,6 +548,7 @@ VALUES
     "Debolsillo",
     "Walter Isaacson",
     "Inglés",
+    "Biografias",
     FROM_BASE64( @image ),
     "La muerte de Steve Jobs conmocionó al mundo. Tras entrevistar a Jobs en más de cuarenta ocasiones en sus últimos años, además de a un centenar de personas de su entorno, familiares, amigos, adversarios y colegas, Walter Isaacson nos presenta la única biografía escrita con la colaboración de Jobs, el retrato definitivo de uno de los iconos indiscutibles de nuestro tiempo, la crónica de la agitada vida y de la abrasiva personalidad del genio cuya creatividad y energía revolucionaron seis industrias: la informática, el cine de animación, la música, la telefonía, las tabletas y la edición digital. Aquí, Jobs habla con una sinceridad a veces brutal sobre la gente con la que trabajó y contra la que compitió. De igual modo, sus amigos, rivales y colegas ofrecen una visión sin edulcorar de las pasiones, los demonios, el perfeccionismo, los deseos, el talento, los trucos y la obsesión por controlarlo todo que modelaron su visión empresarial y los innovadores productos que logró crear. Su historia, por tanto, está llena de enseñanzas sobre innovación, carácter, liderazgo y valores. La vida de un genio capaz de enfurecer y seducir a partes iguales",
     744,
@@ -553,6 +560,7 @@ VALUES
     "Ediciones Península",
     "Juan Reinaldo Sánchez",
     "Español",
+    "Biografias",
     FROM_BASE64( @image ),
     "Juan Reinaldo Sánchez estuvo 17 años, entre 1977 y 1994, vigilando cada paso de Fidel Castro, como miembro del equipo de seguridad del mandatario, que acabó dirigiendo. Durante todo ese tiempo, en el que fue un empleado abnegado y fiel, que idolatraba a su jefe, anotó en su libreta muchos de los detalles de la vida privada de Fidel.  A mediados de los noventa, y harto del clima enrarecido que empezaba a reinar entre los integrantes de la escolta de Fidel, Juan Reinaldo Sánchez decidió retirarse del servicio activo. Castro se mostró contrario a su decisión y a partir de aquel momento el antiguo guardaespaldas empezó a sufrir las consecuencias de haber tenido como jefe al dictador cubano. Le envió a la cárcel, de donde consiguió escapar y viajar a Estados Unidos en 2008. Desde Miami, y por primera vez, habla ahora de la vida secreta de quien desde los años sesenta dirige los destinos de todo el pueblo cubano.  ",
     300,
@@ -564,6 +572,7 @@ VALUES
     "RC Libros",
     "Oscar Torrente Artero",
     "Español",
+    "Ciencias y tecnologia",
     FROM_BASE64( @image ),
     "Cualquier técnico electrónico o aficionado a la electrónica necesita en alguna ocasión trabajar con microcontroladores. Esta tarea, durante años compleja, actualmente es mucho más simple gracias a Arduino. Arduino permite que cualquier persona (incluso profana en la electrónica y la programación) pueda realizar circuitos electrónicos que sean capaces de interaccionar con el mundo físico real. Gracias a su sencillez, campos como la robótica o la domótica (por nombrar solo dos) se han visto radicalmente impulsados con la llegada de Arduino, aunque es utilizado en muchos otros campos multidisciplinares, tales como el control y monitoraje de sensores, la activación remota de circuitos electromecánicos (vía Internet incluso), el montaje de instalaciones audiovisuales, etc. Arduino es tanto una placa de circuito impreso que incluye un microcontrolador, como un entorno de desarrollo diseñado para facilitar su programación mediante un lenguaje tremendamente intuitivo. Arduino es hardware y software libre; es decir, que puede descargarse gratuitamente de su web y utilizarse para el desarrollo de cualquier tipo de proyecto sin adquirir ninguna licencia porque su código fuente es público para todo el mundo. Esta obra incluye gran cantidad de ejemplos que facilitan al lector toda la información necesaria para realizar sus propios proyectos, sin requerir ninguna consulta externa. Solo con la ayuda de una placa Arduino UNO y un conjunto básico de componentes electrónicos (resistencias, condensadores, LEDs, etc.), ya podrá hacer realidad todos los circuitos descritos. El desarrollo del libro está pensado para servir de apoyo a la docencia, tanto de formación profesional como en los últimos cursos de la educación secundaria, para aficionados que deseen aprender de forma autodidacta, o como obra de consulta permanente para técnicos en electrónica.",
     588,
@@ -575,6 +584,7 @@ VALUES
     "Lippincott Raven",
     "Robert W. Schrier",
     "Inglés",
+    "Ciencias y tecnologia",
     FROM_BASE64( @image ),
     "Manual que profundiza a traves de numerosas imágenes 3D en el increible mundo de los organos de los seres humanos.",
     456,
@@ -586,6 +596,7 @@ VALUES
     "Punto de lectura",
     "Jim & Jo Peltier & Melissa Milio",
     "Español",
+    "Comics",
     FROM_BASE64( @image ),
     "¿Quieres traer un perrito a casa pero tienes miedo de que un animalito tan adorable pueda convertirse en tu peor pesadilla? ¿Tu cachorro no para de morder los muebles? ¿Es incapaz de caminar con correa? ¿No sabes qué hacer para enseñarlo a controlar los esfínteres? ¿No te hace caso cuando lo llamas? ¿Estás desesperado porque no sabes qué hacer para que deje de llorar o aullar? Los cachorros poseen en su ADN la capacidad de aprender reglas y límites de las sociedades en las que viven. Si sabes comunicar con claridad las normas de convivencia en casa desde el primer día, tu mejor amigo se convertirá en el perro de tus sueños",
     336,
@@ -597,6 +608,7 @@ VALUES
     "Planeta DeAgostini Cómics",
     "Masashi Kishimoto",
     "Español",
+    "Comics",
     FROM_BASE64( @image ),
     "Obito se ha transformado por completo en el jinchûriki de Jûbi, la bestia de diez colas. ¡Al alojar al bijû en su seno demuestra un poder apabullante cuando echa abajo la barrera protectora! La situación es desfavorable, pero Naruto y Sasuke pugnan por encontrar un hueco por el que lanzar un contraataque, sirviéndose de los poderes de resurrección de ultratumba de los Hokage. ¿¡Qué ocurrirá!?",
     192,
@@ -608,6 +620,7 @@ VALUES
     "La esfera de los libros S.L.",
     "Elsa Pataki y Fernando Sartorius",
     "Español",
+    "Deportes",
     FROM_BASE64( @image ),
     "Guia de entrenamiento personal",
     172,
@@ -619,6 +632,7 @@ VALUES
     "La ley",
     "Vicente Gimeno Sendra",
     "Español",
+    "Derecho",
     FROM_BASE64( @image ),
     "Recopilatorio de las normas procesales más importantes del ordenamiento jurídico español. Incluye un completo índice de voces. Contenido del Código: - Constitución Española - Legislación orgánica (Ley Orgánica del Poder Judicial) - Ley Orgánica del Tribunal Constitucional - Legislación procesal civil (Ley de Enjuiciamiento Civil, condiciones generales de la contratación, propiedad horizontal, arrendamientos urbanos, patentes, marcas, competencia desleal, propiedad intelectual, venta a plazos y arbitraje) - Legislación procesal penal (Ley de Enjuiciamiento Criminal, jurado y menores) - Legislación procesal contencioso-administrativa (Ley de la Jurisdicción Contencioso-Administrativa) - Legislación procesal laboral Contenido en INTERNET: Además de las normas incorporadas al Código, en INTERNET se incluyen: - Legislación orgánica (Ley Orgánica del Poder Judicial, Ley de Conflictos Jurisdiccionales, Ley Orgánica del Tribunal Constitucional y demarcación y planta) - Legislación procesal civil (Ley de Enjuiciamiento Civil de 1881, Código Civil, Ley y Reglamento Hipotecario, embargo preventivo de buques, asistencia jurídica gratuita, protección al honor, derecho de rectificación, arrendamientos rústicos, sociedades anónimas y limitadas, cooperativas, hipoteca naval y mobiliaria y cambiaria y del cheque) - Legislación procesal penal (habeas corpus y extradición) - Legislación procesal contencioso-administrativa (Ley de Régimen Jurídico de las Administraciones Públicas y del Procedimiento Administrativo Común y asistencia jurídica al Estado) - Legislación procesal laboral (Ley de Procedimiento Laboral) - Formularios (Derecho Procesal Civil)",
     1632,
@@ -630,6 +644,7 @@ VALUES
     "Debolsillo",
     "Patrick Rothfuss",
     "Español",
+    "Fantasia",
     FROM_BASE64( @image ),
     "En una posada en tierra de nadie, un hombre se dispone a relatar, por primera vez, la auténtica historia de su vida. Una historia que únicamente él conoce y que ha quedado diluida tras los rumores, las conjeturas y los cuentos de taberna que le han convertido en un personaje legendario a quien todos daban ya por muerto: Kvothe... músico, mendigo, ladrón, estudiante, mago, héroe y asesino. Ahora va a revelar la verdad sobre sí mismo. Y para ello debe empezar por el principio: su infancia en una troupe de artistas itinerantes, los años malviviendo como un ladronzuelo en las calles de una gran ciudad y su llegada a una universidad donde esperaba encontrar todas las respuestas que había estado buscando.",
     880,
@@ -641,6 +656,7 @@ VALUES
     "Ediciones obelisco S.L.",
     "Sun Tzu",
     "Español",
+    "Historia",
     FROM_BASE64( @image ),
     "Es el tratado sobre estrategia más famoso del mundo, que se ha convertido en un libro de culto en el ámbito de la empresa. Varias películas ambientadas en Wall Street han contribuido a popularizar este pequeño libro, que nos propone unos principios válidos tanto en el mundo de la estrategia militar como en el de los negocios o la política. A pesar de su antigüedad, se trata de un libro extremadamente moderno, que ayudará a reflexionar sobre cualquier tipo de problema y a plantear las estrategias necesarias para solucionarlo sin conflictos. LA EXCELENCIA SUPREMA CONSISTE EN QUEBRAR LA RESISTENCIA DEL ENEMIGO SIN LUCHAR (III-2) El arte de la guerra es el mejor libro de estrategia de todos los tiempos. Ideal para aplicar en todos los aspectos de la vida para conseguir la victoria sin entrar en conflicto.",
     112,
@@ -652,6 +668,7 @@ VALUES
     "Timun Mas Narrativa",
     "Barney Stinson y Matt Kuhn",
     "Español",
+    "Humor",
     FROM_BASE64( @image ),
     "Todos tenemos un código de conducta. Algunos lo llaman moral, otros religión. Pero los Colegas que realmente saben llaman a este santo grial El Código de los Colegas. Durante años, la sabiduría pasó de generación en generación a través de la tradición oral. Aquí tenemos por primera vez en la Historia el código oficial de conducta para Colegas. Mediante este sagrado y legendario documento, cualquier tío puede llegar a ser un Colega de verdad.",
     208,
@@ -663,6 +680,7 @@ VALUES
     "Interfolio",
     "Ted Simon",
     "Español",
+    "Guias",
     FROM_BASE64( @image ),
     "LOS VIAJES DE JÚPITER es considerado, con toda justicia, un libro de culto para todos los públicos en literatura de viajes.",
     800,
@@ -674,6 +692,7 @@ VALUES
     "Ediciones Destino",
     "Lorenzo Silva",
     "Español",
+    "Policiaca",
     FROM_BASE64( @image ),
     "Mientras pasa el fin de semana en familia, el brigada Bevilacqua recibe el aviso de que el cadáver de la alcaldesa de una localidad levantina, cuya desaparición había sido previamente denunciada por el marido, ha sido hallado por unos turistas en la playa. Para cuando Bevilacqua y su equipo llegan y se hacen cargo de la investigación, el juez ya ha levantado el cadáver, las primeras disposiciones están tomadas y se está preparando el funeral. El lugar es un avispero en el que se desatan todo tipo de rumores sobre la víctima, una joven promesa que venía a romper con los modos y corruptelas de los viejos mandarines del partido y que apostaba por renovar el modo de hacer política. Además, el descubrimiento de su agitada vida sexual, que puede calificarse de todo menos insípida, arroja sobre el caso una luz perturbadora. Pero no hay mucho tiempo para indagar y en esta ocasión Bevilacqua y Chamorro deben apresurar una hipótesis en un fuego de intereses cruzados, en el que la causa de la joven política es también la causa de la integridad personal, de la que el país entero parece haberse apeado.",
     352,
@@ -685,6 +704,7 @@ VALUES
     "Debate",
     "Francisco de la Torre",
     "Español",
+    "Politica",
     FROM_BASE64( @image ),
     "Pocas cosas tienen peor fama que los impuestos. Sin embargo, los impuestos son el precio de la civilización: en la jungla no existen, y cuando el fraude aumenta, la civilización retrocede. Por eso es tan grave que a la pregunta de si Hacienda somos todos la respuesta suela ser un \"no\" rotundo. Porque, además, todos pagamos impuestos de algún tipo, y nos beneficiamos del gasto público en alguna medida. Pero en los últimos años, ante una crisis fiscal sin precedentes, los ciudadanos están viendo impotentes cómo se suben los impuestos y se recortan las prestaciones sociales. Este libro intenta dar respuesta a muchas preguntas que surgen en esta crisis: ¿Ha habido austeridad o despilfarro en los últimos años? ¿Se ha derrumbado la recaudación sólo por el fraude? ¿Ha servido para algo la subida indiscriminada de impuestos de los últimos tiempos?¿El fraude es una cuestión de grandes empresas o se extiende también a las pequeñas? ¿Qué son los paraísos fiscales?¿Qué trato fiscal han tenido, por ejemplo, el mundo del fútbol o la Banca?¿Son las SICAV un instrumento fiscal privilegiado?¿La solución a estos problemas es una amnistía fiscal?... Esta obra no sólo explica estos temas con claridad sino que aporta cifras contrastadas y vías de solución ante una crisis global de la economía española en la que la fiscalidad está en permanente primer plano. Un libro imprescindible para conocer la realidad de los impuestos y el fraude en España",
     288,
@@ -696,6 +716,7 @@ VALUES
     "Zeta bolsillo",
     "John Katzenbach",
     "Español",
+    "Terror",
     FROM_BASE64( @image ),
     "En el Berlín de 1943 pocos vieron su cara, y nadie supo su nombre. Entre susurros era conocido como \"Der Schattenmann\", La Sombra, un despiadado delator judío que colaboraba con la Gestapo. Miami, finales del siglo XX. La vida del detective retirado Simon Winter da un giro repentino cuando recibe la visita de una aterrorizada vecina, una anciana cree haber visto a un fantasma del pasado. Cuando a la mañana siguiente aparece estrangulada, Winter es el único que sospecha la terrible verdad: un escurridizo asesino está exterminando a los supervivientes del Holocausto que viven en Miami.",
     456,
@@ -707,6 +728,7 @@ VALUES
     "Ediciones versátil S.L.",
     "Megan Maxwell",
     "Español",
+    "Romantica",
     FROM_BASE64( @image ),
     "Relatos romanticos de parejas de hoy en dia.",
     384,
@@ -892,11 +914,11 @@ VALUES
 (
     2,
     5
-)
+),
 (
     2,
     6
-)
+),
 (
     2,
     7

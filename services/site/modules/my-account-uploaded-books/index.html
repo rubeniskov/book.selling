@@ -3,7 +3,7 @@
 
 <div class="form form-small">
     <!-- Edit profile form (not working)-->
-    <form class="form-horizontal">
+    <form id="form-upload-book" class="form-horizontal">
         <!-- ISBN -->
         <div class="form-group">
             <label class="control-label col-md-2" for="isbn">ISBN</label>
@@ -31,7 +31,7 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="autor">Autor</label>
             <div class="col-md-6">
-                <input type="text" class="form-control" id="autor1">
+                <input type="text" class="form-control" id="autor1" name="book_author">
             </div>
         </div>
 
@@ -39,7 +39,7 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="language">Idioma</label>
             <div class="col-md-6">
-                <input type="text" class="form-control" id="language1">
+                <input type="text" class="form-control" id="language1" name="book_language">
             </div>
         </div>
 
@@ -48,7 +48,7 @@
 
             <label for="ejemplo_archivo_1">Subir</label>
             <div class="col-md-6">
-                <input type="file" id="ejemplo_archivo_1">
+                <input type="file" id="ejemplo_archivo_1" name="book_image">
             </div>
         </div>
 
@@ -56,21 +56,45 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="description">Descripcion</label>
             <div class="col-md-6">
-                <textarea class="form-control" rows="5" id="description1"></textarea>
+                <textarea class="form-control" rows="5" id="description1" name="book_description"></textarea>
+            </div>
+        </div>
+        <!-- Categoria -->
+        <div class="form-group">
+            <label class="control-label col-md-2">Categor&iacute;a</label>
+            <div class="col-md-6">
+                <select class="form-control" name="book_category">
+                    <option value="">--- Seleccione ---</option>
+                    <option value="Accion y Aventura"> Accion y Aventura</option>
+                    <option value="Biografias">Biografias</option>
+                    <option value="Ciencias y tecnologia">Ciencias y tecnologia</option>
+                    <option value="Comics">Comics</option>
+                    <option value="Consulta">Consulta</option>
+                    <option value="Deportes">Deportes</option>
+                    <option value="Derecho">Derecho</option>
+                    <option value="Fantasia">Fantasia</option>
+                    <option value="Guias">Guias</option>
+                    <option value="Historia">Historia</option>
+                    <option value="Humor">Humor</option>
+                    <option value="Policiaca">Policiaca</option>
+                    <option value="Política">Política</option>
+                    <option value="Romantica">Romantica</option>
+                    <option value="Terror">Terror</option>
+                </select>
             </div>
         </div>
         <!-- Pages -->
         <div class="form-group">
             <label class="control-label col-md-2" for="pages">Nº paginas</label>
             <div class="col-md-6">
-                <input type="text" class="form-control" id="pages1">
+                <input type="text" class="form-control" id="pages1" name="book_pages">
             </div>
         </div>
         <!-- Precio -->
         <div class="form-group">
             <label class="control-label col-md-2" for="price">Precio</label>
             <div class="col-md-6">
-                <input type="text" class="form-control" id="price1">
+                <input type="text" class="form-control" id="price1" name="book_price">
             </div>
         </div>
 
@@ -87,8 +111,8 @@
         <div class="form-group">
             <!-- Buttons -->
             <div class="col-md-6 col-md-offset-2">
-                <button type="submit" class="btn btn-default">Subir</button>
-                <button type="reset" class="btn btn-default">Limpiar campos</button>
+                <button name="btn-upload-book" type="submit" class="btn btn-success">Subir</button>
+                <button name="btn-upload-book-clean" type="reset" class="btn btn-default">Limpiar campos</button>
             </div>
         </div>
     </form>

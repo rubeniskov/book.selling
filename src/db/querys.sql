@@ -15,3 +15,5 @@ SELECT * FROM db_bookselling.tb_books ORDER BY book_title DESC;
 SELECT * FROM db_bookselling.tb_books ORDER BY book_price;
 --BOTON ORDENAR Precio A-Z--
 SELECT * FROM db_bookselling.tb_books ORDER BY book_price DESC;
+--Distintas categorías--
+SELECT distinct (book_category) FROM db_bookselling.v_books ;
