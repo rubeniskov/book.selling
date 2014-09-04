@@ -13,11 +13,11 @@
                 <!-- Item -->
                 {% for key, item in carousel %}
                 <div class="item">
-                    <a href="./book-details">
+                    <a href="/book-details">
                         <img style="height:100px" src="data:image/jpeg;base64,{{ item.book_image_base64 }}" alt="Red dot" class="img-responsive" />
                     </a>
                     <!-- Heading -->
-                    <h4><a href="./book-details">{{ item.book_title}}<span class="pull-right">{{ item.book_price}}</span></a>
+                    <h4><a href="/book-details">{{ item.book_title}}<span class="pull-right">{{ item.book_price}}</span></a>
                     </h4>
                     <div class="clearfix"></div>
                     <!-- Paragraph -->
