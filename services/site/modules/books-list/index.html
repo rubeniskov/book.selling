@@ -43,8 +43,13 @@
                 <!-- Price -->
                 <div class="item-price pull-left">{{ book.book_price }}</div>
                 <!-- Add to cart -->
+                {% if user %}
                 <div class="button pull-right"><a href="#">Comprar</a>
                 </div>
+                {% else %}
+                <div class="button pull-right"><a href="/book-details">Ver detalles</a>
+                </div>
+                {% endif %}
                 <div class="clearfix"></div>
             </div>
         </div>

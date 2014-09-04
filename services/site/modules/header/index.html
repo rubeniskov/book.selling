@@ -8,7 +8,7 @@
                 <!-- Logo. Use class "color" to add color to the text. -->
                 <div class="logo">
                     <a class="navbar-brand" href="#">
-                        <img src="img/logo.gif" />
+                        <img src="C:\Users\Jorge\Desktop\workspace\book.selling\img\logo.gif" />
                         <h1><a href="/home">Book<span class="color bold">Selling</span></a>
                         </h1>
                         <p class="meta">Lo inteligente es pagar menos!!!</p>
@@ -27,6 +27,7 @@
                 </form>
 
                 <div class="hlinks">
+                     {% if user %}
                     <span>
                         <!-- item details with price -->
                         <a href="#cart" role="button" data-toggle="modal">
@@ -35,7 +36,7 @@
                         <span class="bold">25€</span>
                     </span>
 
-                    {% if user %}
+               
                     <span class="lr">
                         Bienvenido {{ user.user_name }}
                     </span>
