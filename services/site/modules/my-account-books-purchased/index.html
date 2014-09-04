@@ -1,42 +1,66 @@
-<!-- title -->
 <h5 class="title">Mis compras</h5>
+<!-- title -->
 
-<table class="table table-striped tcart">
-    <thead>
-        <tr>
-            <th>Fecha</th>
-            <th>Estado</th>
-            <th>Precio</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for key, purchase in purchases %}
+<div class="widget">
 
-        <tr>
-            <td>{{ purchase.purchase_date_formatted }}</td>
-            <td>
-                <span class="label label-success">{{ purchase.purchase_status}}</span>
-            </td>
-            <td>{{ purchase.purchase_price}} &euro;</td>
-        </tr>
+    <div class="widget-content">
+        <div class="padd">
 
-        <tr>
-            <td colspan="3">
-                <table class="table table-striped tcart">
-                    {% for key, book in purchase.books %}
-                    <tr>
-                        <td>
-                            <img style="height:60px" src="data:image/png;base64,{{ book.book_image_base64 }}" alt="Red dot" />
-                        </td>
-                        <td>{{ book.book_title }}</td>
+            <!-- Table Page -->
+            <div class="page-tables">
+                <!-- Table -->
+                <div class="table-responsive">
+                    <table class="table table-striped tcart">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for key, purchase in purchases %}
+
+                            <tr>
+                                <td>{{ purchase.purchase_date_formatted }}</td>
+                                <td>
+                                    <span class="label label-success">{{ purchase.purchase_status}}</span>
+                                </td>
+                                <td>{{ purchase.purchase_price}} &euro;</td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3">
+                                    <div class="widget-head">
+                                        <div class="pull-left">
+
+                                        </div>
+                                        <div class="widget-icons pull-right">
+                                            <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a> 
+                                            
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <table class="table table-striped tcart">
+                                        {% for key, book in purchase.books %}
+                                        <tr>
+                                            <td>
+                                                <img style="height:60px" src="data:image/png;base64,{{ book.book_image_base64 }}" alt="Red dot" />
+                                            </td>
+                                            <td>{{ book.book_title }}</td>
 
 
-                    </tr>
-                    {% endfor %}
-                </table>
-            </td>
-        </tr>
-        {% endfor %}
+                                        </tr>
+                                        {% endfor %}
+                                    </table>
+                                </td>
+                            </tr>
+                            {% endfor %}
 
-    </tbody>
-</table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

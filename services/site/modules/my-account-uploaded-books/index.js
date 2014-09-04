@@ -49,7 +49,7 @@ module.exports = function(bs) {
                                 message: 'El campo t&iacute;tulo tiene que tener entre 3 y 30 car&aacute;cteres.'
                             },
                             regexp: {
-                                regexp: /^[a-zA-Z0-9_]+$/,
+                                regexp: /^[a-zA-Z0-9_ ]+$/,
                                 //message: 'El campo t&iacute;tulo solo puede contener n&uacute;meros y letras.'
                             }
                         }
@@ -83,7 +83,7 @@ module.exports = function(bs) {
                                 message: 'El campo autor tiene que tener entre 3 y 30 car&aacute;cteres.'
                             },
                             regexp: {
-                                regexp: /^[a-zA-Z0-9_]+$/,
+                                regexp: /^[a-zA-Z0-9_ ]+$/,
                                 message: 'El campo autor solo puede contener  y letras.'
                             }
                         }
@@ -101,7 +101,7 @@ module.exports = function(bs) {
                                 message: 'El campo idioma tiene que tener entre 3 y 30 car&aacute;cteres.'
                             },
                             regexp: {
-                                regexp: /^[a-zA-Z0-9_]+$/,
+                                regexp: /^[a-zA-ZÑñ0-9_ ]+$/,
                                 message: 'El campo idioma solo puede contener letras.'
                             }
                         }
@@ -114,13 +114,13 @@ module.exports = function(bs) {
                             }
                         }
                     },
-                    book_image: {
+                    /*book_image: {
                         validators: {
                             notEmpty: {
                                 message: 'Debe subir una.'
                             }
                         }
-                    },
+                    },*/
 
                     book_description: {
                         message: 'Campo descripci&oacute;n no v&aacute;lido',
@@ -134,7 +134,7 @@ module.exports = function(bs) {
                                 message: 'El campo descripci&oacute;n tiene que tener 9 car&aacute;cteres.'
                             },
                             regexp: {
-                                regexp: /^[a-zA-Z0-9_]+$/,
+                                regexp: /^[a-zA-Z0-9_ ]+$/,
                                 //message: 'El campo descripci&oacute;n solo puede contener n&uacute;meros .'
                             }
                         }
@@ -164,6 +164,10 @@ module.exports = function(bs) {
                                 min: 1,
                                 max: 4,
                                 message: 'El campo precio tiene que tener entre 3 y 30 car&aacute;cteres.'
+                            },
+                            regexp: {
+                                regexp: /^[0-9_,. ]+$/,
+                                //message: 'El campo descripci&oacute;n solo puede contener n&uacute;meros .'
                             }
                         }
                     }
@@ -172,12 +176,12 @@ module.exports = function(bs) {
            .submit(function(e) {
                 e.preventDefault();
 
-                $.socket.emit( 'update-book', $(this).serializeObject() );
+                $.socket.emit( 'upload-book', $(this).serializeObject() );
             });
         },
         events: ({
             'upload-book': function() {
-                bs.login.uploadBook( user_data );
+                bs.login.uploadBook( book_data );
             }
 
         })
