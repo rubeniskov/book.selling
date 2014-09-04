@@ -7,12 +7,13 @@
         <strong>{{ user.user_name }} {{ user.user_surname }}</strong>
         <br>
         <!-- Address -->
-        C/Andevalo Nº7 4ºB
-        <br>Madrid, España 28053
+        {{ user.user_address }} 
+
+        <br>{{ user.user_state }} , {{ user.user_country }}  {{ user.user_cp }} 
         <br>
 
         <!-- Phone number -->
-        <abbr title="Phone">Tlf::</abbr>605568987.
+        <abbr title="Phone">Tlf::</abbr>{{ user.user_phone }}.
         <br />
 
     </address>
