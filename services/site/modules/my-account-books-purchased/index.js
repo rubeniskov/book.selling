@@ -26,6 +26,15 @@ module.exports = function($) {
                 purchases: purchases
 
             });
+        },
+        __ready     : function( $ )
+        {
+            $( '[data-show]').click( function( e )
+            {
+                var btn     = $( this );
+
+                $( '[data-table='+  btn.attr( 'data-show' ) +']' ).toggleClass( 'hide' );
+            })
         }
     })
 };
