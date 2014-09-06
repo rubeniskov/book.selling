@@ -83,9 +83,6 @@
     "services": {
         "admin": {
             "modules": {
-                "books": {
-                    "events": []
-                },
                 "content-books": {
                     "events": []
                 },
@@ -105,12 +102,6 @@
                     "events": []
                 },
                 "header-top-bar": {
-                    "events": []
-                },
-                "sign-in": {
-                    "events": []
-                },
-                "sign-up": {
                     "events": []
                 },
                 "table-books": {
@@ -136,9 +127,6 @@
         "site": {
             "modules": {
                 "book-details": {
-                    "events": []
-                },
-                "books": {
                     "events": []
                 },
                 "books-carousel": {
