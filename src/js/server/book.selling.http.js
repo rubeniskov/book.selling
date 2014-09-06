@@ -41,7 +41,7 @@
             //res.end( n + ' views')
         })*/
 
-        app.use( session = bs.session
+        /*app.use( session = bs.session
         ({
             store   : new bs.session.store.mongodb
             ({
@@ -49,7 +49,7 @@
 
                 db      : bs.config.mongodb.database
             })
-        }));
+        }));*/
 
         app.use( function( req, res, next )
         {
