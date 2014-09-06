@@ -42,7 +42,7 @@
 
                 segments    : segments.slice( 1 ),
 
-                query       : uri.query/*,
+                params      : uri.query/*,
 
                 params      : params*/
             });
