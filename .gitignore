@@ -5,4 +5,4 @@ npm-debug.log
 services.zip
 package.json
 ./package.json
-mongodb/*
+mongodb/db/*
