@@ -1,7 +1,9 @@
 module.exports = function($) {
     return ({
-        __render: function() {
-            var query = $.mysql.query("SELECT * FROM tb_books WHERE book_id = 2");
+        __render: function(app) {
+            var isbn = app.segments[0];
+
+            var query = $.mysql.query("SELECT * FROM v_books WHERE book_isbn = :book_isbn", {book_isbn : isbn});
 
             if (query.error) {
                 return false;

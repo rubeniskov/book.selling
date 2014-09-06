@@ -1,5 +1,5 @@
 <!-- Title -->
-<h4 class="pull-left">Top 10</h4>
+<h4 class="pull-left">{{category}}</h4>
 
 
 <!-- Sorting -->
@@ -33,7 +33,7 @@
             <div class="item-details">
                 <!-- Name -->
                 <!-- Use the span tag with the class "ico" and icon link (hot, sale, deal, new) -->
-                <h5><a href="book/{{book.book_isbn}}">{{ book.book_title }}</a>
+                <h5><a href="/book/{{book.book_isbn}}">{{ book.book_title }}</a>
                     <span class="ico"></span>
                 </h5>
                 <div class="clearfix"></div>
@@ -47,7 +47,7 @@
                 <div class="button pull-right"><a href="#">Comprar</a>
                 </div>
                 {% else %}
-                <div class="button pull-right"><a href="book/{{book.book_isbn}}">Ver detalles</a>
+                <div class="button pull-right"><a href="/book/{{book.book_isbn}}">Ver detalles</a>
                 </div>
                 {% endif %}
                 <div class="clearfix"></div>

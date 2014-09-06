@@ -24,7 +24,7 @@
         <div class="item">
             <!-- Item image -->
             <div class="item-image">
-                <a href="book/{{purch.book_isbn}}">
+                <a href="book/{{book.book_isbn}}">
                     <img style="height:100px" src="data:image/jpeg;base64,{{ book.book_image_base64 }}" alt="Red dot" />
                 </a>
 
@@ -33,7 +33,7 @@
             <div class="item-details">
                 <!-- Name -->
                 <!-- Use the span tag with the class "ico" and icon link (hot, sale, deal, new) -->
-                <h5><a href="book/{{purch.book_isbn}}">{{ book.book_title }}</a>
+                <h5><a href="book/{{book.book_isbn}}">{{ book.book_title }}</a>
                     <span class="ico"></span>
                 </h5>
                 <div class="clearfix"></div>
@@ -47,7 +47,7 @@
                 <div class="button pull-right"><a href="#">Comprar</a>
                 </div>
                 {% else %}
-                <div class="button pull-right"><a href="book/{{purch.book_isbn}}">Ver detalles</a>
+                <div class="button pull-right"><a href="book/{{book.book_isbn}}">Ver detalles</a>
                 </div>
                 {% endif %}
                 <div class="clearfix"></div>

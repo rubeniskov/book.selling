@@ -426,6 +426,7 @@ SELECT
     `b`.`book_image`,
     `b`.`book_image_base64`,
     `b`.`book_description`,
+    `b`.`book_category`,
     `b`.`book_pages`,
     `b`.`book_price`
     
@@ -522,7 +523,7 @@ CREATE OR REPLACE VIEW `db_bookselling`.`v_books_categories` AS
 SELECT distinct
     (book_category)
 FROM
-    db_bookselling.tb_books;
+    db_bookselling.v_books_available;
 
 
 INSERT INTO `db_bookselling`.`tb_books`
