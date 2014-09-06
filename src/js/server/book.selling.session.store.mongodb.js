@@ -11,7 +11,10 @@
  */
 
 var mongo   = require('mongodb');
+
 var url     = require('url');
+
+var util    = require('util');
 
 
 /**
@@ -28,8 +31,9 @@ var defaultOptions = {host: '127.0.0.1',
                       defaultExpirationTime:  1000 * 60 * 60 * 24 * 14
                      };
 
-bs.session.store.mongodb = function( connect ) {
-  var Store = connect.Store || connect.session.Store;
+bs.session.store.mongodb = function( options ) {
+
+  var Store = bs.session.store;
 
   /**
    * Initialize MongoStore with the given `options`.
@@ -196,11 +200,7 @@ bs.session.store.mongodb = function( connect ) {
     
   };
 
-  /**
-   * Inherit from `Store`.
-   */
-
-  MongoStore.prototype.__proto__ = Store.prototype;
+util.inherits(MongoStore, Store);
 
   /**
    * Attempt to fetch session by the given `sid`.

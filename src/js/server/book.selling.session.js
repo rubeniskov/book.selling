@@ -12,20 +12,14 @@
 
     bs.session = function session(options) 
     {
-        var options = options || {},
-            key = options.key || 'connect.sid',
-            store = options.store || new MemoryStore,
-            cookie = options.cookie || {},
-            trustProxy = options.proxy,
-            storeReady = true,
+        var options         = options || {},
+            key             = options.key || 'connect.sid',
+            store           = options.store || new MemoryStore,
+            cookie          = options.cookie || {},
+            trustProxy      = options.proxy,
+            storeReady      = true,
             rollingSessions = options.rolling || false;
-
-        // notify user that this store is not
-        // meant for a production environment
-        if ('production' == env && store instanceof MemoryStore) {
-            console.warn(warning);
-        }
-
+//console.log( store );
         // generates the new session
         store.generate = function(req) {
             req.sessionID = uid(24);
@@ -173,8 +167,6 @@
             });
         };
     };
-
-    bs.session.store = {};
 
 })(BookSelling);
 
