@@ -2,9 +2,8 @@ node_modules/*
 dst
 /resources
 npm-debug.log
-package.json
+
 mongodb/server/*
-mongodb/db/*
 
 mongodb/db/local.0
 
@@ -13,3 +12,5 @@ mongodb/db/local.ns
 mongodb/db/mongod.lock
 
 mongodb/db/journal/j._0
+
+package.json
