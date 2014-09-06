@@ -348,7 +348,7 @@ DROP TABLE IF EXISTS `db_bookselling`.`tb_books_uploaded` ;
 CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_books_uploaded` (
   `book_uploaded_id`        INT(8)          NOT NULL PRIMARY KEY AUTO_INCREMENT, 
   `book_uploaded_date`      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `book_uploaded_price`     INT(3) NOT NULL,
+  `book_uploaded_price`     DECIMAL(5,2) NOT NULL,
   `user_id`                 INT(8) NOT NULL,
   `book_id`                 INT(8) NOT NULL,
   
@@ -376,7 +376,6 @@ CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_purchases` (
   `purchase_id`             INT(8)          NOT NULL PRIMARY KEY AUTO_INCREMENT, 
   `purchase_date`           TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `purchase_status`         ENUM( "En proceso","Entregado","En envio" ),
-  `purchase_price`          DECIMAL(5,2) NOT NULL,
   `user_id`                 INT(8) NOT NULL,
 
   CONSTRAINT `fk__tb_user__user_id`
@@ -465,12 +464,25 @@ FROM
         LEFT JOIN
     `db_bookselling`.`v_books` USING (`book_id`);
 
+-- -----------------------------------------------------
+-- View `db_bookselling`.`v_purchases` --Compras
+-- -----------------------------------------------------
+
+CREATE OR REPLACE VIEW `db_bookselling`.`v_purchases` AS
+SELECT 
+	p.*,
+    SUM(book_uploaded_price) AS purchase_price_total
+FROM
+    db_bookselling.tb_purchases AS p
+        LEFT JOIN
+    v_books_purchased USING (purchase_id)
+GROUP BY purchase_id;
 
 -- -----------------------------------------------------
--- View `db_bookselling`.`v_books_purchased_last` --Ultimos libros comprados
+-- View `db_bookselling`.`v_books_purchased_new` --Ultimos libros comprados
 -- -----------------------------------------------------
 
-CREATE OR REPLACE VIEW `db_bookselling`.`v_books_purchased_last` AS
+CREATE OR REPLACE VIEW `db_bookselling`.`v_books_purchased_new` AS
 SELECT 
     *
 FROM
@@ -479,9 +491,9 @@ ORDER BY purchase_id DESC
 LIMIT 4;
 
 -- -----------------------------------------------------
--- View `db_bookselling`.`v_books_available_latest` --Novedades
+-- View `db_bookselling`.`v_books_available_new` --Novedades
 -- -----------------------------------------------------
-CREATE OR REPLACE VIEW `db_bookselling`.`v_books_available_latest` AS
+CREATE OR REPLACE VIEW `db_bookselling`.`v_books_available_new` AS
 SELECT 
     *
 FROM
@@ -495,11 +507,22 @@ LIMIT 12
 -- -----------------------------------------------------
 CREATE OR REPLACE VIEW `db_bookselling`.`v_books_purchased_top` AS
 SELECT 
-    *
+	b.*,
+    COUNT(0) AS book_purchased_count
 FROM
-    v_books_purchased
-ORDER BY purchase_id ASC
-LIMIT 10;
+    db_bookselling.v_books_purchased AS bp
+LEFT JOIN
+	db_bookselling.v_books AS b USING(book_id)
+GROUP BY book_id;
+
+-- -----------------------------------------------------
+-- View `db_bookselling`.`v_books_categories` --Categorias de libros
+-- -----------------------------------------------------
+CREATE OR REPLACE VIEW `db_bookselling`.`v_books_categories` AS
+SELECT distinct
+    (book_category)
+FROM
+    db_bookselling.tb_books;
 
 
 INSERT INTO `db_bookselling`.`tb_books`
@@ -912,36 +935,36 @@ VALUES
     10.25,
     4,
     16
+),
+(
+    10.25,
+    3,
+    1
 );
 
 
 INSERT INTO `db_bookselling`.`tb_purchases`
 (
     `user_id`,
-    `purchase_status`,
-    `purchase_price`     
+    `purchase_status`   
    
 )
 VALUES
 (
     1,
-    "En proceso",
-    24.60
+    "En proceso"
 ),
 (
     1,
-    "Entregado",
-    33.20
+    "Entregado"
 ),
 (
     2,
-    "Entregado",
-    43.60
+    "Entregado"
 ),
 (
-    2,
-    "Entregado",
-    22.70
+    3,
+    "Entregado"
 );
 
 INSERT INTO `db_bookselling`.`tb_books_purchased`
@@ -979,5 +1002,13 @@ VALUES
 (
     3,
     16
+),
+(
+    4,
+    19
+),
+(
+    2,
+    1
 );
 
