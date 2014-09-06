@@ -24,9 +24,9 @@
 
         ddport  = process.argv[2] || 8888;
 
-        //app.use( cparser() );
+        app.use( cparser() );
 
-        //app.use( session = session({ secret: 'secret' }) );
+        app.use( session = session({ secret: 'secret' }) );
 
         /*app.use(function (req, res, next) 
         {
@@ -51,14 +51,14 @@
             })
         }));*/
 
-        app.use( function( req, res, next )
+        /*app.use( function( req, res, next )
         {
             console.log( req.session.set( 'test', 'foo', 'bar' ) );
 
             console.log( req.session.get( 'test', 'foo' ) );
 
             next();
-        });
+        });*/
 
         app.use( function( request, response, next )
         {
