@@ -60,9 +60,11 @@
             next();
         });*/
 
-        app.use( function( request, response, next )
+        app.use( function( req, res, next )
         {
-            var uri         = url.parse( request.url ).pathname,
+            var uri         = url.parse( req.url ).pathname,
+
+                segments    = uri.split( '/' ),
 
                 filename    = path.join( process.cwd(),  uri );
 
@@ -77,38 +79,43 @@
                             return data = err;
                         }
 
-                        response
-                        .set
-                        ({
-                            'Content-Type': mime.lookup( filename ),
-                            //'Content-Length': '123',
-                            //'ETag': '12345'
-                        })
-                        .status( 200 )
-                        .send( file );
+                        res
+                            .set
+                            ({
+                                'Content-Type': mime.lookup( filename ),
+                                //'Content-Length': '123',
+                                //'ETag': '12345'
+                            })
+                            .status( 200 )
+                            .send( file );
                     });
                 }
                 else
                 {
-                    response
-                    .set
-                    ({
-                        'Content-Type': 'text/html',
-                    })
-                    .status( 404 )
-                    .send( '<h1>Error 404</h1>' );
+                    res
+                        .set
+                        ({
+                            'Content-Type': 'text/html',
+                        })
+                        .status( 404 )
+                        .send( '<h1>Error 404</h1>' );
                 }
             }
             else
             {
-                if( bs.config.user.signed )
-                    request.session.user = bs.login.signIn( { user_email : bs.config.user.user_email, user_password : bs.config.user.user_password } ); // SESSION FORZADA USER
-
-                bs.service( service, { user : request.session.user, session : request.session, request : request, response : response, next : next } );
+                next();
             }
-
-            console.log( 'FROM RENDER ', request.session.views );
         });
+        
+        app.use( function( req, res, next )
+        {
+            if( bs.config.user.signed )
+                req.session.user = bs.login.signIn( { user_email : bs.config.user.user_email, user_password : bs.config.user.user_password } ); // SESSION FORZADA USER
+
+            next();
+        });
+        
+        app.use( bs.service );
 
         app.use( function( request, response, next )
         {

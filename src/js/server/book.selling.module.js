@@ -56,8 +56,6 @@
 
             render = { user: app.user, session : app.session };
 
-            console.log( render );
-
         return ({ 
             html    : bs.module.getHTML( service, name, script && script.__render && script.__render.call ? bs.extend( render, script.__render.call( null, app ) ) : render ), 
 

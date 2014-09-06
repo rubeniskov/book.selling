@@ -12,30 +12,55 @@
 
         services    = Object.keys( bs.config.services );
 
-    bs.service       = function( name, app )
+    bs.service      = function( req, res, next )
     {
-        var uri         = url.parse( app.request.url ).pathname,
+        var name        = bs.config.service
 
-            filename    = path.join( bs.config.dir.root,  uri ),
+            uri         = url.parse( req.url, true ),
 
-            segments    = uri.split( '/' ).slice( 1 );
+            filename    = path.join( bs.config.dir.root,  uri.pathname ),
+
+            segments    = uri.pathname.split( '/' ).slice( 1 );
 
             section     = segments[ 0 ] || 'home',
 
             main        = path.join( bs.config.dir.root, 'services',  name, 'index.html' ),
 
-            view        = bs.view( name, section, app );
+            view        = bs.view( name, section, 
+            { 
+                user        : req.session.user, 
+
+                session     : req.session, 
+
+                request     : req,
+
+                response    : res,
+
+                next        : next,
+
+                view        : section,
+
+                segments    : segments.slice( 1 ),
+
+                query       : uri.query/*,
+
+                params      : params*/
+            });
 
             if( fs.existsSync( main ) )
             {
                 main        = swig.renderFile( main, { view : view } );    
 
-                app.response.set
+                res.set
                 ({
                     'Content-Type': 'text/html'
                 })
                 .status( 200 )
                 .send( main );
+            }
+            else
+            {
+                next();
             }
     }
 

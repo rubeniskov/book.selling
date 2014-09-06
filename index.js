@@ -10,10 +10,7 @@ var argv 	= require('optimist').argv,
 
 	mongod 	= path.join( process.cwd(),  'mongodb' );
 
-
-console.log( mongod );
-
-	mongod = exec( mongod + '/server/mongod' + ' --dbpath ' + mongod + '/db' );
+	/*mongod 	= exec( mongod + '/server/mongod' + ' --dbpath ' + mongod + '/db' );
 
 	mongod.stdout.on('data', function (data) 
 	{
@@ -28,7 +25,9 @@ console.log( mongod );
 	mongod.on('close', function (code) 
 	{
 		console.log('child process exited with code ' + code);
-	});
+	});*/
 
 bs.server.start( argv.service, argv.port );
+
+//console.log( bs.session.store );
 
