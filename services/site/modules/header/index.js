@@ -4,7 +4,7 @@ module.exports = function( bs )
 
 		__render 	: function( app )
 		{
-			
+			console.log(app.segments);
 		}
 	})
 };

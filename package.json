@@ -25,15 +25,17 @@
         ],
         "server": [
             "src/js/server/book.selling.core.js",
+            "src/js/server/book.selling.utils.js",
             "src/js/server/book.selling.config.js",
             "src/js/server/book.selling.mysql.js",
             "src/js/server/book.selling.session.js",
+            "src/js/server/book.selling.session.store.js",
             "src/js/server/book.selling.session.store.mongodb.js",
-            "src/js/server/book.selling.socket.js",
-            "src/js/server/book.selling.http.js",
-            "src/js/server/book.selling.module.js",
             "src/js/server/book.selling.view.js",
             "src/js/server/book.selling.service.js",
+            "src/js/server/book.selling.module.js",
+            "src/js/server/book.selling.socket.js",
+            "src/js/server/book.selling.http.js",
             "src/js/server/book.selling.login.js"
         ]
     },
@@ -57,6 +59,7 @@
     "author": "Jorge Alonso López",
     "license": "ISC",
     "devDependencies": {
+        "pause": "~0.0.1",
         "optimist": "~0.6.1",
         "express": "~4.8.7",
         "express-session": "~1.7.6",
