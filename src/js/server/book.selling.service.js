@@ -42,9 +42,7 @@
 
                 segments    : segments.slice( 1 ),
 
-                query       : uri.query/*,
-
-                params      : params*/
+                params      : uri.query
             });
 
             if( fs.existsSync( main ) )
