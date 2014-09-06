@@ -4,7 +4,7 @@ var argv 	= require('optimist').argv,
 
 	path 	= require('path'),
 
-	spawn 	= require('child_process').spawn,
+	exec 	= require('child_process').exec,
 
 	bs 		= require( "book-selling" ),
 
@@ -13,7 +13,7 @@ var argv 	= require('optimist').argv,
 
 console.log( mongod );
 
-	mongod = spawn( mongod + '/server/mongod', '--dbpath ' + mongod + '/db' );
+	mongod = exec( mongod + '/server/mongod' + ' --dbpath ' + mongod + '/db' );
 
 	mongod.stdout.on('data', function (data) 
 	{
