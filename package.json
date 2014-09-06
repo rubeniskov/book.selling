@@ -141,6 +141,15 @@
                 "books-nav": {
                     "events": []
                 },
+                "books-news": {
+                    "events": []
+                },
+                "books-search": {
+                    "events": []
+                },
+                "books-top": {
+                    "events": []
+                },
                 "contact": {
                     "events": []
                 },
@@ -229,6 +238,9 @@
             },
             "views": [
                 "book-details",
+                "books-news",
+                "books-search",
+                "books-top",
                 "books",
                 "contact",
                 "error",
