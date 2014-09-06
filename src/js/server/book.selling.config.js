@@ -21,7 +21,7 @@
 
         mysql      : 
         {
-            host            : '127.0.0.1' || '10.0.0.105',
+            host            : '127.0.0.1',
 
             user            : 'root',
 
@@ -29,6 +29,14 @@
             
             database        : 'db_bookselling'
         },
+
+        mongodb    : 
+        {
+            host            : '127.0.0.1',
+            
+            database        : 'db_bookselling'
+        },
+
         service     : 'site',
 
         services    : pkg.services,

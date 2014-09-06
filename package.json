@@ -27,6 +27,8 @@
             "src/js/server/book.selling.core.js",
             "src/js/server/book.selling.config.js",
             "src/js/server/book.selling.mysql.js",
+            "src/js/server/book.selling.session.js",
+            "src/js/server/book.selling.session.store.mongodb.js",
             "src/js/server/book.selling.socket.js",
             "src/js/server/book.selling.http.js",
             "src/js/server/book.selling.module.js",
