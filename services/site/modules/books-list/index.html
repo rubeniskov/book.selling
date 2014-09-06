@@ -4,14 +4,16 @@
 
 <!-- Sorting -->
 <div class="form-group pull-right">
-    <select class="form-control">
-        <option>Ordenar por</option>
-        <option>Titulo (A-Z)</option>
-        <option>Titulo (Z-A)</option>
-        <option>Precio (Asc)</option>
-        <option>Precio (Desc)</option>
+    <form name="book-order-form">
+        <select name="sort" class="form-control">
+            <option value="book_id|asc">Ordenar por</option>
+            <option value="book_title|asc">Titulo (A-Z)</option>
+            <option value="book_title|desc">Titulo (Z-A)</option>
+            <option value="book_price|asc">Precio (Asc)</option>
+            <option value="book_price|desc">Precio (Desc)</option>
 
-    </select>
+        </select>
+    </form>
 </div>
 
 <div class="clearfix"></div>
