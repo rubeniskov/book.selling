@@ -9,15 +9,16 @@
         <!-- Don't forget the class "onethree-left" and "onethree-right" -->
         <div class="onethree-left">
             <!-- Image -->
-            <a href="/book-details">
+            <a href="book/{{purch.book_isbn}}">
                 <img style="height:80px" src="data:image/jpeg;base64,{{ purch.book_image_base64 }}" alt="Red dot" />
             </a>
         </div>
         <div class="onethree-right">
             <!-- Title -->
-            <a href="/book-details">{{purch.book_title}} </a>
+            <a href="/book/{{purch.book_isbn}}">{{purch.book_title}} </a>
             <!-- Para -->
-            <a href="/book-details">{{purch.book_author}} </a>
+            <br>
+            <a href="/book/{{purch.book_isbn}}">{{purch.book_author}} </a>
             <!-- Price -->
             <p class="bold">{{purch.book_price}}&euro;</p>
         </div>
