@@ -13,43 +13,44 @@
                     <table class="table table-striped tcart">
                         <thead>
                             <tr>
+                                <th>&nbsp;</th>
                                 <th>Fecha</th>
                                 <th>Estado</th>
-                                <th>Precio</th>
-                                <th>Mostrar</th>
+                                <th style="text-align:right;">Precio</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for key, purchase in purchases %}
-
-                            <tr>
-                                <td>{{ purchase.purchase_date_formatted }}</td>
-                                <td>
-                                    <span class="label label-{{purchase.label_status}}">{{ purchase.purchase_status}}</span>
-                                </td>
-                                <td>{{ purchase.purchase_price_total}} &euro;</td>
-                                <td>
-                                    <button data-show="{{ purchase.purchase_id}}" class="btn btn-xs btn-primary">
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
                             <tr data-table="{{ purchase.purchase_id}}" class="hide" >
-                                <td colspan="4">
+                                <td colspan="4" style="padding:0">
                                     <table class="table table-striped tcart">
                                         {% for key, book in purchase.books %}
                                         <tr>
                                             <td>
                                                 <img style="height:60px" src="data:image/png;base64,{{ book.book_image_base64 }}" alt="Red dot" />
                                             </td>
-                                            <td>{{ book.book_title }}</td>
-
-
+                                            <td><a href="/book/{{ book.book_isbn }}">{{ book.book_title }}</a></td>
+                                            <td>{{ book.book_author }}</td>
+                                            <td>{{ book.book_editorial }}</td>
+                                            <td><a href="/books-category/{{ book.book_category }}">{{ book.book_category }}</a></td>
+                                            <td>{{ book.book_uploaded_price }}&euro;</td>
                                         </tr>
                                         {% endfor %}
                                     </table>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button data-show="{{ purchase.purchase_id}}" class="btn btn-xs btn-primary">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    {{ purchase.purchase_date_formatted }}</td>
+                                <td>
+                                    <span class="label label-{{purchase.label_status}}">{{ purchase.purchase_status}}</span>
+                                </td>
+                                <td style="text-align:right;">{{ purchase.purchase_price_total}}&euro;</td>
                             </tr>
                             {% endfor %}
 
