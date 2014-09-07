@@ -1,0 +1,35 @@
+{% if page > 1 %}
+    <a href="?page={{page-1}}|{{pages_items}}">Anterior</a>
+{% endif %}
+
+{% if page < pages %}
+    <a href="?page={{page+1}}|{{pages_items}}">Sigiente</a>
+{% endif %}
+
+
+{% if page_index == page %}
+<span class='current'>{{page_index}}</span>
+{% else %}
+<a href='?page={{page_index}}|{{pages_items}}'>{{page_index}}</a>   
+{% endif %}      
+
+
+<div class="paging">
+
+
+            {% if page > 1 %}
+                <a href="?page={{page-1}}|{{pages_items}}">Anterior</a>
+            {% endif %}
+
+            {% for page_index in 1..pages %}
+
+                <a href='?page={{page_index}}|{{pages_items}}'>{{page_index}}</a>    
+
+            {% endfor %}
+
+            {% if page < pages %}
+                <a href="?page={{page+1}}|{{pages_items}}">Sigiente</a>
+            {% endif %}
+
+            
+        </div>
