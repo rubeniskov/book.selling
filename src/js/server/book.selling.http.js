@@ -9,8 +9,6 @@
         mstore  = require('express-session-mongo'),
 
         app     = express(),
-        
-      // mongos  = require('connect-mongo')(connect),
 
         url     = require("url"),
 
@@ -117,28 +115,32 @@
         
         app.use( bs.service );
 
-        app.use( function( request, response, next )
+        app.use( function( req, res, next )
         {
-            response
-            .set
-            ({
-                'Content-Type': 'text/html',
-            })
-            .status( 500 )
-            .send( '<h1>Error 500</h1>' );
+            res
+                .set
+                ({
+                    'Content-Type': 'text/html',
+                })
+                .status( 500 )
+                .send( '<h1>Error 500</h1>' );
         });
 
     bs.server =
     ({
         start   : function( serv, port )
         {
+            port    = parseInt( port || dport, 10 );
+
+            console.info( 'Iniciando servidor HTTP puerto ' + port );
+
             service     = serv || bs.config.service;
 
-            bs.socket( app.listen( parseInt( port || dport, 10 ) ), session );
+            bs.socket( app.listen( port ), session );
         },
         stop    : function()
         {
-
+            console.info( 'Deteniendo servidor HTTP' );
         }
     }); 
 

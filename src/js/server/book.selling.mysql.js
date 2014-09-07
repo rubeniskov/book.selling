@@ -4,19 +4,7 @@
 
         deasync     = require('deasync'),
 
-        connection  = mysql.createConnection( bs.config.mysql );
-        
-
-        connection.connect( function( err ) 
-        {
-            if (err) 
-            {
-                console.error('Error de conexión a MySql: ' + err.stack);
-                return;
-            }   
-
-            console.log('Conectado a MySql como ' + bs.config.mysql.user + ' a ' + bs.config.mysql.host + ' ID [' + connection.threadId + ']' );
-        }); 
+        connection  = mysql.createConnection( bs.config.mysql ); 
 
         connection.config.queryFormat = function (query, values) 
         {
@@ -85,6 +73,32 @@
             }
 
             return sync;
+        },
+        start   : function()
+        {
+            console.info( 'Iniciando conexión a Mysql');
+
+            connection.connect( function( err ) 
+            {
+                if (err) 
+                {
+                    console.error('Error de conexión a MySql: ' + err.stack);
+                    return;
+                }   
+
+                console.log('Conectado a MySql como ' + bs.config.mysql.user + ' a ' + bs.config.mysql.host + ' ID [' + connection.threadId + ']' );
+            });
+        },
+        stop    : function()
+        {
+            console.info( 'Deteniendo conexión a Mysql' );
+
+            connection.destroy();
+
+            connection.end( function(err) 
+            {
+                console.info( 'Conexión a Mysql detenida' );
+            });
         }
     });
 
