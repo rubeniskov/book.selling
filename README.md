@@ -1,17 +1,17 @@
 book.selling
 ============
 
-# Commando para lanzar servidor
+## Commando para lanzar servidor
 
-### Site:
+#### Site:
 
 node index.js --port=8080 --service=site
 
-### Admin:
+#### Admin:
 
 node index.js --port=8888 --service=admin
 
-# Cosas pendientes
+## Cosas pendientes
 
 * Cambiar todos los enlaces a /book por /book/{{book.book_isbn}}
 * Arreglar session mongodb
