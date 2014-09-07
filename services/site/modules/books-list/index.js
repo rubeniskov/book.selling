@@ -3,20 +3,34 @@ module.exports = function($) {
 
         __render: function( app ) {
             
-            var sort    = app.params.sort || 'book_title|desc',
+            var psort           = ( app.params.sort || 'book_title|desc' ).split( '|' ),
 
-                sort    = sort.split( '|' );
+                ppage           = ( app.params.page || '1|6' ).split( '|' ),
 
-            var query   = $.mysql.query('SELECT * FROM db_bookselling.v_books_available ORDER BY '+ sort[ 0 ] +' ' + sort[ 1 ] + '; ');
+                page            = Math.max( parseInt( ppage[ 0 ] ), 1 ),
 
+                page_items      = Math.max( parseInt( ppage[ 1 ] ), 1 ),
 
+                pages           = 1,
 
-            if (query.error) {
+                count           = $.mysql.query('SELECT COUNT(0) AS book_count FROM db_bookselling.v_books_available' ),
+
+                query           = $.mysql.query('SELECT * FROM db_bookselling.v_books_available ORDER BY '+ psort[ 0 ] + ' ' + psort[ 1 ] + ' LIMIT ' + ( page_items * ( page - 1 ) ) + ',' + page_items);
+
+            if (count.error || query.error) 
+            {
                 return false;
             }
+                pages           = Math.ceil( count.result[ 0 ][ 'book_count' ] / page_items );
 
             return {
-                books: query.result
+                books       : query.result,
+
+                page        : page,
+
+                pageitems   : page_items,
+
+                pages       : pages
             };
         },
         __ready: function($){
