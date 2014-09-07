@@ -10,7 +10,7 @@
 
     bs.module        = function( service, name, app )
     {
-        return bs.module.load( service, name, app );
+        return bs.module.load( service, name, app, {} );
     }
 
     bs.module.render     = function( service, html, includes, app )
@@ -23,7 +23,7 @@
 
                 name    = element.attr( 'name' ),
 
-                module  = bs.module.load( service, name, app ),
+                module  = bs.module.load( service, name, app, element[ 0 ].attribs ),
 
                 html    = 'Module ' + name + ' doesn\'t found';
 
@@ -50,14 +50,25 @@
         return $.html();
     }
 
-    bs.module.load       = function( service, name, app )
+    bs.module.load       = function( service, name, app, attr )
     {
         var script = bs.module.getScript( service, name ),
 
-            render = { user: app.user, session : app.session };
+            render = 
+            ({ 
+                user        : app.user,
+
+                session     : app.session, 
+
+                params      : app.params,
+
+                segments    : app.segments,
+
+                attributes  : attr
+            });
 
         return ({ 
-            html    : bs.module.getHTML( service, name, script && script.__render && script.__render.call ? bs.extend( render, script.__render.call( null, app ) ) : render ), 
+            html    : bs.module.getHTML( service, name, script && script.__render && script.__render.call ? bs.extend( render, script.__render.call( null, app, attr ) ) : render ), 
 
             script  : script
         });
