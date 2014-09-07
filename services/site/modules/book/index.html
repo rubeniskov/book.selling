@@ -5,19 +5,19 @@
         <div class="col-md-4 col-sm-4">
 
             <!-- Image. Flex slider -->
-            <img style="width:100%" src="data:image/jpeg;base64,{{ book.book_image_base64 }}" alt="Red dot" />
+            <img style="width:100%" src="data:image/jpeg;base64,{{ details.book_image_base64 }}" alt="Red dot" />
 
         </div>
         <!-- ITEM   -->
         <div class="col-md-8 col-sm-8">
             <!-- Title -->
-            <h4 class="title">{{ book.book_title }}</h4>
+            <h4 class="title">{{ details.book_title }}</h4>
 
             <!-- Quantity and add to cart button -->
 
             <div class="row">
                 <div class="col-md-12" style="text-align:justify;">
-                    {{ book.book_description}}
+                    {{ details.book_description}}
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
 <!-- Description, specs and review -->
 <ul class="nav nav-tabs">
     <!-- Use uniqe name for "href" in below anchor tags -->
-    <li class="active"><a href="#tab1" data-toggle="tab">Descripci&oacute;n</a>
+    <li class="active"><a href="#tab1" data-toggle="tab">Libros disponibles</a>
     </li>
     <li><a href="#tab2" data-toggle="tab">Detalles</a>
     </li>
@@ -40,10 +40,34 @@
 
 <!-- Tab Content -->
 <div class="tab-content">
-    <!-- Description -->
+    <!-- Books avalaible -->
     <div class="tab-pane active" id="tab1">
         <h5>{{ book.book_title }}</h5>
-        <p>{{ book.book_description}}</p>
+        <table class="table table-striped tcart">
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Fecha subida</th>
+                    <th>A&ntilde;adir al carrito</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, book in books %}
+                <tr>
+                    <td>{{book.user_name}}</td>
+                    <td>{{book.book_uploaded_date_formatted}}</td>
+                    <td>
+                        <button data-show="{{ purchase.purchase_id}}" class="btn btn-xs btn-primary">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </td>
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
 
     </div>
 
@@ -57,37 +81,37 @@
                     <td>
                         <strong>ISBN</strong>
                     </td>
-                    <td>{{ book.book_isbn }}</td>
+                    <td>{{ details.book_isbn }}</td>
                 </tr>
                 <tr>
                     <td>
                         <strong>Titulo</strong>
                     </td>
-                    <td>{{ book.book_title }}</td>
+                    <td>{{ details.book_title }}</td>
                 </tr>
                 <tr>
                     <td>
                         <strong>Editorial</strong>
                     </td>
-                    <td>{{ book.book_editorial }}</td>
+                    <td>{{ details.book_editorial }}</td>
                 </tr>
                 <tr>
                     <td>
                         <strong>Autor</strong>
                     </td>
-                    <td>{{ book.book_author }}</td>
+                    <td>{{ details.book_author }}</td>
                 </tr>
                 <tr>
                     <td>
                         <strong>Idioma</strong>
                     </td>
-                    <td>{{ book.book_language }}</td>
+                    <td>{{ details.book_language }}</td>
                 </tr>
                 <tr>
                     <td>
                         <strong>Paginas</strong>
                     </td>
-                    <td>{{ book.book_pages }}</td>
+                    <td>{{ details.book_pages }}</td>
                 </tr>
 
             </tbody>
