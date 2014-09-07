@@ -2,34 +2,22 @@
 <div class="product-main">
     <div class="row">
         <!-- IMAGENES -->
-        <div class="col-md-6 col-sm-6">
+        <div class="col-md-4 col-sm-4">
 
             <!-- Image. Flex slider -->
-            <img src="data:image/jpeg;base64,{{ book.book_image_base64 }}" alt="Red dot" />
+            <img style="width:100%" src="data:image/jpeg;base64,{{ book.book_image_base64 }}" alt="Red dot" />
 
         </div>
         <!-- ITEM   -->
-        <div class="col-md-6 col-sm-6">
+        <div class="col-md-8 col-sm-8">
             <!-- Title -->
             <h4 class="title">{{ book.book_title }}</h4>
-            <h5>Precio : {{ book.book_price }}</h5>
 
             <!-- Quantity and add to cart button -->
 
             <div class="row">
-                <div class="col-md-6">
-                 {% if user %}
-                    <div class="input-group">
-                        <input type="text" class="form-control" value="1">
-
-
-                        <span class="input-group-btn">
-                            <button class="btn btn-default btn-sm" type="button">A&ntilde;adir al carrito</button>
-                        </span>
-
-                       
-                    </div>
-                     {% endif %}
+                <div class="col-md-12" style="text-align:justify;">
+                    {{ book.book_description}}
                 </div>
             </div>
 
