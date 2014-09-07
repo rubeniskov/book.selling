@@ -6,6 +6,7 @@ module.exports = function( bs ) {
         },
         __ready: function( $ )
         {
+            return false;
             $( 'a:regex(href, ^\\?)' ).attr('href', function(i, v)
             {
                 return window.location.href + ( v.replace( '?', '&' ) );
