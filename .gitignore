@@ -1,6 +1,9 @@
 node_modules/*
+
 dst
+
 /resources
+
 npm-debug.log
 
 mongodb/server/*
@@ -14,3 +17,7 @@ mongodb/db/mongod.lock
 mongodb/db/journal/j._0
 
 package.json
+
+.DS_Store
+
+Thumbs.db
