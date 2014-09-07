@@ -10,22 +10,33 @@ var argv 	= require('optimist').argv,
 
 	mongod 	= path.join( process.cwd(),  'mongodb' );
 
-	/*mongod 	= exec( mongod + '/server/mongod' + ' --dbpath ' + mongod + '/db' );
+	mongod 	= exec( mongod + '/server/mongod' + ' --dbpath ' + mongod + '/db' );
 
 	mongod.stdout.on('data', function (data) 
-	{
-		console.log('stdout: ' + data);
+	{	
+		data = data.match( /(.+)\s\[(\w+)\]\s(.*)/ );
+		
+		switch( data[ 2 ] )
+		{
+			case 'initandlisten':
+			case 'clientcursormon':
+				console.info( 'MongoDB Server: ' + data[ 3 ] );
+			break;
+			case 'signalProcessingThread':
+				console.warn( 'MongoDB Server: ' + data[ 3 ] );
+			break;
+		}
 	});
 	
 	mongod.stderr.on('data', function (data) 
 	{
-		console.log('stderr: ' + data);
+		//console.log('stderr: ' + data);
 	});
 	
 	mongod.on('close', function (code) 
 	{
-		console.log('child process exited with code ' + code);
-	});*/
+		console.warn('child process exited with code ' + code);
+	});
 
 bs.mysql.start();
 
@@ -49,7 +60,6 @@ process.on('SIGINT', function()
   		process.exit();
   	},1000)
 });
-
 
 //console.log( bs.session.store );
 
