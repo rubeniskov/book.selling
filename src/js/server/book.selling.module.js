@@ -1,6 +1,6 @@
 (function( bs ){
     
-    var swig        = require('swig'),
+    var twig        = require('twig').twig,
 
         cheerio     = require("cheerio"),
 
@@ -83,9 +83,14 @@
 
     bs.module.getHTML    = function( service, name, data )
     {
-        var html    = bs.module.getFile( service, name, 'index.html' );
+        var path    = bs.module.getFile( service, name, 'index.html' ),
 
-        return html ? swig.renderFile( html, data ) : 'Module index.html - ' + name + ' doesn\'t found';
+            html    = twig
+            ({
+                data: path ? fs.readFileSync( path, "binary" ) : 'Module index.html - ' + name + ' doesn\'t found'
+            });
+
+        return html.render( data ) ;
     }
 
     bs.module.getScript  = function( service, name )
