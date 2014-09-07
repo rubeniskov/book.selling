@@ -8,6 +8,8 @@
 
         mstore  = require('express-session-mongo'),
 
+        und     = require('underscore'),
+
         app     = express(),
 
         url     = require("url"),
@@ -69,8 +71,11 @@
                 db      : bs.config.mongodb.database
             })
         }));*/
-
-        app.use( '/img', express.static( bs.config.dir.root + '/img' ) );
+        
+        und.each( bs.config.resources, function( resource, index )
+        {
+            app.use( resource[ 0 ], express.static( bs.config.dir.root + resource[ 1 ] ) );
+        });
 
         app.use( function( req, res, next )
         {

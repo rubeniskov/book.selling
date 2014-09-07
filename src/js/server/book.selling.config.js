@@ -41,6 +41,8 @@
 
         services    : pkg.services,
 
+        resources   : pkg.resources,
+
         user        :
         {
             signed          : true,

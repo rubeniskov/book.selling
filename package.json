@@ -39,6 +39,28 @@
             "src/js/server/book.selling.login.js"
         ]
     },
+    "resources": [
+        [
+            "/img",
+            "/img"
+        ],
+        [
+            "/css/bookselling.css",
+            "/dst/bookselling.css"
+        ],
+        [
+            "/css/bookselling.site.css",
+            "/dst/bookselling.site.css"
+        ],
+        [
+            "/css/bookselling.admin.css",
+            "/dst/bookselling.admin.css"
+        ],
+        [
+            "/js/bookselling.js",
+            "/dst/bookselling.js"
+        ]
+    ],
     "views": {
         "site": {
             "modules": [
@@ -86,6 +108,9 @@
     "services": {
         "admin": {
             "modules": {
+                "books": {
+                    "events": []
+                },
                 "content-books": {
                     "events": []
                 },
@@ -105,6 +130,12 @@
                     "events": []
                 },
                 "header-top-bar": {
+                    "events": []
+                },
+                "sign-in": {
+                    "events": []
+                },
+                "sign-up": {
                     "events": []
                 },
                 "table-books": {
@@ -130,6 +161,9 @@
         "site": {
             "modules": {
                 "book": {
+                    "events": []
+                },
+                "books": {
                     "events": []
                 },
                 "books-carousel": {

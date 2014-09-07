@@ -99,6 +99,20 @@ module.exports = function(grunt) {
                 {
                     '<%= pkg.destination %>/<%= pkg.alias %>.css': 'src/less/book.selling.less'
                 }
+            },
+            admin:
+            {
+                files: 
+                {
+                    '<%= pkg.destination %>/<%= pkg.alias %>.admin.css': 'src/less/book.selling.admin.less'
+                }
+            },
+            site:
+            {
+                files: 
+                {
+                    '<%= pkg.destination %>/<%= pkg.alias %>.site.css': 'src/less/book.selling.site.less'
+                }
             }
         },
 
@@ -158,6 +172,20 @@ module.exports = function(grunt) {
                 files: 
                 {
                     "<%= pkg.destination %>/<%= pkg.alias %>.min.css": "<%= pkg.destination %>/<%= pkg.alias %>.css",
+                }
+            },
+            admin: 
+            {
+                files: 
+                {
+                    "<%= pkg.destination %>/<%= pkg.alias %>.admin.min.css": "<%= pkg.destination %>/<%= pkg.alias %>.admin.css",
+                }
+            },
+            site: 
+            {
+                files: 
+                {
+                    "<%= pkg.destination %>/<%= pkg.alias %>.site.min.css": "<%= pkg.destination %>/<%= pkg.alias %>.site.css",
                 }
             }
         },
