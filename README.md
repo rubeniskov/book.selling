@@ -1,6 +1,16 @@
 book.selling
 ============
 
+# Commando para lanzar servidor
+
+### Site:
+
+node index.js --port=8080 --service=site
+
+### Admin:
+
+node index.js --port=8888 --service=admin
+
 # Cosas pendientes
 
 * Cambiar todos los enlaces a /book por /book/{{book.book_isbn}}
