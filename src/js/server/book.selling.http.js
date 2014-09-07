@@ -147,13 +147,11 @@
 
     bs.server =
     ({
-        start   : function( serv, port )
+        start   : function( port )
         {
             port    = parseInt( port || dport, 10 );
 
             console.info( 'Iniciando servidor HTTP puerto ' + port );
-
-            service     = serv || bs.config.service;
 
             bs.socket( app.listen( port ), session );
         },

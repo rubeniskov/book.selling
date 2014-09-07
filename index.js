@@ -38,9 +38,11 @@ var argv 	= require('optimist').argv,
 		console.warn('child process exited with code ' + code);
 	});
 
+bs.config.service = argv.service || bs.config.service,
+
 bs.mysql.start();
 
-bs.server.start( argv.service, argv.port );
+bs.server.start( argv.port );
 
 process.on('exit', function(code) 
 {
