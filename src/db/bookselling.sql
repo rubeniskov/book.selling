@@ -375,7 +375,7 @@ DROP TABLE IF EXISTS `db_bookselling`.`tb_purchases` ;
 CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_purchases` (
   `purchase_id`             INT(8)          NOT NULL PRIMARY KEY AUTO_INCREMENT, 
   `purchase_date`           TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `purchase_status`         ENUM( "En proceso","Entregado","En envio" ),
+  `purchase_status`         ENUM( "En proceso","Entregado","En envio", "Error" ),
   `user_id`                 INT(8) NOT NULL,
 
   CONSTRAINT `fk__tb_user__user_id`

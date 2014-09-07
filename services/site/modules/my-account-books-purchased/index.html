@@ -25,9 +25,9 @@
                             <tr>
                                 <td>{{ purchase.purchase_date_formatted }}</td>
                                 <td>
-                                    <span class="label label-success">{{ purchase.purchase_status}}</span>
+                                    <span class="label label-{{purchase.label_status}}">{{ purchase.purchase_status}}</span>
                                 </td>
-                                <td>{{ purchase.purchase_price}} &euro;</td>
+                                <td>{{ purchase.purchase_price_total}} &euro;</td>
                                 <td>
                                     <button data-show="{{ purchase.purchase_id}}" class="btn btn-xs btn-primary">
                                         <i class="fa fa-plus"></i>
