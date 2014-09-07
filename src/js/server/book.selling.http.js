@@ -58,6 +58,20 @@
             next();
         });*/
 
+        /*app.use( session = bs.session
+        ({
+            secret  : "bookselling",
+
+            store   : new bs.session.store.mongodb
+            ({
+                host    : bs.config.mongodb.host,
+
+                db      : bs.config.mongodb.database
+            })
+        }));*/
+
+        app.use( '/img', express.static( bs.config.dir.root + '/img' ) );
+
         app.use( function( req, res, next )
         {
             var uri         = url.parse( req.url ).pathname,
