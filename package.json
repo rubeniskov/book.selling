@@ -240,7 +240,7 @@
                 "my-account-books-purchased": {
                     "events": []
                 },
-                "my-account-personal-menu": {
+                "my-account-nav": {
                     "events": []
                 },
                 "my-account-profile": {
@@ -284,17 +284,17 @@
             "views": [
                 "book",
                 "books-category",
+                "books-list",
                 "books-news",
                 "books-search",
                 "books-top",
-                "books",
                 "contact",
                 "error",
                 "home",
+                "my-account-books-list",
                 "my-account-books-purchased",
-                "my-account-books",
+                "my-account-profile-details",
                 "my-account-profile-update",
-                "my-account-profile",
                 "my-account-shopping-cart",
                 "my-account-uploaded-books",
                 "sign-in",

@@ -5,20 +5,23 @@
         <li rel="books-list">
             <a href="/books-list">Todos</a>
         </li>
+        <li rel="books-category" class="dropdown">
+            <a href="/my-account"  data-toggle="dropdown">Categor&iacute;as <b class="categories"></b></a>
+            <ul class="dropdown-menu">
+                {% for key, category in categories %}
+                    <li><a href="/books-category/{{category.book_category}}">{{category.book_category}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
         <li rel="books-news">
             <a href="/books-news">Novedades</a>
         </li>
         <li rel="books-top">
             <a href="/books-top">Top 10</a>
         </li>
-        <li rel="books-category" class="dropdown">
-            <a href="/my-account"  data-toggle="dropdown">Categor&iacute;as <b class="categories"></b></a>
-            <ul class="dropdown-menu">
-                {% for key, category in categories %}
-	                <li><a href="/books-category/{{category.book_category}}">{{category.book_category}}</a>
-	                </li>
-                {% endfor %}
-            </ul>
+        <li rel="books-search">
+            <a href="/books-search">Buscar</a>
         </li>
     </ul>
 

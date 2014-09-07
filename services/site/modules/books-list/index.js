@@ -1,9 +1,32 @@
 module.exports = function($) {
     return ({
 
-        __render: function( app ) {
+        __render: function( app, attr ) {
+            //WHERE book_category=:
             
-            var psort           = ( app.params.sort || 'book_title|desc' ).split( '|' ),
+            var sections        =
+                {
+                    "list"      : 
+                    { 
+                        table : "v_books_available"
+                    },
+                    "news"      : 
+                    { 
+                        table : "v_books_available_new"
+                    },
+                    "search"    : 
+                    { 
+                        table : "v_books_available"
+                    },
+                    "category"  : 
+                    { 
+                        table : "v_books_available"
+                    }
+                },
+
+                section         = sections[ attr.section || "list" ],
+
+                psort           = ( app.params.sort || 'book_title|desc' ).split( '|' ),
 
                 ppage           = ( app.params.page || '1|6' ).split( '|' ),
 
@@ -13,9 +36,9 @@ module.exports = function($) {
 
                 pages           = 1,
 
-                count           = $.mysql.query('SELECT COUNT(0) AS book_count FROM db_bookselling.v_books_available' ),
+                count           = $.mysql.query('SELECT COUNT(0) AS book_count FROM db_bookselling.' + section.table ),
 
-                query           = $.mysql.query('SELECT * FROM db_bookselling.v_books_available ORDER BY '+ psort[ 0 ] + ' ' + psort[ 1 ] + ' LIMIT ' + ( page_items * ( page - 1 ) ) + ',' + page_items);
+                query           = $.mysql.query('SELECT * FROM db_bookselling.'+ section.table +' ORDER BY '+ psort[ 0 ] + ' ' + psort[ 1 ] + ' LIMIT ' + ( page_items * ( page - 1 ) ) + ',' + page_items);
 
             if (count.error || query.error) 
             {
