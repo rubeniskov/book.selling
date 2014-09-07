@@ -15,6 +15,14 @@ module.exports = function($) {
             return {
                 categories: query.result
             };
+        },
+
+        __ready: function( $ )
+        {
+            $( 'li[rel]' ).each(function()
+            {
+                ( new RegExp( $(this).attr( 'rel' ) ) ).test( window.location.href ) && $(this).addClass( 'active' );
+            })
         }
     })
 };

@@ -2,11 +2,16 @@
 <!-- Sidebar navigation -->
 <nav>
     <ul id="navi">
-        <li><a href="/books-news">Novedades</a>
+        <li rel="books-list">
+            <a href="/books-list">Todos</a>
         </li>
-        <li><a href="/books-top">Top 10</a>
+        <li rel="books-news">
+            <a href="/books-news">Novedades</a>
         </li>
-        <li class="dropdown">
+        <li rel="books-top">
+            <a href="/books-top">Top 10</a>
+        </li>
+        <li rel="books-category" class="dropdown">
             <a href="/my-account"  data-toggle="dropdown">Categor&iacute;as <b class="categories"></b></a>
             <ul class="dropdown-menu">
                 {% for key, category in categories %}
