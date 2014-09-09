@@ -48,8 +48,9 @@
                 <tr>
                     <th>Usuario</th>
                     <th>Fecha subida</th>
+                     {% if user %}
                     <th>A&ntilde;adir al carrito</th>
-
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -57,11 +58,13 @@
                 <tr>
                     <td>{{book.user_name}}</td>
                     <td>{{book.book_uploaded_date_formatted}}</td>
+                    {% if user %}
                     <td>
                         <button data-show="{{ purchase.purchase_id}}" class="btn btn-xs btn-primary">
                             <i class="fa fa-plus"></i>
                         </button>
                     </td>
+                     {% endif %}
 
                 </tr>
                 {% endfor %}
