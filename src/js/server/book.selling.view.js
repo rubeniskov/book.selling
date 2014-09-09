@@ -1,8 +1,6 @@
 (function( bs ){
     
-    var swig        = require('swig'),
-
-        cheerio     = require("cheerio"),
+    var cheerio     = require("cheerio"),
 
         fs          = require("fs"),
 
@@ -27,7 +25,7 @@
             {
                 if( fs.existsSync( html ) )
                 {
-                    html    = bs.module.render( service, swig.renderFile( html, { } ), includes, app );
+                    html    = bs.module.render( service, bs.utils.template( html, app ), includes, app );
                 }
                 else
                 {

@@ -1,8 +1,6 @@
 (function( bs ){
     
-    var twig        = require('twig').twig,
-
-        cheerio     = require("cheerio"),
+    var cheerio     = require("cheerio"),
 
         path        = require("path"),
 
@@ -34,7 +32,7 @@
 
                 if( includes && !includes[ name ] && module.script && module.script.__ready )
                 {
-                    includes[ name ] = module.script.__ready;
+                    includes[ name ] = module.script.__ready.toString();
                 }
 
                 element.replaceWith
@@ -54,7 +52,7 @@
     {
         var script = bs.module.getScript( service, name ),
 
-            render = 
+            data = 
             ({ 
                 user        : app.user,
 
@@ -68,7 +66,7 @@
             });
 
         return ({ 
-            html    : bs.module.getHTML( service, name, script && script.__render && script.__render.call ? bs.extend( render, script.__render.call( null, app, attr ) ) : render ), 
+            html    : bs.module.getHTML( service, name, script && script.__render && script.__render.call ? bs.extend( data, script.__render.call( null, app, attr ) ) : data ), 
 
             script  : script
         });
@@ -83,14 +81,9 @@
 
     bs.module.getHTML    = function( service, name, data )
     {
-        var path    = bs.module.getFile( service, name, 'index.html' ),
+        var path    = bs.module.getFile( service, name, 'index.html' );
 
-            html    = twig
-            ({
-                data: path ? fs.readFileSync( path, "binary" ) : 'Module index.html - ' + name + ' doesn\'t found'
-            });
-
-        return html.render( data ) ;
+        return bs.utils.template( path, data);
     }
 
     bs.module.getScript  = function( service, name )

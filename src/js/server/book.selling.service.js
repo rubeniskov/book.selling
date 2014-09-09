@@ -1,8 +1,6 @@
 (function( bs ){
     
-    var swig        = require('swig'),
-
-        url         = require("url"),
+    var url         = require("url"),
 
         fs          = require("fs"),
 
@@ -28,9 +26,9 @@
 
             view        = bs.view( name, section, 
             { 
-                user        : req.session.user, 
+                user        : req.session.get( 'user' ), 
 
-                session     : req.session, 
+                session     : req.session,
 
                 request     : req,
 
@@ -49,14 +47,12 @@
 
             if( fs.existsSync( main ) )
             {
-                main        = swig.renderFile( main, { view : view } );    
-
                 res.set
-                ({
-                    'Content-Type': 'text/html'
-                })
-                .status( 200 )
-                .send( main );
+                    ({
+                        'Content-Type': 'text/html'
+                    })
+                    .status( 200 )
+                    .send( bs.utils.template( main, { view : view }) );
             }
             else
             {
