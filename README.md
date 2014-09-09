@@ -17,6 +17,7 @@ node index.js --port=8888 --service=admin
 * Arreglar session mongodb
 * Añadir funcionalidad de carrito
 * Añadir funcionalidad de subir libro
+* Quitar exclamaciones del final del eslogan del Logotipo y ponerlo bien
 * Incluir en admin.less css de admin
 * la vista /book/{{book.book_isbn}} está mal conceptuada, no se puede añadr al carrito un libro de tb_books, habrá que hacer un listado de libros diponibles en ese módulo, que hayan subidos los usuarios.
 	* Añadir al contacto un campo mensaje para que se inserte en una tabla tb_contact que se mostrará en el administrador
