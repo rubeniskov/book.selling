@@ -44,7 +44,7 @@
                 <div class="item-price pull-left">{{ book.book_price }}</div>
                 <!-- Add to cart -->
                 {% if user %}
-                <div class="button pull-right"><a href="#">Comprar</a>
+                 <div class="button pull-right"><a add-to-cart-book="{{book.book_uploaded_id}}" href="javascript::void(0)">Comprar</a>
                 </div>
                 {% else %}
                 <div class="button pull-right"><a href="/book/{{book.book_isbn}}">Ver detalles</a>
