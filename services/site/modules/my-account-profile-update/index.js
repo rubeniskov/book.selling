@@ -187,11 +187,11 @@ module.exports = function(bs) {
                     }
                 }
             })
-           .submit(function(e) {
-                e.preventDefault();
+                .submit(function(e) {
+                    e.preventDefault();
 
-                $.socket.emit( 'sign-update', $(this).serializeObject() );
-            });
+                    $.socket.emit('sign-update', $(this).serializeObject());
+                });
         },
         events: ({
             'sign-up': function() {
@@ -203,11 +203,19 @@ module.exports = function(bs) {
             'sign-out': function() {
 
             },
-            'sign-update': function(user_data) {
-                bs.login.signUpdate(user_data);
+            'sign-update': function(user_data) 
+            {
+                user_data.user_id = this.request.session.user.user_id;   
+
+                var query = bs.mysql.query(
+                    'REPLACE INTO `tb_users`( `user_id`, `user_email`, `user_password`, `user_name`, `user_surname`, `user_birthdate`, `user_sex`, `user_phone`, `user_address`, `user_cp`, `user_state`, `user_country`)'  +
+                    'VALUES( :user_id, :user_email, MD5(:user_password), :user_name, :user_surname, :user_birthdate, :user_sex, :user_phone, :user_address, :user_cp, :user_state, :user_country )',
+                    user_data
+                );
             }
 
         })
     })
 
 };
+//WHERE user_id=:user_id', { user_id : app.user.user_id }

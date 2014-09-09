@@ -21,7 +21,7 @@ module.exports = function( bs )
 		({
 			'send-message': function( json_contact ) 
             {
-                console.log(json_contact);
+                console.log( json_contact );
 
                 var query = bs.mysql.query
 	            ( 
