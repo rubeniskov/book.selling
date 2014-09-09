@@ -402,6 +402,21 @@ CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_books_purchased` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `db_bookselling`.`tb_contact`--Formulario de contacto
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `db_bookselling`.`tb_contact` ;
+
+CREATE TABLE IF NOT EXISTS `db_bookselling`.`tb_contact` (
+  	`contact_id`        INT(8)          NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+  	`contact_name`      VARCHAR(25) 	NOT NULL,
+  	`contact_surname`   VARCHAR(25) 	NOT NULL,
+  	`contact_email`  	VARCHAR(25) 	NOT NULL,
+	`contact_message`   TEXT            NOT NULL)
+
+ENGINE = InnoDB;
+
 -- -----------------------------------------------------
 -- View `db_bookselling`.`v_books` --Libros
 -- -----------------------------------------------------
