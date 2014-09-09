@@ -31,13 +31,13 @@ module.exports = function( bs )
         events: ({
             'sign-in': function( credential ) 
             {
-            	//this.request.session.user = bs.login.signIn( credential );
+            	this.request.session.set( 'user', bs.login.signIn( credential ) );
 
                 //this.request.session.test = 'putaprueba';
 
-                this.request.session.views -= 100;
+                //this.request.session.views -= 100;
 
-                console.log( 'FROM SOCKET', this.request.session.views );
+                //console.log( 'FROM SOCKET', this.request.session.views );
 
             	//bs.socket.emit( 'success' );
             }

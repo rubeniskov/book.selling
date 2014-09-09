@@ -6,7 +6,7 @@
 
         service     = bs.config.service;
 
-    bs.socket        = function( server, session )
+    bs.socket       = function( server, session )
     {
         var sevent;
 

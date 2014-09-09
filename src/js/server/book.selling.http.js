@@ -2,15 +2,11 @@
 
     var express = require('express'),
 
-        cparser = require('cookie-parser'),
-
-        session = require('cookie-session'),
-
         mstore  = require('express-session-mongo'),
 
         und     = require('underscore'),
 
-        app     = express(),
+        http    = require('http'),
 
         url     = require("url"),
 
@@ -20,13 +16,13 @@
 
         mime    = require("mime"),
 
+        app     = express(),
+
         service = bs.config.service,
 
         ddport  = process.argv[2] || 8888;
 
-        app.use( cparser() );
-
-        app.use( session = session({ secret: 'secret' }) );
+        //app.use( session = session({ secret: 'secret' }) );
 
         /*app.use(function (req, res, next) 
         {
@@ -59,18 +55,16 @@
 
             next();
         });*/
+    
+        app.use( function( req, res, next )
+        {
+            process.nextTick(next);
+        });
 
-        /*app.use( session = bs.session
+        app.use( session = bs.session
         ({
-            secret  : "bookselling",
-
-            store   : new bs.session.store.mongodb
-            ({
-                host    : bs.config.mongodb.host,
-
-                db      : bs.config.mongodb.database
-            })
-        }));*/
+            secret  : "bookselling"
+        }));
         
         und.each( bs.config.resources, function( resource, index )
         {
@@ -109,14 +103,7 @@
                 }
                 else
                 {
-                    //res.redirect( '/error/404' );
-                    res
-                        .set
-                        ({
-                            'Content-Type': 'text/html',
-                        })
-                        .status( 404 )
-                        .send( '<h1>Error 404</h1>' );
+                    res.redirect( '/error/404' );
                 }
             }
             else
@@ -125,25 +112,11 @@
             }
         });
         
-        app.use( function( req, res, next )
-        {
-            if( bs.config.user.signed )
-                req.session.user = bs.login.signIn( { user_email : bs.config.user.user_email, user_password : bs.config.user.user_password } ); // SESSION FORZADA USER
-
-            next();
-        });
-        
         app.use( bs.service );
 
         app.use( function( req, res, next )
         {
-            res
-                .set
-                ({
-                    'Content-Type': 'text/html',
-                })
-                .status( 500 )
-                .send( '<h1>Error 500</h1>' );
+            res.redirect( '/error/404' );
         });
 
     bs.server =

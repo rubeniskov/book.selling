@@ -28,7 +28,7 @@
             
             var current     = 0
 
-                delay       = 100,
+                delay       = 10,
 
                 timeout     = 10000, 
 

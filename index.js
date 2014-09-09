@@ -40,27 +40,33 @@ var argv 	= require('optimist').argv,
 
 bs.config.service = argv.service || bs.config.service,
 
-bs.mysql.start();
 
-bs.server.start( argv.port );
+
+setTimeout( function()
+{
+	bs.mysql.start();
+
+	bs.mongodb.start();
+
+	bs.server.start( argv.port );
+
+},2000);
+
 
 process.on('exit', function(code) 
 {
-	
+	bs.server.stop();
+
+	bs.mysql.stop();
+
+	bs.mongodb.stop();
 });
 
 process.on('SIGINT', function() 
 {
 	console.warn( '\n\n\nDeteniendo servicios\n\n' );
 
-	bs.server.stop();
-
-	bs.mysql.stop();
-
-  	setTimeout( function()
-  	{
-  		process.exit();
-  	},1000)
+	process.exit();
 });
 
 //console.log( bs.session.store );

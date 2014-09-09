@@ -13,7 +13,7 @@
         },
         signIn   : function( credentials )
         {
-            var query = bs.mysql.query( "SELECT * FROM tb_users WHERE user_email=:user_email AND user_password=:user_password", credentials );
+            var query = bs.mysql.query( "SELECT user_id, user_name FROM tb_users WHERE user_email=:user_email AND user_password=:user_password", credentials );
 
             return query.result[ 0 ];
         },
