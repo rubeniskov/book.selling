@@ -1,34 +1,24 @@
 <table class="table table-striped tcart">
     <thead>
         <tr>
-            <th>Nombre</th>
-            <th>Cantidad</th>
+            <th>T&iacute;tulo</th>
+            <th>Vendedor</th>
             <th>Precio</th>
         </tr>
     </thead>
     <tbody>
+    {% for item in items %}
         <tr>
-            <td><a href="single-item.html">HTC One</a>
+            <td>
+                <a href="/book/{{item.book_isbn}}">{{item.book_title}}</a>
             </td>
-            <td>2</td>
-            <td>$250</td>
-        </tr>
-        <tr>
-            <td><a href="single-item.html">Apple iPhone</a>
+            <td>
+                {{item.user_name}}
             </td>
-            <td>1</td>
-            <td>$502</td>
-        </tr>
-        <tr>
-            <td><a href="single-item.html">Galaxy Note</a>
+            <td>
+                {{item.book_uploaded_price}}
             </td>
-            <td>4</td>
-            <td>$1303</td>
         </tr>
-        <tr>
-            <th></th>
-            <th>Total</th>
-            <th>$2405</th>
-        </tr>
+    {% endfor %}
     </tbody>
 </table>
