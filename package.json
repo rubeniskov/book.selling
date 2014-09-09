@@ -29,6 +29,7 @@
             "src/js/server/book.selling.utils.js",
             "src/js/server/book.selling.config.js",
             "src/js/server/book.selling.mysql.js",
+            "src/js/server/book.selling.mongodb.js",
             "src/js/server/book.selling.session.js",
             "src/js/server/book.selling.session.store.js",
             "src/js/server/book.selling.session.store.mongodb.js",
@@ -82,6 +83,7 @@
     "author": "Jorge Alonso López",
     "license": "ISC",
     "devDependencies": {
+        "MD5": "1.2.1",
         "base64": "~2.1.0",
         "pause": "~0.0.1",
         "optimist": "~0.6.1",
