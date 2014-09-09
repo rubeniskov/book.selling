@@ -72,7 +72,7 @@ module.exports = function(bs) {
                     },
 
                     book_author: {
-                         message: 'Campo autor no v&aacute;lido',
+                        message: 'Campo autor no v&aacute;lido',
 
                         validators: {
                             notEmpty: {
@@ -172,16 +172,23 @@ module.exports = function(bs) {
                         }
                     }
                 }
-            })
-           .submit(function(e) {
-                e.preventDefault();
+            }).submit(function(e) {
+                    e.preventDefault();
 
-                $.socket.emit( 'upload-book', $(this).serializeObject() );
-            });
+                    $.socket.emit('upload-book', $(this).serializeObject());
+                });
         },
         events: ({
-            'upload-book': function() {
-                bs.login.uploadBook( book_data );
+            'upload-book': function(book_data) {
+                console.log( book_data );
+                var query = bs.mysql.query(
+
+                    "INSERT INTO `tb_books`( `book_isbn`, `book_title`, `book_editorial`, `book_author`, `book_language`, `book_category`, `book_image`, `book_description`, `book_pages`, `book_price`) " +
+                    "VALUES( :book_isbn, :book_title, :book_editorial, :book_author, :book_language, :book_category, null, :book_description, :book_pages, :book_price )",
+                    book_data
+                );
+
+                console.log(query.error);
             }
 
         })
