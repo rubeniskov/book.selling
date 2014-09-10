@@ -24,7 +24,7 @@
         <div class="item">
             <!-- Item image -->
             <div class="item-image">
-                <a href="book/{{book.book_isbn}}">
+                <a href="/book/{{book.book_isbn}}">
                     <img style="height:100px" src="data:image/jpeg;base64,{{ book.book_image_base64 }}" alt="Red dot" />
                 </a>
 
@@ -44,7 +44,7 @@
                 <div class="item-price pull-left">{{ book.book_price }}</div>
                 <!-- Add to cart -->
                 {% if user %}
-                <div class="button pull-right"><a href="#">Comprar</a>
+                <div class="button pull-right"><a  add-to-cart-book="{{book.book_uploaded_id}}" href="javascript::void(0)">A&ntilde;adir al carro</a>
                 </div>
                 {% else %}
                 <div class="button pull-right"><a href="/book/{{book.book_isbn}}">Ver detalles</a>

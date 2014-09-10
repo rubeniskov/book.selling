@@ -2,33 +2,39 @@
 <h4 class="title">Formulario de contacto</h4>
 <div class="form">
     <!-- Contact form (not working)-->
-    <form class="form-horizontal">
+    <form id="form-contact-message" class="form-horizontal">
         <!-- Name -->
         <div class="form-group">
-            <label class="control-label col-md-2" for="name1">Nombre</label>
+            <label class="control-label col-md-2" for="contact_name">Nombre</label>
             <div class="col-md-9">
-                <input type="text" class="form-control" id="name1">
+                <input type="text" class="form-control" id="contact_name" name="contact_name">
             </div>
         </div>
         <!-- Surname -->
         <div class="form-group">
-            <label class="control-label col-md-2" for="surname1">Apellidos</label>
+            <label class="control-label col-md-2" for="contact_surname">Apellidos</label>
             <div class="col-md-9">
-                <input type="text" class="form-control" id="surname1">
+                <input type="text" class="form-control" id="contact_surname" name="contact_surname">
             </div>
         </div>
         <!-- Email -->
         <div class="form-group">
-            <label class="control-label col-md-2" for="email1">Email</label>
+            <label class="control-label col-md-2" for="contact_email">Email</label>
             <div class="col-md-9">
-                <input type="text" class="form-control" id="email1">
+                <input type="text" class="form-control" id="contact_email" name="contact_email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="contact_message">Mensaje</label>
+            <div class="col-md-9">
+                <textarea class="form-control" rows="5" id="contact_message" name="contact_message"></textarea>
             </div>
         </div>
         <!-- Buttons -->
         <div class="form-group">
             <!-- Buttons -->
             <div class="col-md-9 col-md-offset-2">
-                <button type="submit" class="btn btn-default">Enviar</button>
+                <button type="submit" class="btn btn-primary">Enviar</button>
                 <button type="reset" class="btn btn-default">Limpiar datos</button>
             </div>
         </div>
@@ -37,12 +43,6 @@
 <hr />
 <div class="center">
     <!-- Social media icons -->
-    <strong>Siguenós:</strong>
-    <div class="social">
-        <a href="#"><i class="fa fa-facebook facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin linkedin"></i></a>
-        <a href="#"><i class="fa fa-google-plus google-plus"></i></a>
-        <a href="#"><i class="fa fa-pinterest pinterest"></i></a>
-    </div>
+    <strong>S&iacute;guenos:</strong>
+    <module name="social-links"></module>
 </div>

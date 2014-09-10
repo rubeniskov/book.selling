@@ -4,9 +4,9 @@
 
 	$.use 						= function( name, fn )
 	{
-		var core 	= function( selector )
+		var core 	= function( selector, context )
 		{
-			return $( selector, 'div.' + name );
+			return $( selector, context || 'div.' + name );
 		}
 
 		core.md5 			= $.md5;
