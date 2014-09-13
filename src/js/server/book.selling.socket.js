@@ -36,11 +36,24 @@
                                     }
                                 }),
 
-                                script = module.script,
+                                emit            = this.emit,
 
-                                events = script.events;
+                                script          = module.script,
+
+                                events          = script.events;
+
+                                this.session    = socket.request.session
+
+                                this.emit       = function()
+                                {
+                                    arguments[ 0 ]  = 'module-' + name_module + '.' + arguments[ 0 ];
+
+                                    return emit.apply( this, arguments );
+                                }
 
                                 events[ event_name ] && events[ event_name ].call( this, data );
+
+                                this.emit       = emit;
                         });
                     });
                 });
