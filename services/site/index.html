@@ -19,9 +19,7 @@
 		<script src="/dst/book.selling.js" type="text/javascript"></script>
 
 		{% for module, include in view.includes %}
-
 		<script ref="{{ module|lower }}" type="text/javascript">$.use( "module-{{ module|lower }}" ,{{ include }})</script>
-
 		{% endfor %}
 	</head>
 	
