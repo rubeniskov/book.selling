@@ -26,27 +26,30 @@
             if( !ssid )
                 req.cookies.set( key, ssid = bs.utils.uid( 32 ) )
 
-            //bs.mongodb.collection( 'tb_session' ).ensureIndex( { _id: 1, sesion_key: 1 }, { unique: true } ),
-
             req.session = ({
                 get : function( key )
                 {
-                    
-
-                    var query = bs.mongodb.collection( 'tb_session' ).find({session_ssid : ssid, session_key : key}),
+                    var query = bs.mongodb.collection( 'tb_session' ).find({ _id : md5( ssid + key ) }),
 
                         value = !query.error && query.result.length > 0 ? query.result[ 0 ].session_value : false;
 
-                    console.log( 'Getting Session Var SSID ' + ssid + ' ['+ key +']('+value+')' );
+                    //console.log( 'Getting Session Var SSID ' + ssid + ' ['+ key +'](' + JSON.stringify( value ) + ')' );
 
                     return value
                 },
-
                 set : function( key, value )
                 {
-                    console.log( 'Setting Session Var SSID ' + ssid + ' ['+ key +'](' + value + ')' );
+                    //console.log( 'Setting Session Var SSID ' + ssid + ' ['+ key +'](' + JSON.stringify( value ) + ')' );
 
-                    bs.mongodb.collection( 'tb_session' ).insert({ session_ssid : ssid, session_key : key, session_value : value });
+                    bs.mongodb.collection( 'tb_session' ).replace({ _id : md5( ssid + key ) }, { session_value : value });
+
+                    return value;
+                },
+                delete : function()
+                {
+                    //console.log( 'Deletting Session Var SSID ' + ssid );
+
+                    bs.mongodb.collection( 'tb_session' ).remove({ _id : md5( ssid + key ) });
                 }                
             });
 
