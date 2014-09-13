@@ -4,6 +4,8 @@
 
         deasync     = require('deasync'),
 
+        und         = require('underscore'),
+
         database    = null,
 
         connection  = new mongodb.Server( bs.config.mongodb.host, bs.config.mongodb.port );
@@ -14,58 +16,92 @@
     ({
         collection : function( name )
         {
-            var collection = new mongodb.Collection(database, name);
+            var collection  = new mongodb.Collection(database, name),
 
-            return ({
-                find : function()
-                {
-                    var current     = 0
-
-                        delay       = 10,
-
-                        timeout     = 10000, 
-
-                        sync        = false;
-
-                    collection.find.apply( collection, arguments ).toArray(function( err, result, fields )
+                factory     =
+                ({
+                    find : function()
                     {
-                        sync = 
-                        ({ 
-                            error   : err, 
+                        var current     = 0
 
-                            result  : result
-                        });
-                    });    
+                            delay       = 10,
 
-                    while( !sync )
-                    {
-                        deasync.sleep( delay );
+                            timeout     = 10000, 
 
-                        if( current > timeout )
+                            sync        = false;
+
+                        collection.find.apply( collection, arguments ).toArray(function( err, result, fields )
                         {
                             sync = 
                             ({ 
-                                error       : { code : 'TIMEOUT' }
-                            });
+                                error   : err, 
 
-                            break;
+                                result  : result
+                            });
+                        });    
+
+                        while( !sync )
+                        {
+                            deasync.sleep( delay );
+
+                            if( current > timeout )
+                            {
+                                sync = 
+                                ({ 
+                                    error       : { code : 'TIMEOUT' }
+                                });
+
+                                break;
+                            }
+
+                            current += delay;
                         }
 
-                        current += delay;
+                        return sync;
+                    },
+                    update  : function()
+                    {
+                        return collection.update.apply( collection, arguments );
+                    },
+
+                    insert  : function()
+                    {
+                        return collection.insert.apply( collection, arguments );
+                    },
+
+                    remove  : function()
+                    {
+                        return collection.remove.apply( collection, arguments );  
+                    },
+
+                    save    : function()
+                    {
+                        return collection.save.apply( collection, arguments );  
+                    },
+
+                    replace : function( find, insert)
+                    {
+                        var found    = factory.find( find );
+
+                        if( !found.error )
+                        {
+                            if( found.result.length > 0 )
+                            {
+                                return factory.update( find, insert );
+                            }
+                            else
+                            {
+                                return factory.insert( und.extend( find, insert) );
+                            }
+                        }
+
+                        console.log( 'MongoDB: ' + found.error );
+
+                        return false;
                     }
+                });
 
-                    return sync;
-                },
-                update : function()
-                {
-                    collection.update.apply( collection, arguments );
-                },
-
-                insert : function()
-                {
-                    collection.insert.apply( collection, arguments );
-                }
-            });
+            return factory;
         },
         start   : function()
         {
