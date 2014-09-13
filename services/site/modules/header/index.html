@@ -32,9 +32,9 @@
                     <span>
                         <!-- item details with price -->
                         <a href="#cart" role="button" data-toggle="modal">
-                            3 articulo(s) en tu <i class="fa fa-shopping-cart"></i>
+                            <span data-shopping-cart-count>0</span> articulo(s) en tu <i class="fa fa-shopping-cart"></i>
                         </a> -
-                        <span class="bold">25&euro;</span>
+                        <span class="bold"><span data-shopping-cart-total>0.00</span>&euro;</span>
                     </span>
 
 
@@ -43,7 +43,7 @@
                     </span>
                     <span class="lr">
 
-                        <a href="#" role="buttom"> Salir</a>
+                        <a data-cmd="logout" role="buttom"> Salir</a>
                     </span>
                     {% else %}
 
