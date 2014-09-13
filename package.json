@@ -110,6 +110,9 @@
     "services": {
         "admin": {
             "modules": {
+                "books": {
+                    "events": []
+                },
                 "content-books": {
                     "events": []
                 },
@@ -129,6 +132,12 @@
                     "events": []
                 },
                 "header-top-bar": {
+                    "events": []
+                },
+                "sign-in": {
+                    "events": []
+                },
+                "sign-up": {
                     "events": []
                 },
                 "table-books": {
@@ -154,6 +163,9 @@
         "site": {
             "modules": {
                 "book": {
+                    "events": []
+                },
+                "books": {
                     "events": []
                 },
                 "books-carousel": {
@@ -184,7 +196,9 @@
                     "events": []
                 },
                 "contact": {
-                    "events": []
+                    "events": [
+                        "send-message"
+                    ]
                 },
                 "contact-map": {
                     "events": []
@@ -207,7 +221,7 @@
                 "home-slider": {
                     "events": []
                 },
-                "modal-cart": {
+                "modal-shopping-cart": {
                     "events": []
                 },
                 "modal-sign-in": {
@@ -251,19 +265,25 @@
                     ]
                 },
                 "shopping-cart": {
-                    "events": []
+                    "events": [
+                        "add",
+                        "remove",
+                        "refresh"
+                    ]
                 },
                 "sign-in": {
                     "events": [
-                        "sign-in"
+                        "sign-in",
+                        "sign-out"
                     ]
                 },
                 "sign-up": {
                     "events": [
-                        "sign-up",
-                        "sign-in",
-                        "sign-out"
+                        "sign-up"
                     ]
+                },
+                "social-links": {
+                    "events": []
                 },
                 "template": {
                     "events": []
