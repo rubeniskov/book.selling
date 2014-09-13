@@ -11,6 +11,14 @@
 
 		core.md5 			= $.md5;
 
+		core.redirect 		= $.redirect;
+
+		core.refresh 		= $.refresh;
+
+		core.delay 			= $.delay;
+
+		core.each 			= $.each;
+
 		core.socket 		= function()
 		{
 
@@ -34,6 +42,27 @@
 		{
 			fn.call( window, core );
 		});
+	}
+
+	$.refresh 					= function( delay )
+	{
+		if( delay )
+			return $.delay( $.refresh, delay );
+
+		window.location.href 	= window.location.href; 
+	}
+
+	$.redirect 					= function( href, delay )
+	{
+		if( delay )
+			return $.delay( function(){ $.redirect( href ) }, delay );
+
+		window.location.href 	= href;
+	}
+
+	$.delay 					= function(fn, delay)
+	{
+		return window.setTimeout( fn, delay );
 	}
 
 	$.fn.serializeObject 		= function()
