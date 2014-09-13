@@ -9,7 +9,7 @@ module.exports = function( bs )
 		__ready: function( $ ) 
 		{
 
-            $('#form-sign-in').submit(function(e) 
+            $( '#form-sign-in' ).submit(function(e) 
             {
             	e.preventDefault();
 
@@ -21,25 +21,54 @@ module.exports = function( bs )
 
                     user_password   : $.md5( credential.user_password ) 
                 });
+            });
 
-                $.socket.on( 'success', function()
-                {
-                	console.log( 'TEST' );
-                });
+            $( '[data-cmd="logout"]', document.body ).click( function()
+            {
+                $.socket.emit( 'sign-out' );
+            });
+
+            $.socket.on( 'success', function()
+            {
+                $( 'div.alert' )
+                    .text( 'Acceso satisfactorio.' )
+                    .attr( 'class', 'alert alert-success' );
+
+                $.redirect( '/my-account-profile-details', 2000 );
+            });
+
+            $.socket.on( 'error', function()
+            {
+                $( 'div.alert' )
+                    .text( 'Puede que el email o la contraseña sean erróneos.' )
+                    .attr( 'class', 'alert alert-danger' );
+            });
+
+            $.socket.on( 'sign-out', function()
+            {
+                $.redirect( '/home' );
             });
         },
-        events: ({
+        events: 
+        ({
             'sign-in': function( credential ) 
             {
-            	this.request.session.set( 'user', bs.login.signIn( credential ) );
+                var user;
 
-                //this.request.session.test = 'putaprueba';
+                if( ( user = bs.login.signIn( credential ) ) )
+                {
+                    this.session.set( 'user', user );
+                    
+                    this.emit( 'success' );
+                }
+                else
+                    this.emit( 'error' );
+            },
+            'sign-out': function( credential ) 
+            {
+                this.request.session.delete();
 
-                //this.request.session.views -= 100;
-
-                //console.log( 'FROM SOCKET', this.request.session.views );
-
-            	//bs.socket.emit( 'success' );
+                this.emit( 'sign-out' );
             }
         })
 	})

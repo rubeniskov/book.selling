@@ -198,14 +198,7 @@ module.exports = function( bs )
             'sign-up': function( user_data ) 
             {
                 bs.login.signUp( user_data );
-            },
-            'sign-in': function() {
-
-            },
-            'sign-out': function() {
-
             }
-
         })
 	})
 	
