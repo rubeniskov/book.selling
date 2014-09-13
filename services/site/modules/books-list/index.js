@@ -1,4 +1,17 @@
 module.exports = function($) {
+
+    var und         = require( 'underscore' ),
+
+        setBookCart = function( cart, books )
+        {
+            und.each( books, function( book )
+            {
+                book.book_in_cart = !( cart[ book.book_isbn + '-' + book.book_uploaded_id ] )
+            });
+
+            return books;
+        };
+
     return ({
 
         __render: function( app, attr ) {
@@ -47,7 +60,7 @@ module.exports = function($) {
                 pages           = Math.ceil( count.result[ 0 ][ 'book_count' ] / page_items );
 
             return {
-                books       : query.result,
+                books       : setBookCart( app.session.get( 'shopping-cart' ) || {}, query.result ),
 
                 page        : page,
 
