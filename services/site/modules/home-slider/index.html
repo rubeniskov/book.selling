@@ -48,7 +48,7 @@
         <div class="carousel-inner">
             {% for key, book in books %}
             <div class="item {% if key == 0 %}active{% endif %}">
-                <img src="data:image/jpeg;base64,{{ book.book_image_base64 }}" alt="Red dot" />
+                <img src="data:image/jpeg;base64,{{ book.book_image }}" alt="Red dot" />
                 <div class="carousel-caption">
                     <h3>{{book.book_title}}</h3>
 

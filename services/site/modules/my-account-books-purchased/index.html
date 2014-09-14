@@ -27,7 +27,7 @@
                                         {% for key, book in purchase.books %}
                                         <tr>
                                             <td>
-                                                <img style="height:60px" src="data:image/png;base64,{{ book.book_image_base64 }}" alt="Red dot" />
+                                                <img style="height:60px" src="data:image/png;base64,{{ book.book_image }}" alt="Red dot" />
                                             </td>
                                             <td><a href="/book/{{ book.book_isbn }}">{{ book.book_title }}</a></td>
                                             <td>{{ book.book_author }}</td>
