@@ -298,6 +298,45 @@ Qv6l0/8AZU+6gMoV7M6uUMUSjahLdSCKHwRyWkhmjHmRg+0v99ar+Teg/wBSad+yp91e/JvQcY/E
 mnY/RU+6pfBZtM3kuY5owF2r67iB++tP0jH4mscdPk8f2RUf8mdAP/senfskf3URiijhiSKJFjjR
 QqIowFA6ADsKQh//2Q==';
 
+DELIMITER $$ 
+
+DROP FUNCTION IF EXISTS `db_bookselling`.`normalize_string`$$ 
+CREATE FUNCTION `normalize_string`(x VARCHAR(255)) RETURNS varchar(255) CHARSET UTF8 
+BEGIN 
+
+DECLARE TextString VARCHAR(255) ; 
+SET TextString = LOWER( x ) ; 
+
+IF INSTR( x , ' ' ) 
+THEN SET TextString = REPLACE(TextString, ' ','-') ; 
+END IF ;
+
+IF INSTR( x , 'á' ) 
+THEN SET TextString = REPLACE(TextString, 'á','a') ; 
+END IF ;
+
+IF INSTR( x , 'é' ) 
+THEN SET TextString = REPLACE(TextString, 'é','e') ; 
+END IF ;
+
+IF INSTR( x , 'í' ) 
+THEN SET TextString = REPLACE(TextString, 'í','i') ; 
+END IF ;
+
+IF INSTR( x , 'ó' ) 
+THEN SET TextString = REPLACE(TextString, 'ó','o') ; 
+END IF ;
+
+IF INSTR( x , 'ú' ) 
+THEN SET TextString = REPLACE(TextString, 'ú','u') ; 
+END IF ;
+
+RETURN TextString ; 
+
+END$$ 
+
+DELIMITER ;
+
 -- -----------------------------------------------------
 -- Table `db_bookselling`.`tb_users`
 -- -----------------------------------------------------
@@ -422,7 +461,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE OR REPLACE VIEW `db_bookselling`.`v_books` AS
 SELECT 
-    *, TO_BASE64(`book_image`) AS `book_image_base64`
+    *, TO_BASE64(`book_image`) AS `book_image_base64`, normalize_string( `book_category` ) AS `book_category_normalize`
 FROM
     `db_bookselling`.`tb_books`;
 
@@ -442,10 +481,9 @@ SELECT
     `b`.`book_image_base64`,
     `b`.`book_description`,
     `b`.`book_category`,
+    `b`.`book_category_normalize`,
     `b`.`book_pages`,
     `b`.`book_price`
-    
-    
 FROM
     `db_bookselling`.`tb_books_uploaded` as `bu`
         LEFT JOIN
@@ -536,9 +574,9 @@ GROUP BY book_id;
 -- -----------------------------------------------------
 CREATE OR REPLACE VIEW `db_bookselling`.`v_books_categories` AS
 SELECT distinct
-    (book_category)
+    (`book_category`), `book_category_normalize`
 FROM
-    db_bookselling.v_books_available;
+    `db_bookselling`.`v_books_available`;
 
 
 INSERT INTO `db_bookselling`.`tb_books`
