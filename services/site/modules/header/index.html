@@ -18,14 +18,7 @@
             <div class="col-md-5 col-md-offset-3">
 
                 <!-- Search form -->
-                <form role="form">
-                    <div class="input-group">
-                        <input type="email" class="form-control" id="search1" placeholder="Buscar por titulo de libro">
-                        <span class="input-group-btn">
-                            <button type="submit" class="btn btn-default">Buscar</button>
-                        </span>
-                    </div>
-                </form>
+                <module name ="books-search-field" placeholder="Buscar Libro"></module>
 
                 <div class="hlinks">
                     {% if user %}
@@ -34,7 +27,7 @@
                         <a href="#cart" role="button" data-toggle="modal">
                             <span data-shopping-cart-count>0</span> articulo(s) en tu <i class="fa fa-shopping-cart"></i>
                         </a> -
-                        <span class="bold"><span data-shopping-cart-total>0.00</span>&euro;</span>
+                        <span class="bold"><span data-shopping-cart-total>0</span>&euro;</span>
                     </span>
 
 
@@ -43,7 +36,7 @@
                     </span>
                     <span class="lr">
 
-                        <a data-cmd="logout" role="buttom"> Salir</a>
+                        <a data-cmd="logout" role="buttom" href="javascript:void(0)"> Salir</a>
                     </span>
                     {% else %}
 

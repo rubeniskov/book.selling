@@ -1,72 +1,70 @@
-<!-- Title -->
-<h4 class="pull-left">Listado de libros</h4>
-
-
 <!-- Sorting -->
-<div class="form-group pull-right">
-    <form name="book-order-form">
-        <select name="sort" class="form-control">
-            <option value="book_id|asc">Ordenar por</option>
-            <option value="book_title|asc">Titulo (A-Z)</option>
-            <option value="book_title|desc">Titulo (Z-A)</option>
-            <option value="book_price|asc">Precio (Asc)</option>
-            <option value="book_price|desc">Precio (Desc)</option>
+{% if attributes.section != "home" %}
 
-        </select>
-    </form>
+<div class="col-md-12 col-sm-12">
+    <div class="form-group pull-right">
+        <form name="book-order-form">
+            <select name="sort" class="form-control">
+                <option value="book_id|asc">Ordenar por</option>
+                <option value="book_title|asc">Titulo (A-Z)</option>
+                <option value="book_title|desc">Titulo (Z-A)</option>
+                <option value="book_price|asc">Precio (Asc)</option>
+                <option value="book_price|desc">Precio (Desc)</option>
+
+            </select>
+        </form>
+    </div>
 </div>
 
+{% endif %}
 <div class="clearfix"></div>
 
-<div class="row">
-    {% for key, book in books %}
-    <!-- Item #1 -->
-    <div class="col-md-4 col-sm-6">
-        <!-- Each item should be enclosed in "item" class -->
-        <div class="item">
-            <!-- Item image -->
-            <div class="item-image">
-                <a href="/book/{{book.book_isbn}}">
-                    <img style="height:100px" src="data:image/jpeg;base64,{{ book.book_image_base64 }}" alt="Red dot" />
-                </a>
+{% for key, book in books %}
+<!-- Item #1 -->
+<div class="col-md-4 col-sm-6">
+    <!-- Each item should be enclosed in "item" class -->
+    <div class="item">
+        <!-- Item image -->
+        <div class="item-image">
+            <a href="/book/{{book.book_isbn}}">
+                <img src="data:image/jpeg;base64,{{ book.book_image_base64 }}" alt="Red dot" />
+            </a>
 
-            </div>
-            <!-- Item details -->
-            <div class="item-details">
-                <!-- Name -->
-                <!-- Use the span tag with the class "ico" and icon link (hot, sale, deal, new) -->
-                <h5><a href="/book/{{book.book_isbn}}">{{ book.book_title }}</a>
-                    <span class="ico"></span>
-                </h5>
-                <div class="clearfix"></div>
-                <!-- Para. Note more than 2 lines. -->
-                <p>{{ book.book_author }}</p>
-                <hr />
-                <!-- Price -->
-                <div class="item-price pull-left">{{ book.book_price }}</div>
-                <!-- Add to cart -->
-                <div class="button pull-right">
-                {% if user %}
-                    {% if book.book_in_cart %}
-                        <a add-to-cart-book="{{book.book_uploaded_id}}" href="javascript:void(0)">A&ntilde;adir al carro</a>
-                    {% else %}
-                        <a style="background-color:#efefef;" href="javascript:void(0)">A&ntilde;adido</a>
-                    {% endif %}
+        </div>
+        <!-- Item details -->
+        <div class="item-details">
+            <!-- Name -->
+            <!-- Use the span tag with the class "ico" and icon link (hot, sale, deal, new) -->
+            <h5><a href="/book/{{book.book_isbn}}">{{ book.book_title }}</a>
+                <span class="ico"></span>
+            </h5>
+            <div class="clearfix"></div>
+            <!-- Para. Note more than 2 lines. -->
+            <p>{{ book.book_author }}</p>
+            <hr />
+            <!-- Price -->
+            <div class="item-price pull-left">{{ book.book_price }} &euro;</div>
+            <!-- Add to cart -->
+            <div class="button pull-right">
+                {% if user %} {% if book.book_in_cart %}
+                <a add-to-cart-book="{{book.book_uploaded_id}}" href="javascript:void(0)">A&ntilde;adir al carro</a>
                 {% else %}
-                    <a href="/book/{{book.book_isbn}}">Ver detalles</a>
+                <a style="background-color:#efefef;" href="javascript:void(0)">A&ntilde;adido</a>
+                {% endif %} {% else %}
+                <a href="/book/{{book.book_isbn}}">Ver detalles</a>
                 {% endif %}
-                </div>
-                <div class="clearfix"></div>
             </div>
+            <div class="clearfix"></div>
         </div>
     </div>
-    {% endfor %}
+</div>
+{% endfor %}
 
 
-    <div class="col-md-9 col-sm-9">
-        <!-- Pagination -->
-        <module name="books-pagination" page="{{page}}" pages="{{pages}}" pageitems="{{pageitems}}"></module>
-
-    </div>
+{% if attributes.section != "home" %}
+<div class="col-md-12 col-sm-12">
+    <!-- Pagination -->
+    <module name="books-pagination" page="{{page}}" pages="{{pages}}" pageitems="{{pageitems}}"></module>
 
 </div>
+{% endif %}

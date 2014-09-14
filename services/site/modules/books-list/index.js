@@ -19,6 +19,10 @@ module.exports = function($) {
             
             var sections        =
                 {
+                    "home"      : 
+                    { 
+                        table : "v_books_available"
+                    },
                     "list"      : 
                     { 
                         table : "v_books_available"
@@ -33,7 +37,9 @@ module.exports = function($) {
                     },
                     "category"  : 
                     { 
-                        table : "v_books_available"
+                        table : "v_books_available",
+
+                        where : app.segments[ 0 ] ? 'book_category_normalize = "' + app.segments[0] + '"' : '1'
                     }
                 },
 
@@ -49,9 +55,9 @@ module.exports = function($) {
 
                 pages           = 1,
 
-                count           = $.mysql.query('SELECT COUNT(0) AS book_count FROM db_bookselling.' + section.table ),
+                count           = $.mysql.query('SELECT COUNT(0) AS book_count FROM db_bookselling.' + section.table + ( section.where ? ' WHERE ' + section.where : '' ) ),
 
-                query           = $.mysql.query('SELECT * FROM db_bookselling.'+ section.table +' ORDER BY '+ psort[ 0 ] + ' ' + psort[ 1 ] + ' LIMIT ' + ( page_items * ( page - 1 ) ) + ',' + page_items);
+                query           = $.mysql.query('SELECT * FROM db_bookselling.'+ section.table + ( section.where ? ' WHERE ' + section.where : '' ) + ' ORDER BY '+ psort[ 0 ] + ' ' + psort[ 1 ] + ' LIMIT ' + ( page_items * ( page - 1 ) ) + ',' + page_items);
 
             if (count.error || query.error) 
             {
@@ -66,7 +72,9 @@ module.exports = function($) {
 
                 pageitems   : page_items,
 
-                pages       : pages
+                pages       : pages,
+
+                section     : section
             };
         },
         __ready: function($){
@@ -75,7 +83,7 @@ module.exports = function($) {
 
             form.find( 'select' ).change(function(e){ 
 
-                form.submit();
+                window.location.href = window.location.href + '?' + $( this ).val();
             })   
         }
     })

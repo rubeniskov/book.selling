@@ -8,6 +8,7 @@
             <th>Titulo</th>
             <th>Autor</th>
             <th>Editorial</th>
+            <th>Fecha Subida</th>
             <th>Precio</th>
 
         </tr>
@@ -16,11 +17,12 @@
         {% for key, book in books %}
         <tr>
             <td>{{book.book_isbn}}</td>
-            <td><a href="/book/{{purch.book_isbn}}">{{book.book_title}}</a>
+            <td><a href="/book/{{book.book_isbn}}">{{book.book_title}}</a>
             </td>
             <td>{{book.book_author}}</td>
             <td>{{book.book_editorial}}</td>
-            <td>{{book.book_price}}</td>
+            <td>{{book.book_uplodaded_date_formatted}}</td>
+            <td>{{book.book_price}} &euro;</td>
         </tr>
         {% endfor %}
 

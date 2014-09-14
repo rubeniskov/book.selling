@@ -9,7 +9,7 @@
             <a href="/my-account"  data-toggle="dropdown">Categor&iacute;as <b class="categories"></b></a>
             <ul class="dropdown-menu">
                 {% for key, category in categories %}
-                    <li><a href="/books-category/{{category.book_category}}">{{category.book_category}}</a>
+                    <li><a href="/books-category/{{category.book_category_normalize}}">{{category.book_category}}</a>
                     </li>
                 {% endfor %}
             </ul>

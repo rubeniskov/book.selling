@@ -60,11 +60,14 @@ module.exports = function( bs )
 				                book.book_uploaded_price+
 				            '</td>'+
 				            '<td>'+
-				                '<a class="btn-sm btn-danger" remove-from-cart-book="'+ref+'"><i class="fa fa-minus"></i></a>'+
+				                '<a class="btn-sm btn-danger" remove-from-cart-book="'+ref+'" href="javascript:void(0)"><i class="fa fa-minus"></i></a>'+
 				            '</td>'+
 				        '</tr>'
 					);
 				});
+
+				if( count == 0 )
+					table.append( '<td colspan="4"> <h2 style="color:#aeaeae;text-align:center;margin:20px;">Carro vacio</h2> </td>' );
 
 				$( '[remove-from-cart-book]' ).click( function()
 				{
