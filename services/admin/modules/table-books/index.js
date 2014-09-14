@@ -1,7 +1,7 @@
-module.exports = function($) {
+module.exports = function(bs) {
     return ({
         __render: function() {
-            var query = $.mysql.query("SELECT * FROM tb_books");
+            var query = bs.mysql.query("SELECT * FROM tb_books");
 
             if (query.error) {
                 return false;
@@ -13,24 +13,23 @@ module.exports = function($) {
         },
         __ready: function($) {
 
-           
-
         	$('[data-item-cmd]').click(function()
         	{
                 var btn    = $( this );
 
-        		$.socket.emit( btn.attr( 'data-item-cmd' ),btn.attr( 'data-item-id' ) );
-
-                setInterval( function()
+                btn.closest( 'tr' ).hide( 1000, function()
                 {
-                    window.location.href = window.location.href;
-                }, 200);
+                    $.socket.emit( btn.attr( 'data-item-cmd' ), btn.attr( 'data-item-id' ) );
+                });
         	});
         },
-        events: ({
+        events: 
+        ({
             'remove-item': function( book_id ) 
             {
-               	var query = $.mysql.query( "DELETE FROM db_bookselling.tb_books WHERE book_id=" + book_id );
+               	var query = bs.mysql.query( "DELETE FROM db_bookselling.tb_books WHERE book_id=" + book_id );
+
+                console.log( query );
             	
             }
 

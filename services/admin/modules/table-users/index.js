@@ -22,10 +22,7 @@ module.exports = function($) {
 
                 $.socket.emit( btn.attr( 'data-item-cmd' ),btn.attr( 'data-item-id' ) );
 
-                setInterval( function()
-                {
-                    window.location.href = window.location.href;
-                }, 200);
+                $.refresh();
             });
         },
         events: ({
