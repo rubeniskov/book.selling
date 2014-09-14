@@ -47,7 +47,7 @@ module.exports = function( bs ) {
 
             'search'       : function( criteria )
             {
-                var query   = bs.mysql.query( 'SELECT book_price AS price, book_isbn AS value, book_title AS label, CONCAT( LEFT( book_description, 50 ), "..." ) AS `desc`, CONCAT( "data:image/jpeg;base64,", book_image_base64 ) AS icon FROM v_books WHERE book_isbn like "' + criteria + '%" OR book_title like "%' + criteria + '%" OR book_author like "%' + criteria + '%" OR book_category like "%' + criteria + '%";' );
+                var query   = bs.mysql.query( 'SELECT book_price AS price, book_isbn AS value, book_title AS label, CONCAT( LEFT( book_description, 50 ), "..." ) AS `desc`, CONCAT( "data:image/jpeg;base64,", book_image ) AS icon FROM v_books WHERE book_isbn like "' + criteria + '%" OR book_title like "%' + criteria + '%" OR book_author like "%' + criteria + '%" OR book_category like "%' + criteria + '%";' );
                 
                 if( !query.error )
                     this.emit( 'results', query.result );
