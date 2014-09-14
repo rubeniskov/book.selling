@@ -2,13 +2,13 @@
     
     var io          = require('socket.io'),
 
-        und         = require('underscore'),
-
-        service     = bs.config.service;
+        und         = require('underscore');
 
     bs.socket       = function( server, session )
     {
         var sevent;
+
+        console.info( 'Iniciando Socket.io' );
 
         io( server ).on('connection', function( socket )
         {
@@ -16,13 +16,15 @@
             {
                 socket.request.session.socket = socket;
                 
-                und.each( bs.config.services[ service ].modules, function( module, name_module )
+                und.each( bs.config.services[ bs.config.service ].modules, function( module, name_module )
                 {
                     module.events && module.events.length && und.each( module.events, function( event_name )
                     {
+                        //console.info( 'Setting Up Event ['+socket.request.cookies.get('ssid')+'] ' + bs.config.service, name_module +'.'+ event_name );
+
                         socket.on( 'module-' + name_module + '.' + event_name , function( data )
                         {
-                            var module = bs.module( service, name_module, 
+                            var module = bs.module( bs.config.service, name_module, 
                                 { 
                                     session     : socket.request.session, 
 
