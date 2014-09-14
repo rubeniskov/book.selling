@@ -12,7 +12,7 @@
 
     bs.service      = function( req, res, next )
     {
-        var name        = bs.config.service
+        var name        = bs.config.service,
 
             uri         = url.parse( req.url, true ),
 
