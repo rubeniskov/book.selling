@@ -41,15 +41,15 @@
                 {
                     //console.log( 'Setting Session Var SSID ' + ssid + ' ['+ key +'](' + JSON.stringify( value ) + ')' );
 
-                    bs.mongodb.collection( 'tb_session' ).replace({ _id : md5( ssid + key ) }, { session_value : value });
+                    bs.mongodb.collection( 'tb_session' ).replace({ _id : md5( ssid + key ) }, { session_ssid : ssid, session_key : key, session_value : value });
 
                     return value;
                 },
                 delete : function()
                 {
-                    //console.log( 'Deletting Session Var SSID ' + ssid );
+                    console.log( 'Deletting Session Var SSID ' + ssid );
 
-                    bs.mongodb.collection( 'tb_session' ).remove({ _id : md5( ssid + key ) });
+                    bs.mongodb.collection( 'tb_session' ).remove({ session_ssid : ssid });
                 }                
             });
 
