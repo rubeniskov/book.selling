@@ -2,8 +2,6 @@
 
     var express = require('express'),
 
-        mstore  = require('express-session-mongo'),
-
         und     = require('underscore'),
 
         http    = require('http'),
