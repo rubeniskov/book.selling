@@ -16,6 +16,7 @@
         "client": [
             "src/js/client/socket.io.js",
             "src/js/client/jquery.js",
+            "src/js/client/jquery-ui.js",
             "src/js/client/jquery-md5.js",
             "src/js/client/jquery-regex-selector.js",
             "src/js/client/bootstrap.js",
@@ -165,13 +166,7 @@
                 "book": {
                     "events": []
                 },
-                "books": {
-                    "events": []
-                },
                 "books-carousel": {
-                    "events": []
-                },
-                "books-category": {
                     "events": []
                 },
                 "books-last-purchases": {
@@ -183,14 +178,13 @@
                 "books-nav": {
                     "events": []
                 },
-                "books-news": {
-                    "events": []
-                },
                 "books-pagination": {
                     "events": []
                 },
-                "books-search": {
-                    "events": []
+                "books-search-field": {
+                    "events": [
+                        "search"
+                    ]
                 },
                 "books-top": {
                     "events": []
@@ -210,12 +204,6 @@
                     "events": []
                 },
                 "header-nav": {
-                    "events": []
-                },
-                "home-books": {
-                    "events": []
-                },
-                "home-carousel": {
                     "events": []
                 },
                 "home-slider": {
