@@ -19,6 +19,8 @@
 
 		core.each 			= $.each;
 
+		core.extend			= $.extend;
+
 		core.socket 		= function()
 		{
 
@@ -29,6 +31,13 @@
 			arguments[ 0 ] 	= name + '.' + arguments[ 0 ];
 
 			$.socket.on.apply( $.socket, arguments );
+		}
+
+		core.socket.once 	= function( )
+		{
+			arguments[ 0 ] 	= name + '.' + arguments[ 0 ];
+
+			$.socket.once.apply( $.socket, arguments );
 		}
 
 		core.socket.emit 	= function()
@@ -65,6 +74,20 @@
 		return window.setTimeout( fn, delay );
 	}
 
+	$.getJsonFromUrl 			= function() 
+	{
+		var query 	= location.search.substr(1),
+		
+			data 	= query.split("&"),
+
+		 	result 	= {};
+		for(var i=0; i<data.length; i++) 
+		{
+		var item = data[i].split("=");
+		result[item[0]] = item[1];
+		}
+		return result;
+	}
 	$.fn.serializeObject 		= function()
 	{
 	    var o = {};
